@@ -116,12 +116,15 @@ class ContextSearchMaxApi(object):
         except AttributeError:
             x = False
             icons_current_count -= 1
-            #print (str(icons_current_count) + '<<< count icons in response')
+            print (str(icons_current_count) + '<<< count icons in response (IconTests)')
             assert icons_current_count > 0
-    #print (str(icons_current_count) + ' <<< current count of icons')
+    print (str(icons_current_count) + ' <<< current count of icons (IconTests)')
 
     # Choose random icon between min and max
-    icon_number = str(random_between_values(1, icons_current_count))
+    if icons_current_count == 2:
+        icon_number = icons_current_count
+    else:
+        icon_number = str(random_between_values(1, icons_current_count))
 
     # Action before class
     def setup_class(cls):
@@ -237,7 +240,7 @@ class ContextLatestApi(object):
         print("\n>>> Class Teardown")
 
 
-
+"""
 class ContextSimilarApi(object):
     # settings
     api_type = 'similar'
@@ -248,7 +251,8 @@ class ContextSimilarApi(object):
 
     amount = random_list_value(["", "5", "10", "15", "20"])
 
-    offset = random_list_value(["", "5", "10", "15", "20"])
+    #offset = random_list_value(["", "5", "10", "15", "20"])
+    offset = random_list_value(["", "5"])
 
     payload = {'id': icon_id, 'amount': amount, 'offset': offset}
 
@@ -257,25 +261,26 @@ class ContextSimilarApi(object):
     # Do Request and return response root
     response_root = request(api_type, payload)
 
-    icons_current_count = 0
+    similiar_icons_current_count = 0
+
     x = True
     while x == True:
         try:
-            icons_current_count += 1
+            similiar_icons_current_count += 1
             tag_attribs = all_tag_attrib(response_root,
-                                         'icon', str(icons_current_count))
+                                         'icon', str(similiar_icons_current_count))
             value_of_attrib = attrib_value(tag_attribs, 'id')
             assert word_count(value_of_attrib) >= 1
-            assert icons_current_count <= icon_count
+            assert similiar_icons_current_count <= icon_count
         except AttributeError:
             x = False
-            icons_current_count -= 1
+            similiar_icons_current_count -= 1
             #print (str(icons_current_count) + '<<< count icons in response')
-            assert icons_current_count > 0
+            assert similiar_icons_current_count > 0
     #print (str(icons_current_count) + ' <<< current count of icons')
 
     # Choose random icon between min and max
-    icon_number = str(random_between_values(1, icons_current_count))
+    icon_number = str(random_between_values(1, similiar_icons_current_count))
 
     # Action before class
     def setup_class(cls):
@@ -285,6 +290,7 @@ class ContextSimilarApi(object):
     def teardown_class(cls):
         print("\n>>> Class Teardown")
 
+"""
 
 
 class ContextCategoryApi(object):
@@ -306,6 +312,10 @@ class ContextCategoryApi(object):
     attributes = ''
 
     payload = {'category': category, 'amount': amount, 'offset': offset, 'platform': platform, 'attributes': attributes}
+    print (category + ' - category(Category tests)')
+    print (amount + ' - amount(Category tests)')
+    print (offset + ' - offset(Category tests)')
+    print (platform + ' - platform(Category tests)')
 
     icon_count = 100
 
@@ -404,12 +414,12 @@ class ContextSuggestApi(object):
         except AttributeError:
             x = False
             term_current_count -= 1
-            #print (str(term_current_count) + '<<< count icons in response')
             assert term_current_count > 0
-    #print (str(term_current_count) + ' <<< current count of icons')
-
     # Choose random icon between min and max
-    term_number = str(random_between_values(2, term_current_count))
+    if term_current_count == 2:
+        term_number = term_current_count
+    else:
+        term_number = str(random_between_values(2, term_current_count))
 
     # Action before class
     def setup_class(cls):
