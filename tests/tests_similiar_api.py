@@ -124,7 +124,7 @@ class TestSimilarApi(ContextSimilarApi):
             tag_attribs = all_tag_attrib_with_icon_number(TestSimilarApi.response_root,
                                                           TestSimilarApi.icon_number, 'share', '1')
             value_of_attrib = attrib_value(tag_attribs, 'url')
-            assert value_of_attrib[:16] == "http://ic8.link/"
+            assert value_of_attrib[:16] == "http://demo.ic8."
 
 
     # Test 'share/png' 1 tag

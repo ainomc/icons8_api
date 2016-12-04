@@ -96,7 +96,7 @@ class TestCategoryApi(ContextCategoryApi):
         tag_attribs = all_tag_attrib_with_icon_number(TestCategoryApi.response_root,
                                                       TestCategoryApi.icon_number, 'share', '1')
         value_of_attrib = attrib_value(tag_attribs, 'url')
-        assert value_of_attrib[:16] == "http://ic8.link/"
+        assert value_of_attrib[:16] == "http://demo.ic8."
 
     # Test 'share/png' 1 tag
     def test_share_png_tag(self):

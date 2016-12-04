@@ -114,7 +114,7 @@ class TestSearchDefaultApi(ContextSearchDefaultApi):
         tag_attribs = all_tag_attrib_with_icon_number(TestSearchDefaultApi.response_root,
                                                       TestSearchDefaultApi.icon_number, 'share', '1')
         value_of_attrib = attrib_value(tag_attribs, 'url')
-        assert value_of_attrib[:16] == "http://ic8.link/"
+        assert value_of_attrib[:16] == "http://demo.ic8."
 
     # Test 'share/png' 1 tag
     def test_share_png_tag(self):
@@ -226,7 +226,7 @@ class TestSearchMaxAPI(ContextSearchMaxApi):
         tag_attribs = all_tag_attrib_with_icon_number(TestSearchMaxAPI.response_root,
                                                       TestSearchMaxAPI.icon_number, 'share', '1')
         value_of_attrib = attrib_value(tag_attribs, 'url')
-        assert value_of_attrib[:16] == "http://ic8.link/"
+        assert value_of_attrib[:16] == "http://demo.ic8."
 
     # Test 'share/png' 1 tag
     def test_share_png_tag(self):
@@ -354,7 +354,7 @@ class TestSearchMinAPI(ContextSearchMinApi):
         tag_attribs = all_tag_attrib_with_icon_number(TestSearchMinAPI.response_root,
                                                       TestSearchMinAPI.icon_number, 'share', '1')
         value_of_attrib = attrib_value(tag_attribs, 'url')
-        assert value_of_attrib[:16] == "http://ic8.link/"
+        assert value_of_attrib[:16] == "http://demo.ic8."
 
     # Test 'share/png' 1 tag
     def test_share_png_tag(self):
