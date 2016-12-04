@@ -1,4 +1,4 @@
-# ****Icon 8 API tests****
+# Icon 8 API tests
 
 python -m pytest -v tests_* -s - команда для запуска всех тестов, прописываь в папке "tests"\
 python -m pytest -v file_test -s -  команда для запуска отдельного файла, вместо file_test нужно вставить название файла, прописываь в папке "tests"
