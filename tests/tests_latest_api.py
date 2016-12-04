@@ -5,7 +5,7 @@ import paramiko
 
 from icons8_api.api_logic import attrib_value, all_tag_attrib, all_tag_attrib_with_icon_number, \
     tag_value_with_icon_number, word_count, check_all_categories
-from icons8_api.api_context import ContextLatestApi
+from context.latest_context import ContextLatestApi
 
 
 """

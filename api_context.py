@@ -5,13 +5,15 @@ import paramiko
 from api_logic import random_between_values, random_list_value, request, all_tag_attrib, word_count, attrib_value
 
 # Fixture settings fo Tests class
+
 class ContextIconApi(object):
 
 
     # Settings
     # icon id what will be in request
     icon_id = str(random_between_values(100, 20000))
-    print (icon_id + ' test icon')
+    print ('''Icon tests: id - %s'''
+           % icon_id)
 
     payload = {'id': icon_id}
 
@@ -38,6 +40,9 @@ class ContextSearchDefaultApi(object):
 
     payload = {'term': term, 'amount': '',
                'offset': '', 'platform': ''}
+
+    print ('''Search default tests: term - %s, amount - %s , offset - %s, platform - %s'''
+           % (term, '', '', ''))
 
     icon_count = 25
 
@@ -97,6 +102,9 @@ class ContextSearchMaxApi(object):
         'offset': search_offset, 'platform': search_platform
     }
 
+    print ('''Search max tests: term - %s, amount - %s , offset - %s, platform - %s'''
+           % (search_text, search_amount, search_offset, search_platform))
+
     icon_count = 20
 
     # Do Request and return response root
@@ -155,6 +163,9 @@ class ContextSearchMinApi(object):
         'term': search_text, 'amount': search_amount,
         'offset': search_offset, 'platform': search_platform
     }
+
+    print ('''Search min tests: term - %s, amount - %s , offset - %s, platform - %s'''
+           % (search_text, search_amount, search_offset, search_platform))
 
     icon_count = 5
 
@@ -240,21 +251,23 @@ class ContextLatestApi(object):
         print("\n>>> Class Teardown")
 
 
-"""
+
 class ContextSimilarApi(object):
     # settings
     api_type = 'similar'
 
     # icon id what will be in request
     icon_id = str(random_between_values(100, 20000))
-    print (icon_id + ' test icon')
 
-    amount = random_list_value(["", "5", "10", "15", "20"])
+    amount = random_list_value(["", "5"])
 
     #offset = random_list_value(["", "5", "10", "15", "20"])
     offset = random_list_value(["", "5"])
 
     payload = {'id': icon_id, 'amount': amount, 'offset': offset}
+
+    print ('''Similiar tests: id - %s, amount - %s , offset - %s'''
+           % (icon_id, amount, offset))
 
     icon_count = 100
 
@@ -276,7 +289,8 @@ class ContextSimilarApi(object):
             x = False
             similiar_icons_current_count -= 1
             #print (str(icons_current_count) + '<<< count icons in response')
-            assert similiar_icons_current_count > 0
+            if similiar_icons_current_count == 0:
+                print (icon_id + " - has no any similiar icon")
     #print (str(icons_current_count) + ' <<< current count of icons')
 
     # Choose random icon between min and max
@@ -289,8 +303,6 @@ class ContextSimilarApi(object):
     #  Action after class
     def teardown_class(cls):
         print("\n>>> Class Teardown")
-
-"""
 
 
 class ContextCategoryApi(object):
@@ -312,10 +324,8 @@ class ContextCategoryApi(object):
     attributes = ''
 
     payload = {'category': category, 'amount': amount, 'offset': offset, 'platform': platform, 'attributes': attributes}
-    print (category + ' - category(Category tests)')
-    print (amount + ' - amount(Category tests)')
-    print (offset + ' - offset(Category tests)')
-    print (platform + ' - platform(Category tests)')
+    print ('''Category tests: category - %s, amount - %s , offset - %s, platform - %s, attributes - %s'''
+           % (category, amount, offset, platform, attributes))
 
     icon_count = 100
 
@@ -351,7 +361,6 @@ class ContextCategoryApi(object):
         print("\n>>> Class Teardown")
 
 
-
 class ContextTotalApi(object):
 
 
@@ -366,6 +375,9 @@ class ContextTotalApi(object):
 
     payload = {'since': since}
 
+    print ('''Total  tests: since - %s'''
+           % (since))
+
     icon_count = 100
 
     # Do Request and return response root
@@ -378,7 +390,6 @@ class ContextTotalApi(object):
     #  Action after class
     def teardown_class(cls):
         print("\n>>> Class Teardown")
-
 
 
 class ContextSuggestApi(object):
@@ -395,6 +406,9 @@ class ContextSuggestApi(object):
                                   "color", "win10", "office"])
 
     payload = {'term': term, 'amount': amount, 'platform': platform}
+
+    print ('''Search min tests: term - %s, amount - %s, platform - %s'''
+           % (term, amount, platform))
 
     term_count = 25
 

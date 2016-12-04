@@ -4,7 +4,8 @@ import pytest
 import paramiko
 
 from icons8_api.api_logic import tag_value, attrib_value, all_tag_attrib, word_count, check_all_categories
-from icons8_api.api_context import ContextIconApi
+from context.icon_context import ContextIconApi
+
 
 
 """

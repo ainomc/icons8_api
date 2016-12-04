@@ -24,11 +24,17 @@ def all_tag_attrib(root, tag, tag_xpath_number):
 
 # Find xml key by xpath and return key value.
 def tag_value_with_icon_number(root, icon, tag, tag_xpath_number):
-    return root.find('.//icon[%s]/%s[%s]' % (icon, tag, tag_xpath_number)).text
+    if icon == 0:
+        pass
+    else:
+        return root.find('.//icon[%s]/%s[%s]' % (icon, tag, tag_xpath_number)).text
 
 # Return all attributes from tag
 def all_tag_attrib_with_icon_number(root, icon, tag, tag_xpath_number):
-    return root.find('.//icon[%s]/%s[%s]' % (icon, tag, tag_xpath_number)).attrib
+    if icon == 0:
+        pass
+    else:
+        return root.find('.//icon[%s]/%s[%s]' % (icon, tag, tag_xpath_number)).attrib
 
 # Return  attribute value
 def attrib_value(tag_all_attrib, Attrib):
