@@ -8,8 +8,8 @@ import xml.etree.ElementTree as ET
 
 
 # Do request, check response and return root of response. apiType - type of api, payload - values for url to xml
-def request(apiType, payload):
-    response = requests.get('https://demoapi.icons8.com/api/iconsets/%s' % apiType, params=payload)
+def request(api_type, payload):
+    response = requests.get('https://demoapi.icons8.com/api/iconsets/%s' % api_type, params=payload)
     response.raise_for_status()
     return ET.fromstring(response.content)
 

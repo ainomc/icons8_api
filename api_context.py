@@ -29,7 +29,6 @@ class ContextIconApi(object):
         print("\n>>> Class Teardown")
 
 
-
 class ContextSearchDefaultApi(object):
 
     #settings
@@ -76,7 +75,6 @@ class ContextSearchDefaultApi(object):
     #  Action after class
     def teardown_class(cls):
         print("\n>>> Class Teardown")
-
 
 
 class ContextSearchMaxApi(object):
@@ -143,7 +141,6 @@ class ContextSearchMaxApi(object):
         print("\n>>> Class Teardown")
 
 
-
 class ContextSearchMinApi(object):
 
     #settings
@@ -201,7 +198,6 @@ class ContextSearchMinApi(object):
         print("\n>>> Class Teardown")
 
 
-
 class ContextLatestApi(object):
 
 
@@ -249,7 +245,6 @@ class ContextLatestApi(object):
     #  Action after class
     def teardown_class(cls):
         print("\n>>> Class Teardown")
-
 
 
 class ContextSimilarApi(object):
