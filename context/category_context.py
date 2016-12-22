@@ -23,7 +23,13 @@ class ContextCategoryApi(object):
 
     attributes = ''
 
-    payload = {'category': category, 'amount': amount, 'offset': offset, 'platform': platform, 'attributes': attributes}
+    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
+
+    payload = {'category': category, 'amount': amount,
+               'offset': offset, 'platform': platform, 'attributes': attributes}
+    payload_auth = {'category': category, 'amount': amount,
+                          'offset': offset, 'platform': platform, 'attributes': attributes, 'auth-id': auth_id}
+
     print ('''Category tests: category - %s, amount - %s , offset - %s, platform - %s, attributes - %s'''
            % (category, amount, offset, platform, attributes))
 
@@ -31,6 +37,7 @@ class ContextCategoryApi(object):
 
     # Do Request and return response root
     response_root = request(api_type, payload)
+    response_root_auth = request(api_type, payload_auth)
 
     icons_current_count = 0
     x = True

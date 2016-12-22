@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import paramiko
+import pytest
 
 from api_logic import random_between_values, random_list_value, request, all_tag_attrib, word_count, attrib_value
+
 
 
 class ContextIconsApi(object):

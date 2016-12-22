@@ -14,14 +14,21 @@ python -m pytest -v tests_category_api.py -s     --   runner
 
 """
 
+@pytest.fixture(scope="function", params=[
+    (ContextCategoryApi.response_root),
+    (ContextCategoryApi.response_root_auth)
+])
+def param_test(request):
+    return request.param
 
 # Test Search Api with Default values. https://demoapi.icons8.com/manual/latest
 class TestCategoryApi(ContextCategoryApi):
 
 
     # Test 'icon' tag
-    def test_icon_tag(self):
-        tag_attribs = all_tag_attrib(TestCategoryApi.response_root,
+    def test_icon_tag(self, param_test):
+        (root) = param_test
+        tag_attribs = all_tag_attrib(root,
                                      'icon', TestCategoryApi.icon_number)
         value_of_attrib = attrib_value(tag_attribs, 'id')
         print (value_of_attrib + ' icon id what checked')
@@ -43,14 +50,16 @@ class TestCategoryApi(ContextCategoryApi):
         assert value_of_attrib[:9] == "/web-app/"
 
     # Test 'svg' tag
-    def test_svg_tag(self):
-        value_of_tag = tag_value_with_icon_number(TestCategoryApi.response_root,
+    def test_svg_tag(self, param_test):
+        (root) = param_test
+        value_of_tag = tag_value_with_icon_number(root,
                                                   TestCategoryApi.icon_number, 'svg', '1')
         assert word_count(value_of_tag) > 1
 
     # Test icon 26 tag
-    def test_png_tag(self):
-        tag_attribs = all_tag_attrib_with_icon_number(TestCategoryApi.response_root,
+    def test_png_tag(self, param_test):
+        (root) = param_test
+        tag_attribs = all_tag_attrib_with_icon_number(root,
                                                       TestCategoryApi.icon_number, 'png/png', '1')
         value_of_attrib = attrib_value(tag_attribs, 'width')
         assert word_count(value_of_attrib) > 1
@@ -62,45 +71,52 @@ class TestCategoryApi(ContextCategoryApi):
         assert value_of_attrib[-4:] == '.png'
 
     # Test 'bitmap' tag
-    def test_bitmap_tag(self):
-        value_of_tag = tag_value_with_icon_number(TestCategoryApi.response_root,
+    def test_bitmap_tag(self, param_test):
+        (root) = param_test
+        value_of_tag = tag_value_with_icon_number(root,
                                                   TestCategoryApi.icon_number, 'features/bitmap', '1')
         assert word_count(value_of_tag) >= 1
 
     # Test 'vector' test
-    def test_vector_tag(self):
-        value_of_tag = tag_value_with_icon_number(TestCategoryApi.response_root,
+    def test_vector_tag(self, param_test):
+        (root) = param_test
+        value_of_tag = tag_value_with_icon_number(root,
                                                   TestCategoryApi.icon_number, 'features/vector', '1')
         assert word_count(value_of_tag) >= 1
 
     # Test 'nolink' test
-    def test_nolink_tag(self):
-        value_of_tag = tag_value_with_icon_number(TestCategoryApi.response_root,
+    def test_nolink_tag(self, param_test):
+        (root) = param_test
+        value_of_tag = tag_value_with_icon_number(root,
                                                   TestCategoryApi.icon_number, 'features/nolink', '1')
         assert word_count(value_of_tag) >= 1
 
     # Test 'categories/category' test
-    def test_categorychild_tag(self):
-        value_of_tag = tag_value_with_icon_number(TestCategoryApi.response_root,
+    def test_categorychild_tag(self, param_test):
+        (root) = param_test
+        value_of_tag = tag_value_with_icon_number(root,
                                                   TestCategoryApi.icon_number, 'categories/category', '1')
         assert word_count(value_of_tag) > 1
 
     # Test 'category' test
-    def test_category_tag(self):
-        value_of_tag = tag_value_with_icon_number(TestCategoryApi.response_root,
+    def test_category_tag(self, param_test):
+        (root) = param_test
+        value_of_tag = tag_value_with_icon_number(root,
                                                   TestCategoryApi.icon_number, 'category', '1')
         assert word_count(value_of_tag) > 1
 
     # Test 'share' tag
-    def test_share_tag(self):
-        tag_attribs = all_tag_attrib_with_icon_number(TestCategoryApi.response_root,
+    def test_share_tag(self, param_test):
+        (root) = param_test
+        tag_attribs = all_tag_attrib_with_icon_number(root,
                                                       TestCategoryApi.icon_number, 'share', '1')
         value_of_attrib = attrib_value(tag_attribs, 'url')
         assert value_of_attrib[:16] == "http://demo.ic8."
 
     # Test 'share/png' 1 tag
-    def test_share_png_tag(self):
-        tag_attribs = all_tag_attrib_with_icon_number(TestCategoryApi.response_root,
+    def test_share_png_tag(self, param_test):
+        (root) = param_test
+        tag_attribs = all_tag_attrib_with_icon_number(root,
                                                       TestCategoryApi.icon_number, 'share/png', '1')
         value_of_attrib = attrib_value(tag_attribs, 'link')
         assert value_of_attrib[-4:] == '.png'

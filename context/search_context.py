@@ -10,11 +10,14 @@ class ContextSearchDefaultApi(object):
     #settings
     api_type = 'search'
 
+    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
+
     term = random_list_value(['google', 'facebook', 'space',
                               'ball', 'car', 'word'])
 
-    payload = {'term': term, 'amount': '',
-               'offset': '', 'platform': ''}
+    payload = {'term': term, 'amount': '', 'offset': '', 'platform': ''}
+
+    payload_auth = {'term': term, 'amount': '', 'offset': '', 'platform': '', 'auth-id': auth_id}
 
     print ('''Search default tests: term - %s, amount - %s , offset - %s, platform - %s'''
            % (term, '', '', ''))
@@ -23,6 +26,7 @@ class ContextSearchDefaultApi(object):
 
     # Do Request and return response root
     response_root = request(api_type, payload)
+    response_root_auth = request(api_type, payload_auth)
 
     icons_current_count = 0
     x = True
@@ -60,6 +64,8 @@ class ContextSearchMaxApi(object):
     #settings
     api_type = 'search'
 
+    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
+
     search_text = random_list_value(['google', 'facebook', 'space',
                                      'ball', 'car', 'word'])
 
@@ -77,6 +83,11 @@ class ContextSearchMaxApi(object):
         'offset': search_offset, 'platform': search_platform
     }
 
+    payload_auth = {
+        'term': search_text, 'amount': search_amount,
+        'offset': search_offset, 'platform': search_platform, 'auth-id': auth_id
+    }
+
     print ('''Search max tests: term - %s, amount - %s , offset - %s, platform - %s'''
            % (search_text, search_amount, search_offset, search_platform))
 
@@ -84,6 +95,7 @@ class ContextSearchMaxApi(object):
 
     # Do Request and return response root
     response_root = request(api_type, payload)
+    response_root_auth = request(api_type, payload_auth)
 
 
     icons_current_count = 0
@@ -130,6 +142,8 @@ class ContextSearchMinApi(object):
 
     search_offset = '5'
 
+    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
+
     search_platform = random_list_value(["win8", "ios7", "android", "androidL",
                                          "color", "win10", "office"])
     search_language = ''
@@ -139,6 +153,11 @@ class ContextSearchMinApi(object):
         'offset': search_offset, 'platform': search_platform
     }
 
+    payload_auth = {
+        'term': search_text, 'amount': search_amount,
+        'offset': search_offset, 'platform': search_platform, 'auth-id': auth_id
+    }
+
     print ('''Search min tests: term - %s, amount - %s , offset - %s, platform - %s'''
            % (search_text, search_amount, search_offset, search_platform))
 
@@ -146,6 +165,7 @@ class ContextSearchMinApi(object):
 
     # Do Request and return response root
     response_root = request(api_type, payload)
+    response_root_auth = request(api_type, payload_auth)
 
     icons_current_count = 0
     x = True

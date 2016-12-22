@@ -18,12 +18,16 @@ class ContextLatestApi(object):
     search_platform = random_list_value(["win8", "ios7", "android", "androidL",
                                          "color", "win10", "office", ""])
 
+    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
+
     payload = {'amount': amount, 'offset': offset, 'platform': search_platform}
+    payload_auth = {'amount': amount, 'offset': offset, 'platform': search_platform, 'auth-id': auth_id}
 
     icon_count = 100
 
     # Do Request and return response root
     response_root = request(api_type, payload)
+    response_root_auth = request(api_type, payload_auth)
 
     icons_current_count = 0
     x = True
