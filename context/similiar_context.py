@@ -16,8 +16,10 @@ class ContextSimilarApi(object):
 
     #offset = random_list_value(["", "5", "10", "15", "20"])
     offset = random_list_value(["", "5"])
+    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
 
     payload = {'id': icon_id, 'amount': amount, 'offset': offset}
+    payload_auth = {'id': icon_id, 'amount': amount, 'offset': offset, 'auth-id': auth_id}
 
     print ('''Similiar tests: id - %s, amount - %s , offset - %s'''
            % (icon_id, amount, offset))
@@ -26,6 +28,7 @@ class ContextSimilarApi(object):
 
     # Do Request and return response root
     response_root = request(api_type, payload)
+    response_root_auth = request(api_type, payload_auth)
 
     similiar_icons_current_count = 0
 

@@ -15,10 +15,13 @@ class ContextSuggestApi(object):
 
     amount = random_list_value(["", "5", "10", "15", "20"])
 
+    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
+
     platform = random_list_value(["win8", "ios7", "android", "androidL",
                                   "color", "win10", "office"])
 
     payload = {'term': term, 'amount': amount, 'platform': platform}
+    payload_auth = {'term': term, 'amount': amount, 'platform': platform, 'auth-id': auth_id}
 
     print ('''Suggest tests: term - %s, amount - %s, platform - %s'''
            % (term, amount, platform))
@@ -27,6 +30,7 @@ class ContextSuggestApi(object):
 
     # Do Request and return response root
     response_root = request(api_type, payload)
+    response_root_auth = request(api_type, payload_auth)
 
     term_current_count = 0
     x = True

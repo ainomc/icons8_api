@@ -16,8 +16,10 @@ class ContextTotalApi(object):
     day = random_between_values(1, 31)
 
     since = '20%s-%s-%s' % (year, month, day)
+    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
 
     payload = {'since': since}
+    payload_auth = {'since': since, 'auth-id': auth_id}
 
     print ('''Total  tests: since - %s'''
            % (since))
@@ -26,6 +28,7 @@ class ContextTotalApi(object):
 
     # Do Request and return response root
     response_root = request(api_type, payload)
+    response_root_auth = request(api_type, payload_auth)
 
     # Action before class
     def setup_class(cls):

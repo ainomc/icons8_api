@@ -18,7 +18,6 @@ class TestListApi(ContextListApi):
 
     # Test 'list' 1 tag with any input
     def test_list1_tag(self):
-        print (input)
         print(ContextListApi.search_platform + ' - platform')
 
         if ContextListApi.search_platform == "":
