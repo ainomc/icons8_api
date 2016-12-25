@@ -29,8 +29,8 @@ class ContextSuggestApi(object):
     term_count = 25
 
     # Do Request and return response root
-    response_root = request(api_type, payload)
-    response_root_auth = request(api_type, payload_auth)
+    response_root = request(api_type, payload, "v1", "xml")
+    response_root_auth = request(api_type, payload_auth, "v1", "xml")
 
     term_current_count = 0
     x = True

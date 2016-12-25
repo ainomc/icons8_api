@@ -26,7 +26,7 @@ class ContextIconsApi(object):
     icon_count = 100
 
     # Do Request and return response root
-    response_root = request(api_type, payload)
+    response_root = request(api_type, payload, "v1", "xml")
 
     icons_current_count = 0
     x = True

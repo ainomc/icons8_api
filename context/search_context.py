@@ -25,8 +25,8 @@ class ContextSearchDefaultApi(object):
     icon_count = 25
 
     # Do Request and return response root
-    response_root = request(api_type, payload)
-    response_root_auth = request(api_type, payload_auth)
+    response_root = request(api_type, payload, "v1", "xml")
+    response_root_auth = request(api_type, payload_auth, "v1", "xml")
 
     icons_current_count = 0
     x = True
@@ -94,8 +94,8 @@ class ContextSearchMaxApi(object):
     icon_count = 20
 
     # Do Request and return response root
-    response_root = request(api_type, payload)
-    response_root_auth = request(api_type, payload_auth)
+    response_root = request(api_type, payload, "v1", "xml")
+    response_root_auth = request(api_type, payload_auth, "v1", "xml")
 
 
     icons_current_count = 0
@@ -164,8 +164,8 @@ class ContextSearchMinApi(object):
     icon_count = 5
 
     # Do Request and return response root
-    response_root = request(api_type, payload)
-    response_root_auth = request(api_type, payload_auth)
+    response_root = request(api_type, payload, "v1", "xml")
+    response_root_auth = request(api_type, payload_auth, "v1", "xml")
 
     icons_current_count = 0
     x = True

@@ -26,8 +26,8 @@ class ContextLatestApi(object):
     icon_count = 100
 
     # Do Request and return response root
-    response_root = request(api_type, payload)
-    response_root_auth = request(api_type, payload_auth)
+    response_root = request(api_type, payload, "v1", "xml")
+    response_root_auth = request(api_type, payload_auth, "v1", "xml")
 
     icons_current_count = 0
     x = True

@@ -1,18 +1,27 @@
 # -*- coding: utf-8 -*-
 
 import random
+import json
 
 import requests
 import xml.etree.ElementTree as ET
 
 
 
-# Do request, check response and return root of response. apiType - type of api, payload - values for url to xml
-def request(api_type, payload):
-    response = requests.get('https://demoapi.icons8.com/api/iconsets/%s' % api_type, params=payload)
-    response.raise_for_status()
-    return ET.fromstring(response.content)
+# Do request, check response and return root of response. apiType - type of api, payload - values for url to request
+def request(api_type, payload, verison, type):
 
+    if verison == "v1":
+        response = requests.get('https://demoapi.icons8.com/api/iconsets/%s' % api_type, params=payload)
+    elif verison == "v2":
+        response = requests.get('https://demoapi.icons8.com/api/iconsets/v2/%s' % api_type, params=payload)
+
+    response.raise_for_status()
+
+    if type == "xml":
+        return ET.fromstring(response.content)
+    elif type == "json":
+        return response.json()
 
 # Find xml key by xpath and return key value.
 def tag_value(root, tag, tag_xpath_number):
@@ -70,6 +79,32 @@ def check_all_categories(test_categories):
 
     assert all_categories_count != 0
     return True
+
+# parse tickets jsons
+# example: json_parse("json file", 1, ["colors", "red"])
+def json_parse(json_text, values):
+
+    count_values = len(values)
+    if count_values == 1:
+        resuilt = json_text[values[0]]
+    elif count_values == 2:
+        resuilt = json_text[values[0]][values[1]]
+    elif count_values == 3:
+        resuilt = json_text[values[0]][values[1]][values[2]]
+
+    elif count_values == 4:
+        resuilt = json_text[values[0]][values[1]][values[2]][values[3]]
+
+    elif count_values == 5:
+        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]
+
+    elif count_values == 6:
+        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]][values[5]]
+
+    else:
+        assert count_values == 6 or count_values > 6
+
+    return resuilt
 
 
 

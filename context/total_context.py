@@ -27,8 +27,8 @@ class ContextTotalApi(object):
     icon_count = 100
 
     # Do Request and return response root
-    response_root = request(api_type, payload)
-    response_root_auth = request(api_type, payload_auth)
+    response_root = request(api_type, payload, "v1", "xml")
+    response_root_auth = request(api_type, payload_auth, "v1", "xml")
 
     # Action before class
     def setup_class(cls):

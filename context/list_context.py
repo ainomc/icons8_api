@@ -19,7 +19,7 @@ class ContextListApi(object):
 
     payload = {'platform': search_platform, 'auth-id': auth_id}
 
-    response_root = request(api_type, payload)
+    response_root = request(api_type, payload, "v1", "xml")
 
     # Action before class
     def setup_class(cls):

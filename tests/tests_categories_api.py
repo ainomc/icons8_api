@@ -44,7 +44,7 @@ class TestCategoriesApi(ContextCategoriesApi):
         while True:
             try:
                 tag_attribs = all_tag_attrib(root,
-                                            'category[%s]/share' % str(number), "1" )
+                                            'category[%s]/share' % str(number), "1")
 
                 value_of_attrib = attrib_value(tag_attribs, 'url')
                 assert value_of_attrib[:20] == "http://demo.ic8.link"

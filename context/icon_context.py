@@ -19,8 +19,8 @@ class ContextIconApi(object):
     payload_auth = {'id': icon_id, 'auth-id': auth_id}
 
     # Do Request and return response root
-    response_root = request('icon', payload)
-    response_root_auth = request('icon', payload_auth)
+    response_root = request('icon', payload, "v1", "xml")
+    response_root_auth = request('icon', payload_auth, "v1", "xml")
 
     # Action before class
     def setup_class(cls):

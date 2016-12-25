@@ -12,7 +12,7 @@ class ContextCategoryApi(object):
     api_type = 'category'
 
     category = random_list_value(["Arrows", "City", "Data", "Food", "Travel",
-                                  "Transport", "Holidays", "Objects", "Printing", "Weather"])
+                                  "Transport", "Holidays", "Objects", "Weather"])
 
     amount = random_list_value(["", "5", "10", "15", "20"])
 
@@ -36,8 +36,8 @@ class ContextCategoryApi(object):
     icon_count = 100
 
     # Do Request and return response root
-    response_root = request(api_type, payload)
-    response_root_auth = request(api_type, payload_auth)
+    response_root = request(api_type, payload, "v1", "xml")
+    response_root_auth = request(api_type, payload_auth, "v1", "xml")
 
     icons_current_count = 0
     x = True
