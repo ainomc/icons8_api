@@ -28,6 +28,12 @@ class ContextIconApiJson(object):
     response_root = request('icon', payload, "v2", "json")
     response_root_auth = request('icon', payload_auth, "v2", "json")
 
+    platform_list = ["Windows 8/Metro", "iPhone/iOS 7", "Android", "Android L",
+                     "Color", "Windows 10/Threshold", "Office"]
+
+    platform_code_list = ["win8", "ios7", "android",
+                     "androidL","color", "win10", "office"]
+
     # Action before class
     def setup_class(cls):
         print("\n>>> Class Setup")
