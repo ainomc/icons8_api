@@ -69,7 +69,6 @@ class TestIconApiJson(ContextIconApiJson):
         except KeyError:
             pass
 
-
     # Test png object
     def test_png_object(self, param_test):
         (json) = param_test
@@ -89,14 +88,130 @@ class TestIconApiJson(ContextIconApiJson):
     # Test tags object
     def test_tags_object(self, param_test):
         (json) = param_test
-        tags_count = json_parse(json, ["result", "icons", 0, "tags"])
-        for tag in range(len(tags_count)):
-            assert len(json_parse(json, ["result", "icons", 0, "tags", tag])) > 2
+        try:
+            for tag in range(len(json_parse(json, ["result", "icons", 0, "tags"]))):
+                assert len(json_parse(json, ["result", "icons", 0, "tags", tag])) > 1
+        except KeyError:
+            pass
 
     # Test share object
     def test_share_object(self, param_test):
         (json) = param_test
         assert json_parse(json, ["result", "icons", 0, "share", "url"])[:20] == 'http://demo.ic8.link'
+        assert json_parse(json, ["result", "icons", 0, "share", "png", 0, "link"])[:20] == 'https://demost.icons'
+        for share in range(1, len(json_parse(json, ["result", "icons", 0, "share"]))):
+            assert json_parse(json, ["result", "icons", 0, "share", "png", share, "type"]) == 'twitter' or 'social'
+            assert json_parse(json, ["result", "icons", 0, "share", "png", share, "link"])[:20] == 'https://demost.icons'
+
+    # Test request object
+    def test_request_object(self, param_test):
+        (json) = param_test
+        try:
+            assert len(json_parse(json, ["result", "icons", 0, "request", "text"])) > 10
+            assert json_parse(json, ["result", "icons", 0, "request", "link"])[:22] == 'http://buzz.icons8.com'
+            assert len(json_parse(json, ["result", "icons", 0, "request", "author"])) > 1
+            assert json_parse(json, ["result", "icons", 0, "request", "created"])[:2] == '20'
+            assert json_parse(json, ["result", "icons", 0, "request", "competed"])[:2] == '20'
+        except KeyError:
+            pass
+
+    list_variants = []
+    try:
+        variants = len(json_parse(ContextIconApiJson.response_root,
+                                 ["result", "icons", 0, "variants"]))
+        variants_auth = len(json_parse(ContextIconApiJson.response_root_auth,
+                                      ["result", "icons", 0, "variants"]))
+        assert variants == variants_auth
+        for variant in range(variants):
+            list_variants.append(variant)
+    except KeyError:
+        pass
+    if len(list_variants) > 0:
+
+        @pytest.mark.parametrize("variant", list_variants)
+        @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
+        # Test result/icon object
+        def test_variants_icon(self, variant, json):
+
+            # assert json_parse(json, ["result", "icons", 0, "id"]) == ContextIconApiJson.icon_id
+            assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "name"])) > 2
+            assert ContextIconApiJson.platform_list.count \
+                       (json_parse(json, ["result", "icons", 0, "variants", variant, "platform"])) == 1
+            assert ContextIconApiJson.platform_code_list.count \
+                       (json_parse(json, ["result", "icons", 0, "variants", variant, "platform_code"])) == 1
+            assert json_parse(json, ["result", "icons", 0, "variants", variant, "created"])[:2] == "20"
+            assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "created"])) > 15
+            assert json_parse(json, ["result", "icons", 0, "variants", variant, "copyright"]) == False
+            assert json_parse(json, ["result", "icons", 0, "variants", variant, "filled"]) == False or True
+            # assert json_parse(json, ["result", "icons", 0, "variants", variant, "url"]).find(ContextIconApiJson.icon_id) > 0
+            # assert json_parse(json, ["result", "icons", 0, "variants", variant, "disqus_url"]).find(ContextIconApiJson.icon_id) > 0
+            assert json_parse(json, ["result", "icons", 0, "variants", variant, "disqus_url"])[:32] == 'https://demo.icons8.com/web-app/'
+            # assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "transcription"])) > 15
+            assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "category"])) > 2
+            assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "svg"])) > 40
+
+        @pytest.mark.parametrize("variant", list_variants)
+        @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
+        # Test subcategory object
+        def test_var_subcategory(self, variant, json):
+            try:
+                assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "subcategory", "name"])) > 1
+                assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "subcategory", "api_code"])) > 1
+            except KeyError:
+                pass
+
+        @pytest.mark.parametrize("variant", list_variants)
+        @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
+        # Test png object
+        def test_var_png(self, variant, json):
+            png_count = json_parse(json, ["result", "icons", 0, "variants", variant, "png"])
+            for png in range(len(png_count)):
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "width"]) > 15
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "height"]) > 15
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "link"])[:12] == 'https://demo'
+
+        @pytest.mark.parametrize("variant", list_variants)
+        @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
+        # Test features object
+        def test_var_features(self, variant, json):
+            assert json_parse(json, ["result", "icons", 0, "variants", variant, "features", "bitmap"]) == 0 or 1
+            assert json_parse(json, ["result", "icons", 0, "variants", variant, "features", "vector"]) == 0 or 1
+            assert json_parse(json, ["result", "icons", 0, "variants", variant, "features", "nolink"]) == 0 or 1
+
+        @pytest.mark.parametrize("variant", list_variants)
+        @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
+        # Test tags object
+        def test_var_tags(self, variant, json):
+            try:
+                for tag in range(len(json_parse(json, ["result", "icons", 0, "variants", variant, "tags"]))):
+                    assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "tags", tag])) > 1
+            except KeyError:
+                pass
+
+        @pytest.mark.parametrize("variant", list_variants)
+        @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
+        # Test share object
+        def test_var_share(self, variant, json):
+            assert json_parse(json, ["result", "icons", 0, "variants", variant, "share", "url"])[:20] == 'http://demo.ic8.link'
+            assert json_parse(json, ["result", "icons", 0, "variants", variant, "share", "png", 0, "link"])[:20] == 'https://demost.icons'
+            for share in range(1, len(json_parse(json, ["result", "icons", 0, "variants", variant, "share"]))):
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "share", "png", share, "type"]) == 'twitter' or 'social'
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", share, "link"])[
+                       :20] == 'https://demost.icons'
+
+        @pytest.mark.parametrize("variant", list_variants)
+        @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
+        # Test request object
+        def test_var_request(self, variant, json):
+            try:
+                assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "request", "text"])) > 10
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "request", "link"])[:22] == 'http://buzz.icons8.com'
+                assert len(json_parse(json, ["result", "icons", 0, "request", "author"])) > 1
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "request", "created"])[:2] == '20'
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "request", "competed"])[:2] == '20'
+            except KeyError:
+                pass
+
 
 
 
