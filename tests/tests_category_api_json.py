@@ -107,7 +107,6 @@ class TestCategoryApiJson(ContextCategoryApiJson):
         except KeyError:
             pass
 
-
     @pytest.mark.parametrize("icon_number", icon_numbers)
     @pytest.mark.parametrize("json", [ContextCategoryApiJson.response_root, ContextCategoryApiJson.response_root_auth])
     # Test isons png object
@@ -118,4 +117,28 @@ class TestCategoryApiJson(ContextCategoryApiJson):
             assert json_parse(json, ["result", "category", "icons", icon_number, "png", png, "height"]) > 20
             #assert json_parse(json, ["result", "category", "icons", icon_number, "png", png, "link"])[:25] == 'https://demost.icons8.com'
             assert json_parse(json, ["result", "category", "icons", icon_number, "png", png, "link"]).find(ContextCategoryApiJson.category)
+
+    @pytest.mark.parametrize("icon_number", icon_numbers)
+    @pytest.mark.parametrize("json", [ContextCategoryApiJson.response_root, ContextCategoryApiJson.response_root_auth])
+    # Test isons features object
+    def test_icons_features(self, icon_number, json):
+        assert json_parse(json, ["result", "category", "icons", icon_number, "features", "bitmap"]) == 0 or 1
+        assert json_parse(json, ["result", "category", "icons", icon_number, "features", "vector"]) == 0 or 1
+        assert json_parse(json, ["result", "category", "icons", icon_number, "features", "nolink"]) == 0 or 1
+
+    @pytest.mark.parametrize("icon_number", icon_numbers)
+    @pytest.mark.parametrize("json", [ContextCategoryApiJson.response_root, ContextCategoryApiJson.response_root_auth])
+    # Test share share object
+    def test_icons_share(self, icon_number, json):
+        assert json_parse(json, ["result", "category", "icons", icon_number, "share", "url"])[:20] == 'http://demo.ic8.link'
+        try:
+            assert json_parse(json, ["result", "category", "icons", icon_number, "share", "png",  1, "type"]) == 'twitter'
+            assert json_parse(json, ["result", "category", "icons", icon_number, "share", "png", 2, "type"]) == 'social'
+        except IndexError:
+            pass
+        link_count = len(json_parse(json, ["result", "category", "icons", icon_number, "share", "png"]))
+        print link_count
+
+        for link in range(link_count):
+            assert json_parse(json, ["result", "category", "icons", icon_number, "share", "png", link, "link"])[:25] == 'https://demost.icons8.com'
 
