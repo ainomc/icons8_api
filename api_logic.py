@@ -13,8 +13,8 @@ def request(api_type, payload, verison, type):
 
     if verison == "v1":
         response = requests.get('https://demoapi.icons8.com/api/iconsets/%s' % api_type, params=payload)
-    elif verison == "v2":
-        response = requests.get('https://demoapi.icons8.com/api/iconsets/v2/%s' % api_type, params=payload)
+    elif verison == "v2" or verison == "v3":
+        response = requests.get('https://demoapi.icons8.com/api/iconsets/%s/%s' % (verison, api_type), params=payload)
 
     response.raise_for_status()
 
