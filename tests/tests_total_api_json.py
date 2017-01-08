@@ -46,3 +46,4 @@ class TestTotaltpiJson(ContextTotalApiJson):
         assert ContextTotalApiJson.platform_code_list.count(
             json_parse(json, ["result", "total", total_numbers, "api_code"])) == 1
         assert json_parse(json, ["result", "total", total_numbers, "total"]) >= 0
+
