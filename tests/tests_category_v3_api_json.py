@@ -5,8 +5,6 @@ import pytest
 from icons8_api.api_logic import json_parse
 from context.category_v3_context_json import ContextCategoryv3ApiJson
 
-
-
 """
 api_context - file with fixtures and settings
 api_logic - file with main logic of tests
@@ -46,6 +44,23 @@ class TestCategoryApiJson(ContextCategoryv3ApiJson):
         assert json_parse(json, ["result", "category", "category_code"]) == ContextCategoryv3ApiJson.category
         assert json_parse(json, ["result", "category", "category_name"]) == ContextCategoryv3ApiJson.category
 
+    # Test hare object
+    def test_share(self, param_test):
+        (json) = param_test
+        assert json_parse(json, ["result", "category", "share", 'url'])[:20] == 'http://demo.ic8.link'
+        assert json_parse(json, ["result", "category", "share", 'share_preview'])[:41] == 'https://demost.icons8.com/Share/category/'
+        assert json_parse(json, ["result", "category", "share", 'icons_preview'])[:47] == 'https://demost.icons8.com/Share/category_icons/'
+
+    # Test subcategories object
+    def test_subcategories(self, param_test):
+        (json) = param_test
+        len(json_parse(json, ["result", "category", "subcategories"])) >= 0
+
+
+
+
+
+
     # Test category object
     def test_subcategory(self, param_test):
         (json) = param_test
@@ -58,10 +73,29 @@ class TestCategoryApiJson(ContextCategoryv3ApiJson):
     for icon_num in range(icon_count):
         icon_numbers.append(icon_num)
     print icon_numbers
-"""
+
     @pytest.mark.parametrize("icon_number", icon_numbers)
     @pytest.mark.parametrize("json", [ContextCategoryv3ApiJson.response_root, ContextCategoryv3ApiJson.response_root_auth])
     # Test isons object
     def test_icons(self, icon_number, json):
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'id'])) > 0
-"""
+        assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'name'])) > 0
+        assert ContextCategoryv3ApiJson.platform_code_list.count(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'platform_code'])) == 1
+        assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'created'])) > 20
+        assert json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'url'])[:9] == '/web-app/'
+        assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'common_icon_id'])) > 1
+        assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'svg'])) > 20
+
+    @pytest.mark.parametrize("icon_number", icon_numbers)
+    @pytest.mark.parametrize("json", [ContextCategoryv3ApiJson.response_root, ContextCategoryv3ApiJson.response_root_auth])
+    # Test isons features object
+    def test_icons_features(self, icon_number, json):
+        assert json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'features', 'bitmap']) == 0 or 1
+        assert json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'features', 'vector']) == 0 or 1
+        assert json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'features', 'nolink']) == 0 or 1
+
+
+
+
+
+
