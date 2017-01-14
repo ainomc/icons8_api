@@ -297,7 +297,8 @@ class TestSearchMinAPI(ContextSearchMinApi):
                 x = False
                 icons_current_count -= 1
                 print (str(icons_current_count) + '<<< count icons in response')
-                assert TestSearchMinAPI.icon_count == icons_current_count
+                assert TestSearchMinAPI.icon_count >= icons_current_count
+                assert icons_current_count > 0
 
     def test_search_tag(self, param_test):
         (root) = param_test

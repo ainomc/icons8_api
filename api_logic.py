@@ -96,13 +96,17 @@ def json_parse(json_text, values):
     elif count_values == 5:
         resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]
     elif count_values == 6:
-        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]][values[5]]
+        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]\
+            [values[5]]
     elif count_values == 7:
-        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]][values[5]][values[6]]
+        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]\
+            [values[5]][values[6]]
     elif count_values == 8:
-        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]][values[5]][values[6]][values[7]]
+        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]\
+            [values[5]][values[6]][values[7]]
     elif count_values == 9:
-        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]][values[5]][values[6]][values[7]][values[8]]
+        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]\
+            [values[5]][values[6]][values[7]][values[8]]
     else:
         assert count_values == 9 or count_values > 9
     return resuilt
