@@ -5,15 +5,6 @@ import pytest
 from icons8_api.api_logic import json_parse
 from context.category_v3_context_json import ContextCategoryv3ApiJson
 
-"""
-api_context - file with fixtures and settings
-api_logic - file with main logic of tests
-One class - tested one response with some values
-One test method - test one xml tag and in one tag can be 2+ attributes
-
-python -m pytest -v tests_icon_api.py -s     --   runner
-
-"""
 
 @pytest.fixture(scope="function", params=[
     (ContextCategoryv3ApiJson.response_root),

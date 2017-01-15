@@ -7,11 +7,6 @@ from icons8_api.api_logic import attrib_value, tag_value, all_tag_attrib, word_c
 from context.categories_context import ContextCategoriesApi
 
 
-"""
-python -m pytest -v tests_list_api.py -s     --   runner
-
-"""
-
 @pytest.fixture(scope="function", params=[
     (ContextCategoriesApi.response_root),
     (ContextCategoriesApi.response_root_auth)

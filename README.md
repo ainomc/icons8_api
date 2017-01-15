@@ -17,17 +17,24 @@ context папка- Содержит фикстуры и доп. контекс�
 
 Существующие тесты api:
 
-- Categories
-- Category
+- Search
+- Suggest
+- Latest
+- Total
 - Icon
 - Icons
-- Latest
-- List
-- Search
 - Similiar
-- Suggest
-- Total
-
+- List
+- Category
+- Ctegories
+- v2 Icon
+- v2 Vategory
+- v2 Categories
+- v3 Latest
+- v3 Search
+- v3 Categoreis
+- v3 Category
+- v3 Total
 
 
 

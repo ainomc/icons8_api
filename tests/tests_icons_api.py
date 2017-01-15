@@ -8,12 +8,6 @@ from icons8_api.api_logic import attrib_value, all_tag_attrib, all_tag_attrib_wi
 from context.icons_context import ContextIconsApi
 
 
-"""
-python -m pytest -v tests_latest_api.py -s     --   runner
-
-"""
-
-
 # Test Search Api with Default values. https://demoapi.icons8.com/manual/latest
 class TestIconsApi(ContextIconsApi):
 

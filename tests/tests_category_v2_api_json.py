@@ -6,17 +6,6 @@ from icons8_api.api_logic import json_parse, word_count
 from context.category_v2_context_json import ContextCategoryApiJson
 
 
-
-"""
-api_context - file with fixtures and settings
-api_logic - file with main logic of tests
-One class - tested one response with some values
-One test method - test one xml tag and in one tag can be 2+ attributes
-
-python -m pytest -v tests_icon_api.py -s     --   runner
-
-"""
-
 @pytest.fixture(scope="function", params=[
     (ContextCategoryApiJson.response_root),
     (ContextCategoryApiJson.response_root_auth)

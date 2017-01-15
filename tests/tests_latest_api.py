@@ -8,11 +8,6 @@ from icons8_api.api_logic import attrib_value, all_tag_attrib, all_tag_attrib_wi
 from context.latest_context import ContextLatestApi
 
 
-"""
-python -m pytest -v tests_latest_api.py -s     --   runner
-
-"""
-
 @pytest.fixture(scope="function", params=[
     (ContextLatestApi.response_root),
     (ContextLatestApi.response_root_auth)
