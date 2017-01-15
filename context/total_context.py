@@ -7,7 +7,6 @@ from api_logic import random_between_values, random_list_value, request
 
 class ContextTotalApi(object):
 
-
     # settings
     api_type = 'total'
 

@@ -8,11 +8,6 @@ from icons8_api.api_logic import attrib_value, all_tag_attrib, all_tag_attrib_wi
 from context.similiar_context import ContextSimilarApi
 
 
-
-
-#python -m pytest -v tests_similiar_api.py -s     --   runner
-
-
 @pytest.fixture(scope="function", params=[
     (ContextSimilarApi.response_root),
     (ContextSimilarApi.response_root_auth)

@@ -130,7 +130,6 @@ class ContextSearchMaxApi(object):
         print("\n>>> Class Teardown")
 
 
-
 class ContextSearchMinApi(object):
 
     #settings

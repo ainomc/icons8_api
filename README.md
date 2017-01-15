@@ -37,6 +37,40 @@ context папка- Содержит фикстуры и доп. контекс�
 - v3 Total
 
 
+Описание всего апи (плюс - покрыт тестами\ минус - покрыт тестамиы)
+v1 (возвращают результат в xml, медленно устаревают)
+
+- search (-) -				/api/iconsets/search?term=car&platform=ios7&amount=25
+- download (-) -			/api/iconsets/download?id=1&format=png&size=100&color=ffff00&filename=test.png
+- download-collection (-) -	/api/iconsets/download-collection?ids=1,2,3&format=png&size=100&color=ffff00
+- suggest (+) -				/api/iconsets/suggest?term=car&platform=ios7&amount=25
+- latest (+) -				/api/iconsets/latest?amount=10&platform=ios7
+- total (+) -				/api/iconsets/total?since=2015-01-01
+- icon (+) -				/api/iconsets/icon?id=17
+- icons (+) -				/api/iconsets/icons?amount=10&offset=0&platform=ios7
+- responsive icons - 	/api/iconsets/responsive-icons?amount=10&offset=0&platform=responsive
+- svg set -				/api/iconsets/svg-symbol?icons=flat_color-address_book,flat_color-about,ios-about
+- similar (+) -				/api/iconsets/similar?id=17&amount=10
+- list (+) -				/api/iconsets/list?platform=ios7
+- category (+) -			/api/iconsets/category?category=Animals&attributes=filled&amount=10&platform=ios7
+- categories (+) -			/api/iconsets/categories?platform=ios7
+
+v2 (возвращают результат в xml и в json - задается параметром format)
+
+- icon (+) -				/api/iconsets/v2/icon?id=1833&format=json&files=eps,svg&variants=enabled&info=enabled
+- category (+) -			/api/iconsets/v2/category?category=Animals&attributes=filled&amount=10&platform=ios7
+- categories (+) -			/api/iconsets/v2/categories?platform=ios7
+
+v3 (возвращают json, работают быстрее, инфы возвращают по минимуму - только то, что нужно веб-аппу)
+
+- latest (+) -				/api/iconsets/v3/latest?amount=10&platform=ios7&offset=10&impresser_preview=true&language=en-US
+- search (+) -				/api/iconsets/v3/search?term=facebook&amount=10&platform=ios7&offset=10
+- categories (+) -			/api/iconsets/v3/categories?platform=ios7
+- category (+) -			/api/iconsets/v3/category?category=Animals&amount=10&platform=ios7
+resolutions (-) -			/api/iconsets/v3/resolutions?icon_id=10   --- 4 свг для офисной иконки
+- total (+) -				/api/iconsets/v3/total?since=2015-01-01
+
+
 
 
 

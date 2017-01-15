@@ -7,12 +7,6 @@ from icons8_api.api_logic import attrib_value, tag_value, all_tag_attrib, word_c
 from context.suggest_context import ContextSuggestApi
 
 
-"""
-python -m pytest -v tests_suggest_api.py -s     --   runner
-
-"""
-
-
 @pytest.fixture(scope="function", params=[
     (ContextSuggestApi.response_root),
     (ContextSuggestApi.response_root_auth)

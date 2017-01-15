@@ -9,14 +9,11 @@ class ContextLatestApiJson(object):
 
     # icon id what will be in request
 
-
     amount = random_list_value(["5", "10", "50"])
     platform = random_list_value(["win8", "ios7", "android", "androidL","color", "win10", "office"])
     offset = random_list_value(["5", "10", "15", "20"])
     impresser_preview = True
     language = 'en-US'
-
-
 
     print ('''Category Json tests: latform - %s, platform - %s, offset - %s, impresser_preview - %s, language - %s'''
            % (amount, platform, offset, impresser_preview, language))

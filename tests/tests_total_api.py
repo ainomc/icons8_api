@@ -13,12 +13,6 @@ from context.total_context import ContextTotalApi
 def param_test(request):
     return request.param
 
-"""
-python -m pytest -v tests_total_api.py -s     --   runner
-
-"""
-
-
 # Test Search Api with Default values. https://demoapi.icons8.com/manual/total
 class TestTotalApi(ContextTotalApi):
 

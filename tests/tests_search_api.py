@@ -8,11 +8,6 @@ from icons8_api.api_logic import attrib_value, all_tag_attrib, all_tag_attrib_wi
 from context.search_context import ContextSearchDefaultApi, ContextSearchMaxApi, ContextSearchMinApi
 
 
-"""
-python -m pytest -v tests_search_api.py -s     --   runner
-
-"""
-
 @pytest.fixture(scope="function", params=[
     (ContextSearchDefaultApi.response_root),
     (ContextSearchDefaultApi.response_root_auth)

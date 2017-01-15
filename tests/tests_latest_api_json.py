@@ -6,17 +6,6 @@ from icons8_api.api_logic import json_parse
 from context.latest_context_json import ContextLatestApiJson
 
 
-
-"""
-api_context - file with fixtures and settings
-api_logic - file with main logic of tests
-One class - tested one response with some values
-One test method - test one xml tag and in one tag can be 2+ attributes
-
-python -m pytest -v tests_icon_api.py -s     --   runner
-
-"""
-
 @pytest.fixture(scope="function", params=[
     (ContextLatestApiJson.response_root),
     (ContextLatestApiJson.response_root_auth)
