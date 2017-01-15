@@ -67,7 +67,7 @@ v3 (возвращают json, работают быстрее, инфы воз�
 - search (+) -				/api/iconsets/v3/search?term=facebook&amount=10&platform=ios7&offset=10
 - categories (+) -			/api/iconsets/v3/categories?platform=ios7
 - category (+) -			/api/iconsets/v3/category?category=Animals&amount=10&platform=ios7
-resolutions (-) -			/api/iconsets/v3/resolutions?icon_id=10   --- 4 свг для офисной иконки
+- resolutions (-) -			/api/iconsets/v3/resolutions?icon_id=10   --- 4 свг для офисной иконки
 - total (+) -				/api/iconsets/v3/total?since=2015-01-01
 
 
