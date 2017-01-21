@@ -47,7 +47,7 @@ class ContextSuggestApi(object):
             term_current_count -= 1
             assert term_current_count > 0
     # Choose random icon between min and max
-    if term_current_count == 2:
+    if term_current_count == 1:
         term_number = term_current_count
     else:
         term_number = str(random_between_values(2, term_current_count))

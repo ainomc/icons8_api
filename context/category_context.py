@@ -12,7 +12,7 @@ class ContextCategoryApi(object):
     api_type = 'category'
 
     category = random_list_value(["Arrows", "City", "Data", "Food", "Travel",
-                                  "Transport", "Holidays", "Objects", "Weather"])
+                                  "Transport", "Objects", "Weather"])
 
     amount = random_list_value(["", "5", "10", "15", "20"])
 
