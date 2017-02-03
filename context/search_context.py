@@ -112,11 +112,11 @@ class ContextSearchMaxApi(object):
             x = False
             icons_current_count -= 1
             print (str(icons_current_count) + '<<< count icons in response (IconTests)')
-            assert icons_current_count > 0
+            #assert icons_current_count > 0
     print (str(icons_current_count) + ' <<< current count of icons (IconTests)')
 
     # Choose random icon between min and max
-    if icons_current_count == 2:
+    if icons_current_count == 1 or icons_current_count == 0:
         icon_number = icons_current_count
     else:
         icon_number = str(random_between_values(1, icons_current_count))

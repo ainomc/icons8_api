@@ -9,7 +9,12 @@ class ContextIconApiJson(object):
 
     # Settings
     # icon id what will be in request
-    icon_id = str(random_between_values(100, 20000))
+    while True:
+        icon_id = str(random_between_values(100, 20000))
+        if icon_id > 7500 and icon_id < 9500:
+            pass
+        else:
+            break
     format = "json"
     files = "eps,svg"
     variants = "enabled"

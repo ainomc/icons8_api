@@ -33,7 +33,7 @@ class TestIconApiJson(ContextIconApiJson):
         (json) = param_test
 
         #assert json_parse(json, ["result", "icons", 0, "id"]) == ContextIconApiJson.icon_id
-        assert len(json_parse(json, ["result", "icons", 0, "name"])) > 2
+        assert len(json_parse(json, ["result", "icons", 0, "name"])) > 1
         assert ContextIconApiJson.platform_list.count\
                    (json_parse(json, ["result", "icons", 0, "platform"])) == 1
         assert ContextIconApiJson.platform_code_list.count\
