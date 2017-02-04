@@ -53,7 +53,7 @@ class TestIconApiJson(ContextIconApiJson):
     def test_subcategory_object(self, param_test):
         (json) = param_test
         try:
-            assert len(json_parse(json, ["result", "icons", 0, "subcategory", "name"])) > 1
+            assert len(json_parse(json, ["result", "icons", 0, "subcategory", "name"])) > 0
             assert len(json_parse(json, ["result", "icons", 0, "subcategory", "api_code"])) > 1
         except KeyError:
             pass
@@ -79,7 +79,7 @@ class TestIconApiJson(ContextIconApiJson):
         (json) = param_test
         try:
             for tag in range(len(json_parse(json, ["result", "icons", 0, "tags"]))):
-                assert len(json_parse(json, ["result", "icons", 0, "tags", tag])) > 1
+                assert len(json_parse(json, ["result", "icons", 0, "tags", tag])) > 0
         except KeyError:
             pass
 
@@ -123,7 +123,7 @@ class TestIconApiJson(ContextIconApiJson):
         def test_variants_icon(self, variant, json):
 
             # assert json_parse(json, ["result", "icons", 0, "id"]) == ContextIconApiJson.icon_id
-            assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "name"])) > 1
+            assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "name"])) > 0
             assert ContextIconApiJson.platform_list.count \
                        (json_parse(json, ["result", "icons", 0, "variants", variant, "platform"])) == 1
             assert ContextIconApiJson.platform_code_list.count \
@@ -173,7 +173,7 @@ class TestIconApiJson(ContextIconApiJson):
         def test_var_tags(self, variant, json):
             try:
                 for tag in range(len(json_parse(json, ["result", "icons", 0, "variants", variant, "tags"]))):
-                    assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "tags", tag])) > 1
+                    assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "tags", tag])) > 0
             except KeyError:
                 pass
 

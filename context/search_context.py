@@ -74,7 +74,7 @@ class ContextSearchMaxApi(object):
     search_offset = '20'
 
     search_platform = random_list_value(["win8", "ios7", "android", "androidL",
-                                         "color", "win10", "office"])
+                                         "color", "win10"])
 
     search_language = ''
 
