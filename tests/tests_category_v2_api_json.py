@@ -41,9 +41,9 @@ class TestCategoryApiJson(ContextCategoryApiJson):
 
         assert len(json_parse(json, ["result", "category", "story", "text"])) > 15
         assert len(json_parse(json, ["result", "category", "story", "author_name"])) >= 2
-        assert json_parse(json, ["result", "category", "story", "author_photo"]) == '' or str
-        assert json_parse(json, ["result", "category", "story", "author_link"]) == '' or str
-        assert json_parse(json, ["result", "category", "story", "date"]) == '' or str
+        for story in ["author_photo", "author_link", "date"]:
+            assert json_parse(json, ["result", "category", "story",
+                                     story]) == '' or str
 
     # Test share object
     def test_share(self, param_test):
