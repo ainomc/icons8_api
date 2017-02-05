@@ -70,9 +70,8 @@ class TestIconApiJson(ContextIconApiJson):
     # Test features object
     def test_features_object(self, param_test):
         (json) = param_test
-        assert json_parse(json, ["result", "icons", 0, "features", "bitmap"]) == 0 or 1
-        assert json_parse(json, ["result", "icons", 0, "features", "vector"]) == 0 or 1
-        assert json_parse(json, ["result", "icons", 0, "features", "nolink"]) == 0 or 1
+        for features in ["bitmap", "vector", "nolink"]:
+            assert json_parse(json, ["result", "icons", 0, "features", features]) == 0 or 1
 
     # Test tags object
     def test_tags_object(self, param_test):
@@ -163,9 +162,8 @@ class TestIconApiJson(ContextIconApiJson):
         @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
         # Test features object
         def test_var_features(self, variant, json):
-            assert json_parse(json, ["result", "icons", 0, "variants", variant, "features", "bitmap"]) == 0 or 1
-            assert json_parse(json, ["result", "icons", 0, "variants", variant, "features", "vector"]) == 0 or 1
-            assert json_parse(json, ["result", "icons", 0, "variants", variant, "features", "nolink"]) == 0 or 1
+            for features in ["bitmap", "vector", "nolink"]:
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "features", features]) == 0 or 1
 
         @pytest.mark.parametrize("variant", list_variants)
         @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])

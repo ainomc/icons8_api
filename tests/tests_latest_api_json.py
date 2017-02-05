@@ -53,9 +53,8 @@ class TestLatestpiJson(ContextLatestApiJson):
     @pytest.mark.parametrize("json", [ContextLatestApiJson.response_root, ContextLatestApiJson.response_root_auth])
     # Test latest features object
     def test_latest_features(self, latest_numbers, json):
-        json_parse(json, ["result", "latest", latest_numbers, "features", 'bitmap']) == 1 or 0
-        json_parse(json, ["result", "latest", latest_numbers, "features", 'vector']) == 1 or 0
-        json_parse(json, ["result", "latest", latest_numbers, "features", 'nolink']) == 1 or 0
+        for features in ["bitmap", "vector", "nolink"]:
+            json_parse(json, ["result", "latest", latest_numbers, "features", features]) == 1 or 0
 
     @pytest.mark.parametrize("latest_numbers", latest_numbers)
     @pytest.mark.parametrize("json", [ContextLatestApiJson.response_root, ContextLatestApiJson.response_root_auth])

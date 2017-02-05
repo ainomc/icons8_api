@@ -39,11 +39,9 @@ class TestCategoriesApiJson(ContextCategoriesApiJson):
     @pytest.mark.parametrize("json", [ContextCategoriesApiJson.response_root, ContextCategoriesApiJson.response_root_auth])
     # Test categories story object
     def test_categories_story(self, categories_number, json):
-        assert len(json_parse(json, ["result", "categories", categories_number, "story", "text"]).encode('utf-8')) >= 0
-        assert len(json_parse(json, ["result", "categories", categories_number, "story", "author_name"]).encode('utf-8')) >= 0
-        assert len(json_parse(json, ["result", "categories", categories_number, "story", "author_photo"]).encode('utf-8')) >= 0
-        assert len(json_parse(json, ["result", "categories", categories_number, "story", "author_link"]).encode('utf-8')) >= 0
-        assert len(json_parse(json, ["result", "categories", categories_number, "story", "date"]).encode('utf-8')) >= 0
+        for story in ["text", "author_name", "author_photo", "author_link", "date"]:
+            assert len(json_parse(json, ["result", "categories",
+                                         categories_number, "story", story]).encode('utf-8')) >= 0
 
     @pytest.mark.parametrize("categories_number", categories_numbers)
     @pytest.mark.parametrize("json", [ContextCategoriesApiJson.response_root, ContextCategoriesApiJson.response_root_auth])

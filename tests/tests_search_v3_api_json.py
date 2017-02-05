@@ -69,9 +69,8 @@ class TestSearchv3ApiJson(ContextCategoryv3ApiJson):
                                       ContextCategoryv3ApiJson.response_root_auth])
     # Test features object
     def test_features(self, search_number, json):
-        assert json_parse(json, ["result", "search", search_number, "features", "bitmap"]) == 0 or 1
-        assert json_parse(json, ["result", "search", search_number, "features", "vector"]) == 0 or 1
-        assert json_parse(json, ["result", "search", search_number, "features", "nolink"]) == 0 or 1
+        for features in ["bitmap", "vector", "nolink"]:
+            assert json_parse(json, ["result", "search", search_number, "features", features]) == 0 or 1
 
     @pytest.mark.parametrize("search_number", search_number)
     @pytest.mark.parametrize("json", [ContextCategoryv3ApiJson.response_root,

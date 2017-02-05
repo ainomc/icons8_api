@@ -81,9 +81,9 @@ class TestCategoryApiJson(ContextCategoryv3ApiJson):
     @pytest.mark.parametrize("json", [ContextCategoryv3ApiJson.response_root, ContextCategoryv3ApiJson.response_root_auth])
     # Test isons features object
     def test_icons_features(self, icon_number, json):
-        assert json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'features', 'bitmap']) == 0 or 1
-        assert json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'features', 'vector']) == 0 or 1
-        assert json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'features', 'nolink']) == 0 or 1
+        for features in ["bitmap", "vector", "nolink"]:
+            assert json_parse(json, ["result", "category", "subcategory", 0,
+                                     'icons', icon_number, 'features', 'bitmap']) == 0 or 1
 
 
 
