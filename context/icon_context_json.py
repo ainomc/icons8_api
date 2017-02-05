@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
+import random
 
 from api_logic import random_between_values, request
 
@@ -9,12 +10,9 @@ class ContextIconApiJson(object):
 
     # Settings
     # icon id what will be in request
-    while True:
-        icon_id = str(random_between_values(100, 20000))
-        if icon_id > 7500 and icon_id < 9500:
-            pass
-        else:
-            break
+    icon_id = random.choice([str(random_between_values(0, 7500)),
+                             str(random_between_values(9500, 20000))])
+
     format = "json"
     files = "eps,svg"
     variants = "enabled"
