@@ -33,7 +33,7 @@ class TestSearchv3ApiJson(ContextCategoryv3ApiJson):
         try:
             assert len(json_parse(json, ["result", "description"])) > 5
             assert len(json_parse(json, ["result", "description"])) >= 0
-        except:
+        except KeyError:
             pass
 
     search_number = []
@@ -54,13 +54,16 @@ class TestSearchv3ApiJson(ContextCategoryv3ApiJson):
         assert json_parse(json, ["result", "search", search_number, "url"])[:9] == '/web-app/'
         assert json_parse(json, ["result", "search", search_number, "common_icon_id"]) > 1
         assert len(json_parse(json, ["result", "search", search_number, "category"])) > 1
-        assert len(json_parse(json, ["result", "search", search_number, "related"])) > 1
-        assert len(json_parse(json, ["result", "search", search_number, "related-by-term"])) > 1
-        assert len(json_parse(json, ["result", "search", search_number, "svg"])) > 30
+        try:
+            assert len(json_parse(json, ["result", "search", search_number, "related"])) > 1
+            assert len(json_parse(json, ["result", "search", search_number, "related-by-term"])) > 1
+            assert len(json_parse(json, ["result", "search", search_number, "svg"])) > 30
+        except KeyError:
+            pass
         try:
             assert len(json_parse(json, ["result", "search", search_number, "subcategory", "name"])) > 1
             assert len(json_parse(json, ["result", "search", search_number, "subcategory", "api_code"])) > 1
-        except:
+        except KeyError:
             pass
 
 

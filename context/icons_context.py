@@ -14,8 +14,8 @@ class ContextIconsApi(object):
 
     offset = random_list_value(["", "5", "10", "15", "20"])
 
-    search_platform = random_list_value(["win8", "ios7", "android", "androidL",
-                                         "color", "win10", "office", ""])
+    search_platform = random_list_value(["win8", "ios7", "android", "gradient",
+                                         "color", "win10", "office", "p1em", ""])
 
     auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
 

@@ -104,7 +104,6 @@ class TestCategoryApiJson(ContextCategoryApiJson):
         for png in range(len(png_count)):
             assert json_parse(json, ["result", "category", "icons", icon_number, "png", png, "width"]) > 20
             assert json_parse(json, ["result", "category", "icons", icon_number, "png", png, "height"]) > 20
-            #assert json_parse(json, ["result", "category", "icons", icon_number, "png", png, "link"])[:25] == 'https://demost.icons8.com'
             assert json_parse(json, ["result", "category", "icons", icon_number, "png", png, "link"]).find(ContextCategoryApiJson.category)
 
     @pytest.mark.parametrize("icon_number", icon_numbers)

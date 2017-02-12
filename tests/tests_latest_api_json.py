@@ -45,12 +45,6 @@ class TestLatestpiJson(ContextLatestApiJson):
 
     @pytest.mark.parametrize("latest_numbers", latest_numbers)
     @pytest.mark.parametrize("json", [ContextLatestApiJson.response_root, ContextLatestApiJson.response_root_auth])
-    # Test latest png_preview object
-    def test_latest_png_preview(self, latest_numbers, json):
-        assert json_parse(json, ["result", "latest", latest_numbers, "png_preview", '50'])[:25] == 'https://demost.icons8.com'
-
-    @pytest.mark.parametrize("latest_numbers", latest_numbers)
-    @pytest.mark.parametrize("json", [ContextLatestApiJson.response_root, ContextLatestApiJson.response_root_auth])
     # Test latest features object
     def test_latest_features(self, latest_numbers, json):
         for features in ["bitmap", "vector", "nolink"]:

@@ -18,7 +18,7 @@ class TestListApi(ContextListApi):
             tag_attribs = all_tag_attrib(ContextListApi.response_root,
                                          'list/list', '1')
             value_of_attrib = attrib_value(tag_attribs, 'platform')
-            assert value_of_attrib == "Windows 8/Metro"
+            assert value_of_attrib == "iPhone/iOS 10"
 
             value_of_attrib = attrib_value(tag_attribs, 'format')
             assert value_of_attrib == "json"
@@ -33,7 +33,7 @@ class TestListApi(ContextListApi):
             tag_attribs = all_tag_attrib(ContextListApi.response_root,
                                          'list/list', '2')
             value_of_attrib = attrib_value(tag_attribs, 'platform')
-            assert value_of_attrib == "iPhone/iOS 7"
+            assert value_of_attrib == "Windows 10/Threshold"
 
             value_of_attrib = attrib_value(tag_attribs, 'format')
             assert value_of_attrib == "json"
@@ -48,7 +48,7 @@ class TestListApi(ContextListApi):
             tag_attribs = all_tag_attrib(ContextListApi.response_root,
                                          'list/list', '3')
             value_of_attrib = attrib_value(tag_attribs, 'platform')
-            assert value_of_attrib == "Android"
+            assert value_of_attrib == "Android" or "Windows 8/Metro"
 
             value_of_attrib = attrib_value(tag_attribs, 'format')
             assert value_of_attrib == "json"
@@ -63,7 +63,7 @@ class TestListApi(ContextListApi):
             tag_attribs = all_tag_attrib(ContextListApi.response_root,
                                          'list/list', '4')
             value_of_attrib = attrib_value(tag_attribs, 'platform')
-            assert value_of_attrib == "Android L"
+            assert value_of_attrib == "Material"
 
             value_of_attrib = attrib_value(tag_attribs, 'format')
             assert value_of_attrib == "json"
@@ -78,7 +78,7 @@ class TestListApi(ContextListApi):
             tag_attribs = all_tag_attrib(ContextListApi.response_root,
                                          'list/list', '5')
             value_of_attrib = attrib_value(tag_attribs, 'platform')
-            assert value_of_attrib == "Color"
+            assert value_of_attrib == "Android 4"
 
             value_of_attrib = attrib_value(tag_attribs, 'format')
             assert value_of_attrib == "json"
@@ -93,7 +93,7 @@ class TestListApi(ContextListApi):
             tag_attribs = all_tag_attrib(ContextListApi.response_root,
                                          'list/list', '6')
             value_of_attrib = attrib_value(tag_attribs, 'platform')
-            assert value_of_attrib == "Windows 10/Threshold"
+            assert value_of_attrib == "Color"
 
             value_of_attrib = attrib_value(tag_attribs, 'format')
             assert value_of_attrib == "json"
@@ -140,7 +140,7 @@ class TestListApi(ContextListApi):
             tag_attribs = all_tag_attrib(ContextListApi.response_root,
                                          'list/list', '1')
             value_of_attrib = attrib_value(tag_attribs, 'platform')
-            assert value_of_attrib == "iPhone/iOS 7"
+            assert value_of_attrib == "iPhone/iOS 10"
 
             value_of_attrib = attrib_value(tag_attribs, 'format')
             assert value_of_attrib == "json"
@@ -155,7 +155,7 @@ class TestListApi(ContextListApi):
             tag_attribs = all_tag_attrib(ContextListApi.response_root,
                                          'list/list', '1')
             value_of_attrib = attrib_value(tag_attribs, 'platform')
-            assert value_of_attrib == "Android"
+            assert value_of_attrib == "Android 4"
 
             value_of_attrib = attrib_value(tag_attribs, 'format')
             assert value_of_attrib == "json"

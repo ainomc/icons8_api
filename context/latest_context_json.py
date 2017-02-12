@@ -9,13 +9,14 @@ class ContextLatestApiJson(object):
 
     # icon id what will be in request
 
-    amount = random_list_value(["5", "10", "50"])
-    platform = random_list_value(["win8", "ios7", "android", "androidL","color", "win10", "office"])
+    amount = random_list_value(["5", "10", "20"])
+    platform = random_list_value(["win8", "ios7", "android", "gradient",
+                                         "color", "win10", "office", "p1em"])
     offset = random_list_value(["5", "10", "15", "20"])
     impresser_preview = True
     language = 'en-US'
 
-    print ('''Category Json tests: latform - %s, platform - %s, offset - %s, impresser_preview - %s, language - %s'''
+    print ('''Latest Json tests: latform - %s, platform - %s, offset - %s, impresser_preview - %s, language - %s'''
            % (amount, platform, offset, impresser_preview, language))
 
     auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
@@ -28,11 +29,11 @@ class ContextLatestApiJson(object):
     response_root = request('latest', payload, "v3", "json")
     response_root_auth = request('latest', payload_auth, "v3", "json")
 
-    platform_list = ["Windows 8/Metro", "iPhone/iOS 7", "Android", "Android L",
-                     "Color", "Windows 10/Threshold", "Office"]
+    platform_list = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
+                     "Color", "Windows 10/Threshold", "Office", "Material", "Gradient"]
 
-    platform_code_list = ["win8", "ios7", "android",
-                          "androidL","color", "win10", "office"]
+    platform_code_list = ["win8", "ios7", "android", "gradient",
+                                         "color", "win10", "office", ""]
 
     # Action before class
     def setup_class(cls):

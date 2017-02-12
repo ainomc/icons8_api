@@ -18,6 +18,7 @@ class ContextSearchDefaultApi(object):
     payload = {'term': term, 'amount': '', 'offset': '', 'platform': ''}
 
     payload_auth = {'term': term, 'amount': '', 'offset': '', 'platform': '', 'auth-id': auth_id}
+    search_platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office"])
 
     print ('''Search default tests: term - %s, amount - %s , offset - %s, platform - %s'''
            % (term, '', '', ''))
@@ -67,14 +68,13 @@ class ContextSearchMaxApi(object):
     auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
 
     search_text = random_list_value(['google', 'facebook', 'space',
-                                     'ball', 'car', 'word'])
+                                     'ball', 'car'])
 
     search_amount = '20'
 
     search_offset = '20'
 
-    search_platform = random_list_value(["win8", "ios7", "android", "androidL",
-                                         "color", "win10"])
+    search_platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office"])
 
     search_language = ''
 
@@ -143,8 +143,7 @@ class ContextSearchMinApi(object):
 
     auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
 
-    search_platform = random_list_value(["win8", "ios7", "android", "androidL",
-                                         "color", "win10", "office"])
+    search_platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office"])
     search_language = ''
 
     payload = {

@@ -10,10 +10,11 @@ class ContextCategoryv3ApiJson(object):
     # icon id what will be in request
     term = random_list_value(["Animals", "Sports", "Food", "Cinema","Cultures"])
     amount = 10
-    platform = random_list_value(["win8", "ios7", "android", "androidL","color", "win10", "office"])
+    platform = random_list_value(["win8", "ios7", "android", "gradient",
+                                         "color", "win10", "office", "p1em"])
     offset = 10
 
-    print ('''Category Json tests: term - %s, amount - %s, platform - %s, offset - %s'''
+    print ('''Search v3 Json tests: term - %s, amount - %s, platform - %s, offset - %s'''
            % (term, amount, platform, offset))
 
     auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
@@ -26,11 +27,11 @@ class ContextCategoryv3ApiJson(object):
     response_root = request('search', payload, "v3", "json")
     response_root_auth = request('search', payload_auth, "v3", "json")
 
-    platform_list = ["Windows 8/Metro", "iPhone/iOS 7", "Android", "Android L",
-                     "Color", "Windows 10/Threshold", "Office"]
+    platform_list = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
+                     "Color", "Windows 10/Threshold", "Office", "Material", "1em", "Gradient"]
 
-    platform_code_list = ["win8", "ios7", "android",
-                          "androidL","color", "win10", "office"]
+    platform_code_list = ["win8", "ios7", "android", "gradient",
+                                         "color", "win10", "office", "p1em", ""]
 
     # Action before class
     def setup_class(cls):

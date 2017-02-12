@@ -24,62 +24,62 @@ class TestTotalApi(ContextTotalApi):
         value_of_attrib = attrib_value(tag_attribs, 'since')
         assert word_count(value_of_attrib) > 1
 
-    # Test platform 1 (win8) tag
-    def test_platform_win8_tag(self, param_test):
+    # Test platform 1 (iso10) tag
+    def test_platform_ios10_tag(self, param_test):
         (root) = param_test
         tag_attribs = all_tag_attrib(TestTotalApi.response_root, 'platform', '1')
         value_of_attrib = attrib_value(tag_attribs, 'name')
-        assert value_of_attrib == "Windows 8/Metro"
+        assert value_of_attrib == "iPhone/iOS 10"
 
         value_of_tag = tag_value(TestTotalApi.response_root, 'platform', '1')
         assert word_count(value_of_tag) >= 1
 
     # Test platform 2 (ios7) tag
-    def test_platform_ios7_tag(self, param_test):
+    def test_platform_win10_tag(self, param_test):
         (root) = param_test
         tag_attribs = all_tag_attrib(root, 'platform', '2')
         value_of_attrib = attrib_value(tag_attribs, 'name')
-        assert value_of_attrib == "iPhone/iOS 7"
+        assert value_of_attrib == "Windows 10/Threshold"
 
         value_of_tag = tag_value(root, 'platform', '2')
         assert word_count(value_of_tag) >= 1
 
-    # Test platform 3 (android) tag
-    def test_platform_android_tag(self, param_test):
+    # Test platform 3 (win8) tag
+    def test_platform_win8_tag(self, param_test):
         (root) = param_test
         tag_attribs = all_tag_attrib(root, 'platform', '3')
         value_of_attrib = attrib_value(tag_attribs, 'name')
-        assert value_of_attrib == "Android"
+        assert value_of_attrib == "Windows 8/Metro"
 
         value_of_tag = tag_value(TestTotalApi.response_root, 'platform', '3')
         assert word_count(value_of_tag) >= 1
 
-    # Test platform 4 (android L) tag
-    def test_platform_androidl_tag(self, param_test):
+    # Test platform 4 (Material) tag
+    def test_platform_material_tag(self, param_test):
         (root) = param_test
         tag_attribs = all_tag_attrib(root, 'platform', '4')
         value_of_attrib = attrib_value(tag_attribs, 'name')
-        assert value_of_attrib == "Android L"
+        assert value_of_attrib == "Material"
 
         value_of_tag = tag_value(TestTotalApi.response_root, 'platform', '4')
         assert word_count(value_of_tag) >= 1
 
-    # Test platform 5 (Color) tag
-    def test_platform_color_tag(self, param_test):
+    # Test platform 5 (Android 4") tag
+    def test_platform_android4_tag(self, param_test):
         (root) = param_test
         tag_attribs = all_tag_attrib(root, 'platform', '5')
         value_of_attrib = attrib_value(tag_attribs, 'name')
-        assert value_of_attrib == "Color"
+        assert value_of_attrib == "Android 4"
 
         value_of_tag = tag_value(root, 'platform', '5')
         assert word_count(value_of_tag) >= 1
 
     # Test platform 6 (win10) tag
-    def test_platform_win10_tag(self, param_test):
+    def test_platform_color_tag(self, param_test):
         (root) = param_test
         tag_attribs = all_tag_attrib(root, 'platform', '6')
         value_of_attrib = attrib_value(tag_attribs, 'name')
-        assert value_of_attrib == "Windows 10/Threshold"
+        assert value_of_attrib == "Color"
 
         value_of_tag = tag_value(root, 'platform', '6')
         assert word_count(value_of_tag) >= 1
@@ -92,4 +92,24 @@ class TestTotalApi(ContextTotalApi):
         assert value_of_attrib == "Office"
 
         value_of_tag = tag_value(root, 'platform', '7')
+        assert word_count(value_of_tag) >= 1
+
+    # Test platform 8 (1em) tag
+    def test_platform_1em_tag(self, param_test):
+        (root) = param_test
+        tag_attribs = all_tag_attrib(root, 'platform', '8')
+        value_of_attrib = attrib_value(tag_attribs, 'name')
+        assert value_of_attrib == "1em"
+
+        value_of_tag = tag_value(root, 'platform', '8')
+        assert word_count(value_of_tag) >= 1
+
+    # Test platform 9 (Gradient) tag
+    def test_platform_Gradient_tag(self, param_test):
+        (root) = param_test
+        tag_attribs = all_tag_attrib(root, 'platform', '9')
+        value_of_attrib = attrib_value(tag_attribs, 'name')
+        assert value_of_attrib == "Gradient"
+
+        value_of_tag = tag_value(root, 'platform', '9')
         assert word_count(value_of_tag) >= 1

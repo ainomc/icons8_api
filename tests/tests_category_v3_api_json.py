@@ -47,15 +47,9 @@ class TestCategoryApiJson(ContextCategoryv3ApiJson):
         (json) = param_test
         len(json_parse(json, ["result", "category", "subcategories"])) >= 0
 
-
-
-
-
-
     # Test category object
     def test_subcategory(self, param_test):
         (json) = param_test
-
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'subcategory_code'])) > 0
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'subcategory_code'])) > 0
 

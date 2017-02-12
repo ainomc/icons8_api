@@ -33,6 +33,7 @@ class TestCategoryApi(ContextCategoryApi):
         assert word_count(value_of_attrib) > 1
 
         value_of_attrib = attrib_value(tag_attribs, 'platform')
+        print value_of_attrib
         assert check_all_categories(value_of_attrib) == True
 
         value_of_attrib = attrib_value(tag_attribs, 'created')

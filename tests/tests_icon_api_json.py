@@ -34,6 +34,7 @@ class TestIconApiJson(ContextIconApiJson):
 
         #assert json_parse(json, ["result", "icons", 0, "id"]) == ContextIconApiJson.icon_id
         assert len(json_parse(json, ["result", "icons", 0, "name"])) > 1
+        print json_parse(json, ["result", "icons", 0, "platform"])
         assert ContextIconApiJson.platform_list.count\
                    (json_parse(json, ["result", "icons", 0, "platform"])) == 1
         assert ContextIconApiJson.platform_code_list.count\
@@ -123,6 +124,7 @@ class TestIconApiJson(ContextIconApiJson):
 
             # assert json_parse(json, ["result", "icons", 0, "id"]) == ContextIconApiJson.icon_id
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "name"])) > 0
+            print json_parse(json, ["result", "icons", 0, "variants", variant, "platform"])
             assert ContextIconApiJson.platform_list.count \
                        (json_parse(json, ["result", "icons", 0, "variants", variant, "platform"])) == 1
             assert ContextIconApiJson.platform_code_list.count \
@@ -131,10 +133,7 @@ class TestIconApiJson(ContextIconApiJson):
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "created"])) > 15
             assert json_parse(json, ["result", "icons", 0, "variants", variant, "copyright"]) == False
             assert json_parse(json, ["result", "icons", 0, "variants", variant, "filled"]) == False or True
-            # assert json_parse(json, ["result", "icons", 0, "variants", variant, "url"]).find(ContextIconApiJson.icon_id) > 0
-            # assert json_parse(json, ["result", "icons", 0, "variants", variant, "disqus_url"]).find(ContextIconApiJson.icon_id) > 0
             assert json_parse(json, ["result", "icons", 0, "variants", variant, "disqus_url"])[:32] == 'https://demo.icons8.com/web-app/'
-            # assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "transcription"])) > 15
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "category"])) > 2
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "svg"])) > 40
 
@@ -143,7 +142,7 @@ class TestIconApiJson(ContextIconApiJson):
         # Test subcategory object
         def test_var_subcategory(self, variant, json):
             try:
-                assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "subcategory", "name"])) > 1
+                assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "subcategory", "name"])) > 0
                 assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "subcategory", "api_code"])) > 1
             except KeyError:
                 pass
@@ -186,8 +185,8 @@ class TestIconApiJson(ContextIconApiJson):
                     assert json_parse(json, ["result", "icons", 0, "variants", variant, "share", "png", share, "type"]) == 'twitter' or 'social'
                     assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", share, "link"])[
                         :20] == 'https://demost.icons'
-                except:
-                    IndexError
+                except IndexError:
+                    pass
 
         @pytest.mark.parametrize("variant", list_variants)
         @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
