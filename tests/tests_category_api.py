@@ -3,7 +3,7 @@
 import pytest
 import sys
 
-from icons8_api.api_logic import attrib_value, all_tag_attrib, all_tag_attrib_with_icon_number, \
+from api_logic import attrib_value, all_tag_attrib, all_tag_attrib_with_icon_number, \
     tag_value_with_icon_number, word_count, check_all_categories
 from context.category_context import ContextCategoryApi
 

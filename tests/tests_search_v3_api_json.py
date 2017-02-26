@@ -2,7 +2,7 @@
 
 import pytest
 
-from icons8_api.api_logic import json_parse
+from api_logic import json_parse
 from context.search_v3_context_json import ContextCategoryv3ApiJson
 
 

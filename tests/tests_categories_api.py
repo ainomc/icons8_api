@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from icons8_api.api_logic import attrib_value, tag_value, all_tag_attrib, word_count
+from api_logic import attrib_value, tag_value, all_tag_attrib, word_count
 from context.categories_context import ContextCategoriesApi
 
 

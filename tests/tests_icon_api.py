@@ -2,7 +2,7 @@
 
 import pytest
 
-from icons8_api.api_logic import tag_value, attrib_value, all_tag_attrib, word_count, check_all_categories
+from api_logic import tag_value, attrib_value, all_tag_attrib, word_count, check_all_categories
 from context.icon_context import ContextIconApi
 
 

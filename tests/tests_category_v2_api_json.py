@@ -2,7 +2,7 @@
 
 import pytest
 
-from icons8_api.api_logic import json_parse, word_count
+from api_logic import json_parse, word_count
 from context.category_v2_context_json import ContextCategoryApiJson
 
 

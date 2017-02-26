@@ -2,7 +2,6 @@
 
 from api_logic import random_between_values, request, random_list_value, auth_id
 
-
 class ContextCategoryApiJson(object):
 
     # icon id what will be in request
