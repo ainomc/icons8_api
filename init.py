@@ -18,7 +18,6 @@ with open('param.json', 'r+') as outfile:
     outfile.write(json.dumps(json_data))
     outfile.truncate()
 
-print ('CURRENT FOLDER: %s' % os.getcwd())
 list_test_fies = glob.glob(os.path.join(os.getcwd(), 'tests', 'tests_*')) # find all tests files
 for file_num in range(len(list_test_fies)):
     list_test_fies[file_num] = os.path.join(os.getcwd(), 'tests', list_test_fies[file_num])
