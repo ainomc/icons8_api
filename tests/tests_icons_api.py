@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-import paramiko
-
 from icons8_api.api_logic import attrib_value, all_tag_attrib, all_tag_attrib_with_icon_number, \
     tag_value_with_icon_number, word_count, check_all_categories
 from context.icons_context import ContextIconsApi

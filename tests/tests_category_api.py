@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-import paramiko
 import sys
 
 from icons8_api.api_logic import attrib_value, all_tag_attrib, all_tag_attrib_with_icon_number, \
