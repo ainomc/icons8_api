@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import paramiko
-
-from api_logic import random_between_values, random_list_value, request, all_tag_attrib, word_count, attrib_value
-
+from api_logic import random_between_values, random_list_value, request, \
+    all_tag_attrib, word_count, attrib_value, auth_id
 
 class ContextCategoriesApi(object):
 
@@ -13,10 +11,9 @@ class ContextCategoriesApi(object):
 
     search_platform = random_list_value(["win8", "ios7", "android", "androidL",
                                          "color", "win10", "office", ""])
-    #search_platform = random_list_value([""])
 
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
-
+    print ('''Categories v1 Json tests: search_platform - %s'''
+           % (search_platform))
     payload = {'platform': search_platform}
     payload_auth = {'platform': search_platform, 'auth-id': auth_id}
 

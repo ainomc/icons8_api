@@ -1,26 +1,20 @@
 # -*- coding: utf-8 -*-
 
-import paramiko
-
-from api_logic import random_between_values, random_list_value, request, all_tag_attrib, word_count, attrib_value
+from api_logic import random_between_values, random_list_value, request, \
+    all_tag_attrib, word_count, attrib_value, auth_id
 
 
 class ContextSearchDefaultApi(object):
 
     #settings
     api_type = 'search'
-
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
-
     term = random_list_value(['google', 'facebook', 'space',
                               'ball', 'car', 'word'])
-
     payload = {'term': term, 'amount': '', 'offset': '', 'platform': ''}
-
     payload_auth = {'term': term, 'amount': '', 'offset': '', 'platform': '', 'auth-id': auth_id}
     search_platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office"])
 
-    print ('''Search default tests: term - %s, amount - %s , offset - %s, platform - %s'''
+    print ('''Search v1 default tests: term - %s, amount - %s , offset - %s, platform - %s'''
            % (term, '', '', ''))
 
     icon_count = 25
@@ -42,9 +36,7 @@ class ContextSearchDefaultApi(object):
         except AttributeError:
             x = False
             icons_current_count -= 1
-            #print (str(icons_current_count) + '<<< count icons in response')
             assert icons_current_count > 0
-    #print (str(icons_current_count) + ' <<< current count of icons')
 
     # Choose random icon between min and max
     icon_number = str(random_between_values(1, icon_count))
@@ -64,18 +56,10 @@ class ContextSearchMaxApi(object):
 
     #settings
     api_type = 'search'
-
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
-
-    search_text = random_list_value(['google', 'facebook', 'space',
-                                     'ball', 'car'])
-
+    search_text = random_list_value(['google', 'facebook', 'space', 'car'])
     search_amount = '20'
-
     search_offset = '20'
-
     search_platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office"])
-
     search_language = ''
 
     payload = {
@@ -111,9 +95,6 @@ class ContextSearchMaxApi(object):
         except AttributeError:
             x = False
             icons_current_count -= 1
-            print (str(icons_current_count) + '<<< count icons in response (IconTests)')
-            #assert icons_current_count > 0
-    print (str(icons_current_count) + ' <<< current count of icons (IconTests)')
 
     # Choose random icon between min and max
     if icons_current_count == 1 or icons_current_count == 0:
@@ -134,18 +115,12 @@ class ContextSearchMinApi(object):
 
     #settings
     api_type = 'search'
-
     search_text = random_list_value(['google', 'facebook', 'space',
                                      'ball', 'car', 'word'])
     search_amount = '5'
-
     search_offset = '5'
-
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
-
     search_platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office"])
     search_language = ''
-
     payload = {
         'term': search_text, 'amount': search_amount,
         'offset': search_offset, 'platform': search_platform
@@ -178,9 +153,6 @@ class ContextSearchMinApi(object):
         except AttributeError:
             x = False
             icons_current_count -= 1
-            #print (str(icons_current_count) + '<<< count icons in response')
-            assert icons_current_count > 0
-    #print (str(icons_current_count) + ' <<< current count of icons')
 
     # Choose random icon between min and max
     icon_number = str(random_between_values(1, icon_count))

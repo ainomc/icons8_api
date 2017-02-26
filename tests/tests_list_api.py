@@ -12,7 +12,6 @@ class TestListApi(ContextListApi):
 
     # Test 'list' 1 tag with any input
     def test_list1_tag(self):
-        print(ContextListApi.search_platform + ' - platform')
 
         if ContextListApi.search_platform == "":
             tag_attribs = all_tag_attrib(ContextListApi.response_root,
@@ -118,8 +117,6 @@ class TestListApi(ContextListApi):
 
     # Test 'list' win8 tag with any input
     def test_list_win8_tag(self):
-
-        print(ContextListApi.search_platform + ' - platform')
 
         if ContextListApi.search_platform == "win8":
             tag_attribs = all_tag_attrib(ContextListApi.response_root,

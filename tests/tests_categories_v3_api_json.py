@@ -19,9 +19,11 @@ class TestCategoryApiJson(ContextCategories3vApiJson):
     # Test parameters object
     def test_parameters(self, param_test):
         (json) = param_test
-
-        assert json_parse(json, ["parameters", "platform"]) == ContextCategories3vApiJson.platform
-        assert json_parse(json, ["parameters", "language"]) == None
+        platform = json_parse(json, ["parameters", "platform"])
+        assert platform == ContextCategories3vApiJson.platform, \
+            '>>> %s - "platform" in response, %s - in request<<<' % (platform, ContextCategories3vApiJson.platform)
+        language = json_parse(json, ["parameters", "language"])
+        assert language == None, '>>> %s - "language" in response, None- in request <<<' % language
 
     # Test category object
     def test_categories(self, param_test):

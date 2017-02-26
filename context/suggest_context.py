@@ -1,29 +1,22 @@
 # -*- coding: utf-8 -*-
 
-import paramiko
-
-from api_logic import random_between_values, random_list_value, request, all_tag_attrib, word_count, attrib_value
+from api_logic import random_between_values, random_list_value, request, \
+    all_tag_attrib, word_count, attrib_value, auth_id
 
 
 class ContextSuggestApi(object):
 
     #settings
     api_type = 'suggest'
-
     term = random_list_value(['google', 'facebook', 'space',
                               'ball', 'car'])
-
     amount = random_list_value(["", "5", "10", "15", "20"])
-
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
-
     platform = random_list_value(["win8", "ios7", "android", "androidL",
                                   "color", "win10", "office"])
-
     payload = {'term': term, 'amount': amount, 'platform': platform}
     payload_auth = {'term': term, 'amount': amount, 'platform': platform, 'auth-id': auth_id}
 
-    print ('''Suggest tests: term - %s, amount - %s, platform - %s'''
+    print ('''Suggest v1 tests: term - %s, amount - %s, platform - %s'''
            % (term, amount, platform))
 
     term_count = 25

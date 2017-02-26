@@ -19,8 +19,10 @@ class TestCategoriesApiJson(ContextCategoriesApiJson):
     # Test parameters object
     def test_parameters(self, param_test):
         (json) = param_test
-        assert json_parse(json, ["parameters", "platform"]) == ContextCategoriesApiJson.platform
-        assert json_parse(json, ["parameters", "format"]) == None
+        platform = json_parse(json, ["parameters", "platform"])
+        assert platform == ContextCategoriesApiJson.platform, \
+            '>>> %s - not int the list - %s <<<' % (platform, ContextCategoriesApiJson.platform)
+        assert json_parse(json, ["parameters", "format"]) == None, '>>> 1rst - in response, 2nd - in request <<<'
 
     categories_numbers = []
     categories_count = len(json_parse(ContextCategoriesApiJson.response_root_auth, ["result", "categories"]))

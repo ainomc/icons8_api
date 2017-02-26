@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import pytest
-
-from api_logic import random_between_values, request, random_list_value
+from api_logic import random_between_values, request, random_list_value, auth_id
 
 
 class ContextCategoryv3ApiJson(object):
@@ -17,7 +15,6 @@ class ContextCategoryv3ApiJson(object):
     print ('''Search v3 Json tests: term - %s, amount - %s, platform - %s, offset - %s'''
            % (term, amount, platform, offset))
 
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
     payload = {'term': term, 'amount': amount,
                'platform': platform, 'offset': offset}
     payload_auth = {'term': term, 'amount': amount, 'platform': platform,

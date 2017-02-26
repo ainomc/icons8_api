@@ -21,28 +21,21 @@ class TestCategoriesApi(ContextCategoriesApi):
     def test_categories_tag(self, param_test):
         (root) = param_test
 
-        print(ContextCategoriesApi.search_platform + ' - platform')
-
-        tag_attribs = all_tag_attrib(root,
-                                            'categories', "1")
-
+        tag_attribs = all_tag_attrib(root, 'categories', "1")
         value_of_attrib = attrib_value(tag_attribs, 'platform')
-        assert value_of_attrib == ContextCategoriesApi.search_platform
+        assert value_of_attrib == ContextCategoriesApi.search_platform, \
+            '>>> %s - not in the %s <<<' % (value_of_attrib, ContextCategoriesApi.search_platform)
 
 
     # Test share tag
     def test_share_tag(self, param_test):
         (root) = param_test
-
         number = 1
-
         while True:
             try:
                 tag_attribs = all_tag_attrib(root, 'category[%s]/share' % str(number), "1")
-
                 value_of_attrib = attrib_value(tag_attribs, 'url')
                 assert value_of_attrib[:20] == "http://demo.ic8.link"
-
             except AttributeError or TypeError:
                 break
             number += 1

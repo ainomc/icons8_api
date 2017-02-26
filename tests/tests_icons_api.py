@@ -14,10 +14,8 @@ class TestIconsApi(ContextIconsApi):
 
     # Test 'icon' tag
     def test_icon_tag(self):
-        tag_attribs = all_tag_attrib(ContextIconsApi.response_root,
-                                     'icon', ContextIconsApi.icon_number)
+        tag_attribs = all_tag_attrib(ContextIconsApi.response_root, 'icon', ContextIconsApi.icon_number)
         value_of_attrib = attrib_value(tag_attribs, 'id')
-        print (value_of_attrib + ' icon id what checked')
         assert word_count(value_of_attrib) >= 1
 
         value_of_attrib = attrib_value(tag_attribs, 'name')

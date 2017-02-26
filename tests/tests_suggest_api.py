@@ -21,11 +21,6 @@ class TestSuggestApi(ContextSuggestApi):
     # Test 'search' tag
     def test_search_tag(self, param_test):
         (root) = param_test
-
-        print(ContextSuggestApi.term + ' - term')
-        print(ContextSuggestApi.amount + ' - amount')
-        print(ContextSuggestApi.platform + ' - platform')
-
         tag_attribs = all_tag_attrib(root,
                                      'search', '1')
         value_of_attrib = attrib_value(tag_attribs, 'term')

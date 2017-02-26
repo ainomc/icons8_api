@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import paramiko
-
-from api_logic import random_between_values, random_list_value, request, all_tag_attrib, word_count, attrib_value
+from api_logic import random_between_values, random_list_value, request, \
+    all_tag_attrib, word_count, attrib_value, auth_id
 
 
 class ContextLatestApi(object):
@@ -17,9 +16,7 @@ class ContextLatestApi(object):
     search_platform = random_list_value(["win8", "ios7", "android", "gradient",
                                          "color", "win10", "office", "p1em", ""])
 
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
-
-    print ('''Latest tests: amount - %s, offset - %s, offset - %s, platform - %s'''
+    print ('''Latest v1 tests: amount - %s, offset - %s, offset - %s, platform - %s'''
            % (amount, offset, offset, search_platform))
 
     payload = {'amount': amount, 'offset': offset, 'platform': search_platform}
@@ -44,9 +41,7 @@ class ContextLatestApi(object):
         except AttributeError:
             x = False
             icons_current_count -= 1
-            #print (str(icons_current_count) + '<<< count icons in response')
             assert icons_current_count > 0
-    #print (str(icons_current_count) + ' <<< current count of icons')
 
     # Choose random icon between min and max
     icon_number = str(random_between_values(1, icons_current_count))

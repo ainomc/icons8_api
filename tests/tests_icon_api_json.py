@@ -20,33 +20,39 @@ class TestIconApiJson(ContextIconApiJson):
     def test_parameters_object(self, param_test):
         (json) = param_test
 
-        assert json_parse(json, ["parameters", "id"]) == ContextIconApiJson.icon_id
-        assert json_parse(json, ["parameters", "format"]) == ContextIconApiJson.format
-        assert json_parse(json, ["parameters", "files"]) == ContextIconApiJson.files
-        assert json_parse(json, ["parameters", "variants"]) == True
-        assert json_parse(json, ["parameters", "info"]) == True
-        assert json_parse(json, ["parameters", "impresser_preview"]) == False
-        assert json_parse(json, ["parameters", "language"]) == None
+        assert json_parse(json, ["parameters", "id"]) == ContextIconApiJson.icon_id\
+            , ">>> 1rs - 'id' in response, 2rs - in request <<<"
+        assert json_parse(json, ["parameters", "format"]) == ContextIconApiJson.format, \
+            ">>> 1rs - 'format' in response, 2rs - in request <<<"
+        assert json_parse(json, ["parameters", "files"]) == ContextIconApiJson.files, \
+            ">>> 1rs - 'files' in response, 2rs - in request <<<"
+        assert json_parse(json, ["parameters", "variants"]) == True, \
+            ">>> 1rs - 'variants' in response, 2rs - in request <<<"
+        assert json_parse(json, ["parameters", "info"]) == True, \
+            ">>> 1rs - 'info' in response, 2rs - in request <<<"
+        assert json_parse(json, ["parameters", "impresser_preview"]) == False, \
+            ">>> 1rs - 'impresser_preview' in response, 2rs - in request <<<"
+        assert json_parse(json, ["parameters", "language"]) == None, \
+            ">>> 1rs - 'language' in response, 2rs - in request <<<"
 
     # Test result/icon object
     def test_result_icon_object(self, param_test):
         (json) = param_test
 
-        #assert json_parse(json, ["result", "icons", 0, "id"]) == ContextIconApiJson.icon_id
-        assert len(json_parse(json, ["result", "icons", 0, "name"])) > 1
-        print json_parse(json, ["result", "icons", 0, "platform"])
-        assert ContextIconApiJson.platform_list.count\
-                   (json_parse(json, ["result", "icons", 0, "platform"])) == 1
-        assert ContextIconApiJson.platform_code_list.count\
-                   (json_parse(json, ["result", "icons", 0, "platform_code"])) == 1
+        assert len(json_parse(json, ["result", "icons", 0, "name"])) > 1, ">>> word count of 'name' > 1 <<<"
+
+        platform = json_parse(json, ["result", "icons", 0, "platform"])
+        assert ContextIconApiJson.platform_list.count(platform) == 1\
+            , ">>> %s - not know this platform <<<" % platform
+
+        platform_code = json_parse(json, ["result", "icons", 0, "platform_code"])
+        assert ContextIconApiJson.platform_code_list.count(platform_code) == 1, \
+            ">>> %s - not know this platform_code <<<" % platform_code
+
         assert json_parse(json, ["result", "icons", 0, "created"])[:2] == "20"
         assert len(json_parse(json, ["result", "icons", 0, "created"])) > 15
         assert json_parse(json, ["result", "icons", 0, "copyright"]) == False
-        assert json_parse(json, ["result", "icons", 0, "filled"]) == False or True
-        #assert json_parse(json, ["result", "icons", 0, "url"]).find(ContextIconApiJson.icon_id) > 0
-        #assert json_parse(json, ["result", "icons", 0, "disqus_url"]).find(ContextIconApiJson.icon_id) > 0
         assert json_parse(json, ["result", "icons", 0, "disqus_url"])[:32] == 'https://demo.icons8.com/web-app/'
-        #assert len(json_parse(json, ["result", "icons", 0, "transcription"])) > 15
         assert len(json_parse(json, ["result", "icons", 0, "category"])) > 2
         assert len(json_parse(json, ["result", "icons", 0, "svg"])) > 40
 
@@ -110,7 +116,7 @@ class TestIconApiJson(ContextIconApiJson):
                                  ["result", "icons", 0, "variants"]))
         variants_auth = len(json_parse(ContextIconApiJson.response_root_auth,
                                       ["result", "icons", 0, "variants"]))
-        assert variants == variants_auth
+        assert variants == variants_auth, ">>>  <<<"
         for variant in range(variants):
             list_variants.append(variant)
     except KeyError:
@@ -122,13 +128,16 @@ class TestIconApiJson(ContextIconApiJson):
         # Test result/icon object
         def test_variants_icon(self, variant, json):
 
-            # assert json_parse(json, ["result", "icons", 0, "id"]) == ContextIconApiJson.icon_id
-            assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "name"])) > 0
-            print json_parse(json, ["result", "icons", 0, "variants", variant, "platform"])
-            assert ContextIconApiJson.platform_list.count \
-                       (json_parse(json, ["result", "icons", 0, "variants", variant, "platform"])) == 1
-            assert ContextIconApiJson.platform_code_list.count \
-                       (json_parse(json, ["result", "icons", 0, "variants", variant, "platform_code"])) == 1
+            assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "name"])) > 0, ">>>  <<<"
+
+            platform = json_parse(json, ["result", "icons", 0, "variants", variant, "platform"])
+            assert ContextIconApiJson.platform_list.count(platform) == 1, \
+                ">>> %s - not know this platform <<<" % platform
+
+            platform_code = json_parse(json, ["result", "icons", 0, "variants", variant, "platform_code"])
+            assert ContextIconApiJson.platform_code_list.count(platform_code) == 1,\
+                ">>> %s - not know this platform <<<" % platform
+
             assert json_parse(json, ["result", "icons", 0, "variants", variant, "created"])[:2] == "20"
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "created"])) > 15
             assert json_parse(json, ["result", "icons", 0, "variants", variant, "copyright"]) == False
@@ -153,8 +162,8 @@ class TestIconApiJson(ContextIconApiJson):
         def test_var_png(self, variant, json):
             png_count = json_parse(json, ["result", "icons", 0, "variants", variant, "png"])
             for png in range(len(png_count)):
-                assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "width"]) > 15
-                assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "height"]) > 15
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "width"]) > 15, ">>>  <<<"
+                assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "height"]) > 15, ">>>  <<<"
                 assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "link"])[:12] == 'https://demo'
 
         @pytest.mark.parametrize("variant", list_variants)
@@ -182,9 +191,10 @@ class TestIconApiJson(ContextIconApiJson):
             assert json_parse(json, ["result", "icons", 0, "variants", variant, "share", "png", 0, "link"])[:20] == 'https://demost.icons'
             for share in range(1, len(json_parse(json, ["result", "icons", 0, "variants", variant, "share"]))):
                 try:
-                    assert json_parse(json, ["result", "icons", 0, "variants", variant, "share", "png", share, "type"]) == 'twitter' or 'social'
-                    assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", share, "link"])[
-                        :20] == 'https://demost.icons'
+                    assert json_parse(json, ["result", "icons", 0, "variants", variant,
+                                             "share", "png", share, "type"]) == 'twitter' or 'social'
+                    assert json_parse(json, ["result", "icons", 0, "variants", variant,
+                                             "png", share, "link"])[:20] == 'https://demost.icons'
                 except IndexError:
                     pass
 
@@ -193,11 +203,15 @@ class TestIconApiJson(ContextIconApiJson):
         # Test request object
         def test_var_request(self, variant, json):
             try:
-                assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "request", "text"])) > 10
-                assert json_parse(json, ["result", "icons", 0, "variants", variant, "request", "link"])[:22] == 'http://buzz.icons8.com'
+                assert len(json_parse(json, ["result", "icons", 0, "variants", variant,
+                                             "request", "text"])) > 10, ">>>  <<<"
+                assert json_parse(json, ["result", "icons", 0, "variants", variant,
+                                         "request", "link"])[:22] == 'http://buzz.icons8.com'
                 assert len(json_parse(json, ["result", "icons", 0, "request", "author"])) > 1
-                assert json_parse(json, ["result", "icons", 0, "variants", variant, "request", "created"])[:2] == '20'
-                assert json_parse(json, ["result", "icons", 0, "variants", variant, "request", "competed"])[:2] == '20'
+                assert json_parse(json, ["result", "icons", 0, "variants", variant,
+                                         "request", "created"])[:2] == '20'
+                assert json_parse(json, ["result", "icons", 0, "variants", variant,
+                                         "request", "competed"])[:2] == '20'
             except KeyError:
                 pass
 

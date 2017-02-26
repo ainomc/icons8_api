@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import pytest
 import random
 
-from api_logic import random_between_values, request
+from api_logic import random_between_values, request, auth_id
 
 
 class ContextIconApiJson(object):
@@ -18,9 +17,7 @@ class ContextIconApiJson(object):
     variants = "enabled"
     info = "enabled"
 
-    print ('''Icon Json tests: id - %s, files - %s, variants - %s, info - %s''' % (icon_id, files, variants, info))
-
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
+    print ('''Icon v2 Json tests: id - %s, files - %s, variants - %s, info - %s''' % (icon_id, files, variants, info))
 
     payload = {'id': icon_id, 'format': format, 'files': files,
                'variants': variants, 'info': info}
@@ -32,10 +29,10 @@ class ContextIconApiJson(object):
     response_root_auth = request('icon', payload_auth, "v2", "json")
 
     platform_list = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
-                     "Color", "Windows 10/Threshold", "Office", "Material", "1em", "Gradient"]
+                     "Color", "Windows 10/Threshold", "Office", "Material", "1em", "Gradient", "Ultraviolet"]
 
     platform_code_list = ["win8", "ios7", "android",
-                     "androidL","color", "win10", "office", "gradient", "p1em"]
+                     "androidL","color", "win10", "office", "gradient", "p1em", "ultraviolet"]
 
     # Action before class
     def setup_class(cls):

@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import pytest
-
-from api_logic import random_between_values, request, random_list_value
-
+from api_logic import random_between_values, request, random_list_value, auth_id
 
 class ContextCategoryv3ApiJson(object):
 
@@ -12,10 +9,9 @@ class ContextCategoryv3ApiJson(object):
     amount = 10
     platform = random_list_value(["win8", "ios7", "android", "androidL","color", "win10", "office"])
 
-    print ('''Category Json tests: category - %s, amount - %s, platform - %s'''
+    print ('''Category v3 Json tests: category - %s, amount - %s, platform - %s'''
            % (category, amount, platform))
 
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
     payload = {'category': category, 'amount': amount,
                'platform': platform}
     payload_auth = {'category': category, 'amount': amount,
@@ -30,7 +26,6 @@ class ContextCategoryv3ApiJson(object):
 
     platform_code_list = ["win8", "ios7", "android",
                           "androidL","color", "win10", "office"]
-
     # Action before class
     def setup_class(cls):
         print("\n>>> Class Setup")

@@ -1,22 +1,19 @@
 # -*- coding: utf-8 -*-
 
-import pytest
 import random
 
-from api_logic import random_between_values, request
+from api_logic import random_between_values, request, auth_id
 
 
 class ContextIconApi(object):
 
     # Settings
     # icon id what will be in request
-    icon_id = random.choice([str(random_between_values(0, 7500)),
+    icon_id = random.choice([str(random_between_values(1, 7500)),
                              str(random_between_values(9500, 20000))])
 
-    print ('''Icon tests: id - %s'''
+    print ('''Icon v1 tests: id - %s'''
            % icon_id)
-
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
 
     payload = {'id': icon_id}
     payload_auth = {'id': icon_id, 'auth-id': auth_id}

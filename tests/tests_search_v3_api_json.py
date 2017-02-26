@@ -20,10 +20,19 @@ class TestSearchv3ApiJson(ContextCategoryv3ApiJson):
     def test_parameters(self, param_test):
         (json) = param_test
 
-        assert json_parse(json, ["parameters", "amount"]) == str(ContextCategoryv3ApiJson.amount)
-        assert json_parse(json, ["parameters", "term"]) == str(ContextCategoryv3ApiJson.term)
+        amount = json_parse(json, ["parameters", "amount"])
+        assert amount == str(ContextCategoryv3ApiJson.amount), \
+            '>>> %s - in response, %s - in request <<<' % (amount, ContextCategoryv3ApiJson.amount)
+
+        term = json_parse(json, ["parameters", "term"])
+        assert term == str(ContextCategoryv3ApiJson.term), \
+            '>>> %s - in response, %s - in request <<<' % (term, ContextCategoryv3ApiJson.term)
+
         assert int(json_parse(json, ["parameters", "offset"])) == 10
-        assert json_parse(json, ["parameters", "platform"]) == ContextCategoryv3ApiJson.platform
+
+        platform = json_parse(json, ["parameters", "platform"])
+        assert platform == ContextCategoryv3ApiJson.platform, \
+            '>>> %s - in response, %s - in request <<<' % (platform, ContextCategoryv3ApiJson.platform)
         assert json_parse(json, ["parameters", "impresser_preview"]) == False
         assert json_parse(json, ["parameters", "language"]) == None
 

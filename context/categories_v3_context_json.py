@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import pytest
-
-from api_logic import random_between_values, request, random_list_value
+from api_logic import random_between_values, request, random_list_value, auth_id
 
 
 class ContextCategories3vApiJson(object):
@@ -11,10 +9,9 @@ class ContextCategories3vApiJson(object):
 
     platform = random_list_value(["win8", "ios7", "android", "androidL","color", "win10", "office"])
 
-    print ('''Category Json tests: latform - %s'''
+    print ('''Categories v3 Json tests: platform - %s'''
            % (platform))
 
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
     payload = {'platform': platform}
     payload_auth = {'platform': platform, 'auth-id': auth_id}
 

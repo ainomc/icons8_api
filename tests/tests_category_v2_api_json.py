@@ -20,18 +20,31 @@ class TestCategoryApiJson(ContextCategoryApiJson):
     def test_parameters(self, param_test):
         (json) = param_test
 
-        assert json_parse(json, ["parameters", "category"]) == ContextCategoryApiJson.category
-        assert json_parse(json, ["parameters", "amount"]) == str(ContextCategoryApiJson.amount)
+        category = json_parse(json, ["parameters", "category"])
+        assert category == ContextCategoryApiJson.category, \
+            '>>> %s - "category" in response, %s - in request<<<' % (category, ContextCategoryApiJson.category)
+
+        amount = json_parse(json, ["parameters", "amount"])
+        assert amount == str(ContextCategoryApiJson.amount), \
+            '>>> %s - "category" in response, %s - in request <<<' % (amount, ContextCategoryApiJson.amount)
         assert json_parse(json, ["parameters", "offset"]) == 0
-        assert json_parse(json, ["parameters", "platform"]) == ContextCategoryApiJson.platform
-        assert json_parse(json, ["parameters", "attributes"]) == ContextCategoryApiJson.attributes
+
+        platform = json_parse(json, ["parameters", "platform"])
+        assert platform == ContextCategoryApiJson.platform, \
+            '>>> %s - "platform" in response, %s - in request <<<' % (platform, ContextCategoryApiJson.platform)
+
+        attributes = json_parse(json, ["parameters", "attributes"])
+        assert attributes == ContextCategoryApiJson.attributes, \
+            '>>> %s - "category" in response, %s - in request <<<' % (attributes, ContextCategoryApiJson.attributes)
         assert json_parse(json, ["parameters", "impresser_preview"]) == False
 
     # Test category object
     def test_category(self, param_test):
         (json) = param_test
 
-        assert json_parse(json, ["result", "category", "name"]) == ContextCategoryApiJson.category
+        name = json_parse(json, ["result", "category", "name"])
+        assert name == ContextCategoryApiJson.category, \
+            '>>>  %s - "name" in response, %s - in request <<<' % (name, ContextCategoryApiJson.category)
         assert json_parse(json, ["result", "category", "description"]) == '' or str
         assert json_parse(json, ["result", "category", "usage_story"]) == '' or str
 
@@ -49,18 +62,22 @@ class TestCategoryApiJson(ContextCategoryApiJson):
     def test_share(self, param_test):
         (json) = param_test
 
-        assert json_parse(json, ["result", "category", "share", "url"]) == \
-               'http://demo.ic8.link/%s' % ContextCategoryApiJson.category.lower()
-        assert json_parse(json, ["result", "category", "share", "share_preview"]) == \
-               'https://demost.icons8.com/Share/category/%s.png' % ContextCategoryApiJson.category
-        assert json_parse(json, ["result", "category", "share", "icons_preview"])\
-            .find(ContextCategoryApiJson.category.lower())
+        response_url = json_parse(json, ["result", "category", "share", "url"])
+        test_url = 'http://demo.ic8.link/%s' % ContextCategoryApiJson.category.lower()
+        assert response_url == test_url
+
+        response_share_preview = json_parse(json, ["result", "category", "share", "share_preview"])
+        test_share_preview = 'https://demost.icons8.com/Share/category/%s.png' % ContextCategoryApiJson.category
+        assert response_share_preview == test_share_preview
+
+        response_icons_preview = json_parse(json, ["result", "category", "share", "icons_preview"])
+        assert response_icons_preview.find(ContextCategoryApiJson.category.lower()), \
+            '>>> %s - in response, %s - in request <<<' % (response_icons_preview, ContextCategoryApiJson.category)
 
     icon_numbers = []
     icon_count = len(json_parse(ContextCategoryApiJson.response_root_auth, ["result", "category", "icons"]))
     for icon_num in range(icon_count):
         icon_numbers.append(icon_num)
-    print icon_numbers
 
     @pytest.mark.parametrize("icon_number", icon_numbers)
     @pytest.mark.parametrize("json", [ContextCategoryApiJson.response_root, ContextCategoryApiJson.response_root_auth])
@@ -104,7 +121,9 @@ class TestCategoryApiJson(ContextCategoryApiJson):
         for png in range(len(png_count)):
             assert json_parse(json, ["result", "category", "icons", icon_number, "png", png, "width"]) > 20
             assert json_parse(json, ["result", "category", "icons", icon_number, "png", png, "height"]) > 20
-            assert json_parse(json, ["result", "category", "icons", icon_number, "png", png, "link"]).find(ContextCategoryApiJson.category)
+            link = json_parse(json, ["result", "category", "icons", icon_number, "png", png, "link"])
+            assert link.find(ContextCategoryApiJson.category), \
+                '>>> %s - in response, %s - in request <<<' % (link, ContextCategoryApiJson.category)
 
     @pytest.mark.parametrize("icon_number", icon_numbers)
     @pytest.mark.parametrize("json", [ContextCategoryApiJson.response_root, ContextCategoryApiJson.response_root_auth])
@@ -125,7 +144,6 @@ class TestCategoryApiJson(ContextCategoryApiJson):
         except IndexError:
             pass
         link_count = len(json_parse(json, ["result", "category", "icons", icon_number, "share", "png"]))
-        print link_count
 
         for link in range(link_count):
             assert json_parse(json, ["result", "category", "icons", icon_number, "share", "png", link, "link"])[:25] == 'https://demost.icons8.com'

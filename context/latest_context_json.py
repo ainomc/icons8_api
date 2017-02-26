@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import pytest
-
-from api_logic import random_between_values, request, random_list_value
+from api_logic import random_between_values, request, random_list_value, auth_id
 
 
 class ContextLatestApiJson(object):
@@ -16,10 +14,9 @@ class ContextLatestApiJson(object):
     impresser_preview = True
     language = 'en-US'
 
-    print ('''Latest Json tests: latform - %s, platform - %s, offset - %s, impresser_preview - %s, language - %s'''
+    print ('''Latest v2 Json tests: latform - %s, platform - %s, offset - %s, impresser_preview - %s, language - %s'''
            % (amount, platform, offset, impresser_preview, language))
 
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
     payload = {'amount': amount, 'platform': platform, 'offset': offset,
                'impresser_preview': impresser_preview, 'language': language}
     payload_auth = {'amount': amount, 'platform': platform, 'offset': offset,

@@ -35,7 +35,6 @@ class TestSearchDefaultApi(ContextSearchDefaultApi):
             except AttributeError:
                 x = False
                 icons_current_count -= 1
-                print (str(icons_current_count) + '<<< count icons in response')
                 assert TestSearchDefaultApi.icon_count == icons_current_count
 
 
@@ -45,7 +44,6 @@ class TestSearchDefaultApi(ContextSearchDefaultApi):
         tag_attribs = all_tag_attrib(TestSearchDefaultApi.response_root,
                                      'icon', TestSearchDefaultApi.icon_number)
         value_of_attrib = attrib_value(tag_attribs, 'id')
-        print (value_of_attrib + ' icon id what checked')
         assert word_count(value_of_attrib) >= 1
 
         value_of_attrib = attrib_value(tag_attribs, 'name')
@@ -150,23 +148,27 @@ class TestSearchMaxAPI(ContextSearchMaxApi):
 
     def test_search_tag(self, param_test):
         (root) = param_test
-        #print(TestSearchMaxAPI.icon_number + ' <<< icon number')
         tag_attribs = all_tag_attrib(TestSearchMaxAPI.response_root,
                                      'search', '1')
         value_of_attrib = attrib_value(tag_attribs, 'term')
-        assert value_of_attrib == TestSearchMaxAPI.search_text
+        assert value_of_attrib == TestSearchMaxAPI.search_text, \
+            '>>> 1rst - in response, 2nd - in request <<<'
 
         value_of_attrib = attrib_value(tag_attribs, 'platform')
-        assert value_of_attrib == TestSearchMaxAPI.search_platform
+        assert value_of_attrib == TestSearchMaxAPI.search_platform, \
+            '>>> 1rst - in response, 2nd - in request <<<'
 
         value_of_attrib = attrib_value(tag_attribs, 'amount')
-        assert value_of_attrib == TestSearchMaxAPI.search_amount
+        assert value_of_attrib == TestSearchMaxAPI.search_amount, \
+            '>>> 1rst - in response, 2nd - in request <<<'
 
         value_of_attrib = attrib_value(tag_attribs, 'offset')
-        assert value_of_attrib == TestSearchMaxAPI.search_offset
+        assert value_of_attrib == TestSearchMaxAPI.search_offset, \
+            '>>> 1rst - in response, 2nd - in request <<<'
 
         value_of_attrib = attrib_value(tag_attribs, 'language')
-        assert value_of_attrib == TestSearchMaxAPI.search_language
+        assert value_of_attrib == TestSearchMaxAPI.search_language, \
+            '>>> 1rst - in response, 2nd - in request <<<'
 
 
     # Test 'icon' tag
@@ -175,7 +177,6 @@ class TestSearchMaxAPI(ContextSearchMaxApi):
         tag_attribs = all_tag_attrib(TestSearchMaxAPI.response_root,
                                      'icon', TestSearchMaxAPI.icon_number)
         value_of_attrib = attrib_value(tag_attribs, 'id')
-        print (value_of_attrib + ' icon id what checked')
         assert word_count(value_of_attrib) >= 1
 
         value_of_attrib = attrib_value(tag_attribs, 'name')
@@ -291,7 +292,6 @@ class TestSearchMinAPI(ContextSearchMinApi):
             except AttributeError:
                 x = False
                 icons_current_count -= 1
-                print (str(icons_current_count) + '<<< count icons in response')
                 assert TestSearchMinAPI.icon_count >= icons_current_count
                 assert icons_current_count > 0
 
@@ -299,19 +299,24 @@ class TestSearchMinAPI(ContextSearchMinApi):
         (root) = param_test
         tag_attribs = all_tag_attrib(root, 'search', '1')
         value_of_attrib = attrib_value(tag_attribs, 'term')
-        assert value_of_attrib == TestSearchMinAPI.search_text
+        assert value_of_attrib == TestSearchMinAPI.search_text, \
+            '>>> 1rst - in ersponse, 2nd - in request <<<'
 
         value_of_attrib = attrib_value(tag_attribs, 'platform')
-        assert value_of_attrib == TestSearchMinAPI.search_platform
+        assert value_of_attrib == TestSearchMinAPI.search_platform, \
+            '>>> 1rst - in ersponse, 2nd - in request <<<'
 
         value_of_attrib = attrib_value(tag_attribs, 'amount')
-        assert value_of_attrib == TestSearchMinAPI.search_amount
+        assert value_of_attrib == TestSearchMinAPI.search_amount, \
+            '>>> 1rst - in ersponse, 2nd - in request <<<'
 
         value_of_attrib = attrib_value(tag_attribs, 'offset')
-        assert value_of_attrib == TestSearchMinAPI.search_offset
+        assert value_of_attrib == TestSearchMinAPI.search_offset, \
+            '>>> 1rst - in ersponse, 2nd - in request <<<'
 
         value_of_attrib = attrib_value(tag_attribs, 'language')
-        assert value_of_attrib == TestSearchMinAPI.search_language
+        assert value_of_attrib == TestSearchMinAPI.search_language, \
+            '>>> 1rst - in ersponse, 2nd - in request <<<'
 
 
     # Test 'icon' tag
@@ -319,7 +324,6 @@ class TestSearchMinAPI(ContextSearchMinApi):
         (root) = param_test
         tag_attribs = all_tag_attrib(root, 'icon', TestSearchMinAPI.icon_number)
         value_of_attrib = attrib_value(tag_attribs, 'id')
-        print (value_of_attrib + ' icon id what checked')
         assert word_count(value_of_attrib) >= 1
 
         value_of_attrib = attrib_value(tag_attribs, 'name')

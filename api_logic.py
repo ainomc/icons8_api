@@ -1,21 +1,39 @@
 # -*- coding: utf-8 -*-
 
-import random
 import json
-
+import random
+import time
 import requests
+import os
+from requests.exceptions import ConnectionError
 import xml.etree.ElementTree as ET
 
 
+print os.getcwd()
 
+my_data = json.loads(open("param.json").read())
+request_url = my_data['request_url']
+auth_id = my_data['auth_id']
+
+print ('>>> PARAM URL: %s ' % request_url)
+
+if request_url == '':
+    request_url = 'demoapi'
+if auth_id == '':
+    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
+
+print ('>>> PARAM URL: %s ' % request_url)
 # Do request, check response and return root of response. apiType - type of api, payload - values for url to request
 def request(api_type, payload, verison, type):
-
-    if verison == "v1":
-        response = requests.get('https://demoapi.icons8.com/api/iconsets/%s' % api_type, params=payload)
-    elif verison == "v2" or verison == "v3":
-        response = requests.get('https://demoapi.icons8.com/api/iconsets/%s/%s' % (verison, api_type), params=payload)
-
+    try:
+        if verison == "v1":
+            response = requests.get('https://%s.icons8.com/api/iconsets/%s' %
+                                    (request_url, api_type), params=payload)
+        elif verison == "v2" or verison == "v3":
+            response = requests.get('https://%s.icons8.com/api/iconsets/%s/%s' %
+                                    (request_url, verison, api_type), params=payload)
+    except ConnectionError:
+        time.sleep(5)
     response.raise_for_status()
 
     if type == "xml":

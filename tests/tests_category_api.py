@@ -26,14 +26,12 @@ class TestCategoryApi(ContextCategoryApi):
         tag_attribs = all_tag_attrib(root,
                                      'icon', TestCategoryApi.icon_number)
         value_of_attrib = attrib_value(tag_attribs, 'id')
-        print (value_of_attrib + ' icon id what checked')
         assert word_count(value_of_attrib) >= 1
 
         value_of_attrib = attrib_value(tag_attribs, 'name')
         assert word_count(value_of_attrib) > 1
 
         value_of_attrib = attrib_value(tag_attribs, 'platform')
-        print value_of_attrib
         assert check_all_categories(value_of_attrib) == True
 
         value_of_attrib = attrib_value(tag_attribs, 'created')

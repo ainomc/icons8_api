@@ -19,10 +19,19 @@ class TestLatestpiJson(ContextLatestApiJson):
     # Test parameters object
     def test_parameters(self, param_test):
         (json) = param_test
-        assert json_parse(json, ["parameters", "amount"]) == ContextLatestApiJson.amount
-        assert json_parse(json, ["parameters", "offset"]) == ContextLatestApiJson.offset
-        assert json_parse(json, ["parameters", "platform"]) == ContextLatestApiJson.platform
-        assert json_parse(json, ["parameters", "impresser_preview"]) == str(ContextLatestApiJson.impresser_preview)
+        amount = json_parse(json, ["parameters", "amount"])
+        assert amount == ContextLatestApiJson.amount, \
+            '>>> %s "amount" in response, %s - in request <<<' % (amount, ContextLatestApiJson.amount)
+        offset = json_parse(json, ["parameters", "offset"])
+        assert offset == ContextLatestApiJson.offset, \
+            '>>> %s "offset" in response, %s - in request <<<' % (offset, ContextLatestApiJson.offset)
+        platform = json_parse(json, ["parameters", "platform"])
+        assert platform == ContextLatestApiJson.platform, \
+            '>>> %s "platform" in response, %s - in request <<<' % (offset, ContextLatestApiJson.platform)
+        impresser_preview = json_parse(json, ["parameters", "impresser_preview"])
+        assert impresser_preview == str(ContextLatestApiJson.impresser_preview), \
+            '>>> %s "impresser_preview" in response, %s - in request <<<' \
+            % (impresser_preview, ContextLatestApiJson.impresser_preview)
         assert json_parse(json, ["parameters", "language"]) == 'en'
 
     latest_numbers = []
@@ -36,7 +45,9 @@ class TestLatestpiJson(ContextLatestApiJson):
     def test_latest(self, latest_numbers, json):
         assert json_parse(json, ["result", "latest", latest_numbers, "id"]) >= 1
         assert len(json_parse(json, ["result", "latest", latest_numbers, "id"])) > 1
-        assert json_parse(json, ["result", "latest", latest_numbers, "platform_code"]) == ContextLatestApiJson.platform
+        platform_code = json_parse(json, ["result", "latest", latest_numbers, "platform_code"])
+        assert platform_code == ContextLatestApiJson.platform, \
+            '>>> %s "platform_code" in response, %s - in request <<<' % (platform_code, ContextLatestApiJson.platform)
         assert json_parse(json, ["result", "latest", latest_numbers, "created"])[:2] == '20'
         assert len(json_parse(json, ["result", "latest", latest_numbers, "created"])) >= 25
         assert json_parse(json, ["result", "latest", latest_numbers, "url"])[:9] == '/web-app/'

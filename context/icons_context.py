@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import pytest
-
-from api_logic import random_between_values, random_list_value, request, all_tag_attrib, word_count, attrib_value
+from api_logic import random_between_values, random_list_value, request, all_tag_attrib, \
+    word_count, attrib_value, auth_id
 
 
 class ContextIconsApi(object):
@@ -17,7 +16,7 @@ class ContextIconsApi(object):
     search_platform = random_list_value(["win8", "ios7", "android", "gradient",
                                          "color", "win10", "office", "p1em", ""])
 
-    auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
+    print ('''Icons v1 Json tests: amount - %s, offset - %s, search_platform - %s''' % (amount, offset, search_platform))
 
     payload = {'amount': amount, 'offset': offset, 'platform': search_platform, 'auth-id': auth_id}
 
@@ -39,9 +38,7 @@ class ContextIconsApi(object):
         except AttributeError:
             x = False
             icons_current_count -= 1
-            #print (str(icons_current_count) + '<<< count icons in response')
             assert icons_current_count > 0
-    #print (str(icons_current_count) + ' <<< current count of icons')
 
     # Choose random icon between min and max
     icon_number = str(random_between_values(1, icons_current_count))
