@@ -4,4 +4,4 @@ from sys import platform
 if "win" in platform:
 	sys.path.append("..")
 elif "linux" in platform:
-	sys.path.append(os.path.join(os.getcwd(), ".."))
+	sys.path.append('/var/lib/jenkins/workspace/icons8api_tests')
