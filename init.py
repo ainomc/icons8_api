@@ -30,12 +30,4 @@ str_list = " ".join(str(x) for x in list_test_fies) # convert list to string
 if "win" in platform:
     os.system(r'python -m pytest -v %s -s --showlocals' % str_list)
 elif "linux" in platform:
-    os.system(r'python -m pytest -v %s -s --showlocals --junitxml=/var/lib/jenkins/workspace/icons8api_tests/junitxml/' % str_list)
-
-
-
-
-
-
-
-
+    os.system(r'python -m pytest -v %s -s --showlocals --junitxml=/var/lib/jenkins/workspace/icons8api_tests/xml/' % str_list)
