@@ -4,6 +4,8 @@ import os
 import glob
 import argparse
 
+#runner demo - python init.py -request_url demoapi -auth_id 07cb0f621e742888b888d7630c1f0b37bdae536b
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-request_url', '--request_url', nargs='+', type=str)
 parser.add_argument('-auth_id', '--auth_id', nargs='+', type=str)
@@ -23,7 +25,9 @@ for file_num in range(len(list_test_fies)):
     list_test_fies[file_num] = os.path.join(os.getcwd(), 'tests', list_test_fies[file_num])
 
 str_list = " ".join(str(x) for x in list_test_fies) # convert list to string
-os.system(r'python -m pytest -v %s -s --showlocals' % str_list)
+os.system(r'python -m pytest -v %s -s --showlocals --junitxml=junitxml' % str_list)
+
+
 
 
 
