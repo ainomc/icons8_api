@@ -85,13 +85,13 @@ class TestIconsApi(ContextIconsApi):
         tag_attribs = all_tag_attrib_with_icon_number(ContextIconsApi.response_root,
                                                       ContextIconsApi.icon_number, 'share', '1')
         value_of_attrib = attrib_value(tag_attribs, 'url')
-        assert value_of_attrib[:16] == "http://demo.ic8."
+        assert "ic8" in value_of_attrib
 
     # Test 'share/png' 1 tag
     def test_share_png_tag(self):
         tag_attribs = all_tag_attrib_with_icon_number(ContextIconsApi.response_root,
                                                       ContextIconsApi.icon_number, 'share/png', '1')
         value_of_attrib = attrib_value(tag_attribs, 'link')
-        assert value_of_attrib[-4:] == '.png'
+        assert '.png' in value_of_attrib
 
 

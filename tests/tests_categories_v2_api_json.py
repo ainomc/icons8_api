@@ -49,10 +49,10 @@ class TestCategoriesApiJson(ContextCategoriesApiJson):
     @pytest.mark.parametrize("json", [ContextCategoriesApiJson.response_root, ContextCategoriesApiJson.response_root_auth])
     # Test categories share object
     def test_categories_share(self, categories_number, json):
-        assert json_parse(json, ["result", "categories", categories_number, "share", "url"])[:20] == "http://demo.ic8.link"
+        assert "ic8.link" in json_parse(json, ["result", "categories", categories_number, "share", "url"])
         try:
-            assert json_parse(json, ["result", "categories", categories_number, "share", "share_preview"])[:25] == "https://demost.icons8.com"
-            assert json_parse(json, ["result", "categories", categories_number, "share", "icons_preview"])[:25] == "https://demost.icons8.com"
+            assert "icons8.com" in json_parse(json, ["result", "categories", categories_number, "share", "share_preview"])
+            assert "icons8.com" in json_parse(json, ["result", "categories", categories_number, "share", "icons_preview"])
         except:
             pass
 

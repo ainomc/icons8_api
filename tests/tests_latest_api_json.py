@@ -65,10 +65,9 @@ class TestLatestpiJson(ContextLatestApiJson):
     @pytest.mark.parametrize("json", [ContextLatestApiJson.response_root, ContextLatestApiJson.response_root_auth])
     # Test latest features object
     def test_latest_features(self, latest_numbers, json):
-        assert json_parse(json, ["result", "latest", latest_numbers, "share", 'url'])[:20] == 'http://demo.ic8.link'
+        assert 'ic8.link' in json_parse(json, ["result", "latest", latest_numbers, "share", 'url'])
         for png in range(len(json_parse(json, ["result", "latest", latest_numbers, "share", 'png']))):
-            assert json_parse(json, ["result", "latest", latest_numbers, "share", 'png', png, 'link'])[:25]\
-                   == 'https://demost.icons8.com'
+            assert ".icons8.com" in json_parse(json, ["result", "latest", latest_numbers, "share", 'png', png, 'link'])
             if png > 1:
                 json_parse(json, ["result", "latest", latest_numbers, "share", 'png', png, 'type']) == 'twitter' or 'social'
 

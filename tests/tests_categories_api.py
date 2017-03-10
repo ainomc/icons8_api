@@ -33,7 +33,7 @@ class TestCategoriesApi(ContextCategoriesApi):
             try:
                 tag_attribs = all_tag_attrib(root, 'category[%s]/share' % str(number), "1")
                 value_of_attrib = attrib_value(tag_attribs, 'url')
-                assert value_of_attrib[:20] == "http://demo.ic8.link"
+                assert "ic8.link" in value_of_attrib
             except AttributeError or TypeError:
                 break
             number += 1

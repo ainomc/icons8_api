@@ -52,7 +52,7 @@ class TestIconApiJson(ContextIconApiJson):
         assert json_parse(json, ["result", "icons", 0, "created"])[:2] == "20"
         assert len(json_parse(json, ["result", "icons", 0, "created"])) > 15
         assert json_parse(json, ["result", "icons", 0, "copyright"]) == False
-        assert json_parse(json, ["result", "icons", 0, "disqus_url"])[:32] == 'https://demo.icons8.com/web-app/'
+        assert "icons8.com/web-app/" in json_parse(json, ["result", "icons", 0, "disqus_url"])
         assert len(json_parse(json, ["result", "icons", 0, "category"])) > 2
         assert len(json_parse(json, ["result", "icons", 0, "svg"])) > 40
 
@@ -72,7 +72,7 @@ class TestIconApiJson(ContextIconApiJson):
         for png in range(len(png_count)):
             assert json_parse(json, ["result", "icons", 0, "png", png, "width"]) > 15
             assert json_parse(json, ["result", "icons", 0, "png", png, "height"]) > 15
-            assert json_parse(json, ["result", "icons", 0, "png", png, "link"])[:12] == 'https://demo'
+            assert 'https://' in json_parse(json, ["result", "icons", 0, "png", png, "link"])
 
     # Test features object
     def test_features_object(self, param_test):
@@ -92,11 +92,11 @@ class TestIconApiJson(ContextIconApiJson):
     # Test share object
     def test_share_object(self, param_test):
         (json) = param_test
-        assert json_parse(json, ["result", "icons", 0, "share", "url"])[:20] == 'http://demo.ic8.link'
-        assert json_parse(json, ["result", "icons", 0, "share", "png", 0, "link"])[:20] == 'https://demost.icons'
+        assert ".ic8.link" in json_parse(json, ["result", "icons", 0, "share", "url"])
+        assert "icons" in json_parse(json, ["result", "icons", 0, "share", "png", 0, "link"])
         for share in range(1, len(json_parse(json, ["result", "icons", 0, "share"]))):
             assert json_parse(json, ["result", "icons", 0, "share", "png", share, "type"]) == 'twitter' or 'social'
-            assert json_parse(json, ["result", "icons", 0, "share", "png", share, "link"])[:20] == 'https://demost.icons'
+            assert "icons" in json_parse(json, ["result", "icons", 0, "share", "png", share, "link"])
 
     # Test request object
     def test_request_object(self, param_test):
@@ -142,7 +142,7 @@ class TestIconApiJson(ContextIconApiJson):
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "created"])) > 15
             assert json_parse(json, ["result", "icons", 0, "variants", variant, "copyright"]) == False
             assert json_parse(json, ["result", "icons", 0, "variants", variant, "filled"]) == False or True
-            assert json_parse(json, ["result", "icons", 0, "variants", variant, "disqus_url"])[:32] == 'https://demo.icons8.com/web-app/'
+            assert ".icons8.com/web-app/" in json_parse(json, ["result", "icons", 0, "variants", variant, "disqus_url"])
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "category"])) > 2
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "svg"])) > 40
 
@@ -164,7 +164,7 @@ class TestIconApiJson(ContextIconApiJson):
             for png in range(len(png_count)):
                 assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "width"]) > 15, ">>>  <<<"
                 assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "height"]) > 15, ">>>  <<<"
-                assert json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "link"])[:12] == 'https://demo'
+                assert 'https://' in json_parse(json, ["result", "icons", 0, "variants", variant, "png", png, "link"])
 
         @pytest.mark.parametrize("variant", list_variants)
         @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
@@ -187,14 +187,14 @@ class TestIconApiJson(ContextIconApiJson):
         @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
         # Test share object
         def test_var_share(self, variant, json):
-            assert json_parse(json, ["result", "icons", 0, "variants", variant, "share", "url"])[:20] == 'http://demo.ic8.link'
-            assert json_parse(json, ["result", "icons", 0, "variants", variant, "share", "png", 0, "link"])[:20] == 'https://demost.icons'
+            assert ".ic8.link" in json_parse(json, ["result", "icons", 0, "variants", variant, "share", "url"])
+            assert "icons" in json_parse(json, ["result", "icons", 0, "variants", variant, "share", "png", 0, "link"])
             for share in range(1, len(json_parse(json, ["result", "icons", 0, "variants", variant, "share"]))):
                 try:
                     assert json_parse(json, ["result", "icons", 0, "variants", variant,
                                              "share", "png", share, "type"]) == 'twitter' or 'social'
-                    assert json_parse(json, ["result", "icons", 0, "variants", variant,
-                                             "png", share, "link"])[:20] == 'https://demost.icons'
+                    assert "icons" in json_parse(json, ["result", "icons", 0, "variants", variant,
+                                             "png", share, "link"])
                 except IndexError:
                     pass
 

@@ -63,12 +63,10 @@ class TestCategoryApiJson(ContextCategoryApiJson):
         (json) = param_test
 
         response_url = json_parse(json, ["result", "category", "share", "url"])
-        test_url = 'http://demo.ic8.link/%s' % ContextCategoryApiJson.category.lower()
-        assert response_url == test_url
+        assert 'ic8.link/%s' % ContextCategoryApiJson.category.lower() in response_url
 
         response_share_preview = json_parse(json, ["result", "category", "share", "share_preview"])
-        test_share_preview = 'https://demost.icons8.com/Share/category/%s.png' % ContextCategoryApiJson.category
-        assert response_share_preview == test_share_preview
+        assert'.icons8.com/Share/category/%s.png' % ContextCategoryApiJson.category in response_share_preview
 
         response_icons_preview = json_parse(json, ["result", "category", "share", "icons_preview"])
         assert response_icons_preview.find(ContextCategoryApiJson.category.lower()), \
@@ -93,8 +91,7 @@ class TestCategoryApiJson(ContextCategoryApiJson):
         assert len(json_parse(json, ["result", "category", "icons", icon_number, "created"])) > 15
         assert json_parse(json, ["result", "category", "icons", icon_number, "copyright"]) == False
         assert json_parse(json, ["result", "category", "icons", icon_number, "filled"]) == False or True
-        assert json_parse(json, ["result", "category", "icons", icon_number, "disqus_url"])[
-               :32] == 'https://demo.icons8.com/web-app/'
+        assert "icons8.com/web-app/" in json_parse(json, ["result", "category", "icons", icon_number, "disqus_url"])
         assert len(json_parse(json, ["result", "category", "icons", icon_number, "common_icon_id"])) > 0
         assert len(json_parse(json, ["result", "category", "icons", icon_number, "categories", 0])) >= 2
         assert json_parse(json, ["result", "category", "icons", icon_number, "category"]) \
@@ -137,7 +134,7 @@ class TestCategoryApiJson(ContextCategoryApiJson):
     @pytest.mark.parametrize("json", [ContextCategoryApiJson.response_root, ContextCategoryApiJson.response_root_auth])
     # Test share share object
     def test_icons_share(self, icon_number, json):
-        assert json_parse(json, ["result", "category", "icons", icon_number, "share", "url"])[:20] == 'http://demo.ic8.link'
+        assert ".ic8.link" in json_parse(json, ["result", "category", "icons", icon_number, "share", "url"])
         try:
             assert json_parse(json, ["result", "category", "icons", icon_number, "share", "png",  1, "type"]) == 'twitter'
             assert json_parse(json, ["result", "category", "icons", icon_number, "share", "png", 2, "type"]) == 'social'
@@ -146,5 +143,5 @@ class TestCategoryApiJson(ContextCategoryApiJson):
         link_count = len(json_parse(json, ["result", "category", "icons", icon_number, "share", "png"]))
 
         for link in range(link_count):
-            assert json_parse(json, ["result", "category", "icons", icon_number, "share", "png", link, "link"])[:25] == 'https://demost.icons8.com'
+            assert "icons8.com" in json_parse(json, ["result", "category", "icons", icon_number, "share", "png", link, "link"])
 

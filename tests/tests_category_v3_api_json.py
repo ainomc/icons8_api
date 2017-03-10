@@ -51,11 +51,9 @@ class TestCategoryApiJson(ContextCategoryv3ApiJson):
     # Test hare object
     def test_share(self, param_test):
         (json) = param_test
-        assert json_parse(json, ["result", "category", "share", 'url'])[:20] == 'http://demo.ic8.link'
-        assert json_parse(json, ["result", "category", "share", 'share_preview'])[:41] == \
-               'https://demost.icons8.com/Share/category/'
-        assert json_parse(json, ["result", "category", "share", 'icons_preview'])[:47] == \
-               'https://demost.icons8.com/Share/category_icons/'
+        assert "ic8.link" in json_parse(json, ["result", "category", "share", 'url'])
+        assert "icons8.com/Share/category/" in json_parse(json, ["result", "category", "share", 'share_preview'])
+        assert "icons8.com/Share/category_icons/" in json_parse(json, ["result", "category", "share", 'icons_preview'])
 
     # Test subcategories object
     def test_subcategories(self, param_test):

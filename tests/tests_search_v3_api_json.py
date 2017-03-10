@@ -89,13 +89,13 @@ class TestSearchv3ApiJson(ContextCategoryv3ApiJson):
                                       ContextCategoryv3ApiJson.response_root_auth])
     # Test share object
     def test_share(self, search_number, json):
-        assert json_parse(json, ["result", "search", search_number, "share", "url"])[:20] == 'http://demo.ic8.link'
-        assert json_parse(json, ["result", "search", search_number, "share", "png", 0, "link"])[:25] == 'https://demost.icons8.com'
+        assert ".ic8.link" in json_parse(json, ["result", "search", search_number, "share", "url"])
+        assert ".icons8.com" in json_parse(json, ["result", "search", search_number, "share", "png", 0, "link"])
         try:
-            assert json_parse(json, ["result", "search", search_number, "share", "png", 1, "link"])[:25] == 'https://demost.icons8.com'
-            assert json_parse(json, ["result", "search", search_number, "share", "png", 2, "link"])[:25] == 'https://demost.icons8.com'
-            assert json_parse(json, ["result", "search", search_number, "share", "png", 1, "type"])[:25] == 'twitter'
-            assert json_parse(json, ["result", "search", search_number, "share", "png", 2, "social"])[:25] == 'social'
+            assert ".icons8.com" in json_parse(json, ["result", "search", search_number, "share", "png", 1, "link"])
+            assert ".icons8.com" in json_parse(json, ["result", "search", search_number, "share", "png", 2, "link"])
+            assert 'twitter' in json_parse(json, ["result", "search", search_number, "share", "png", 1, "type"])
+            assert 'social' in json_parse(json, ["result", "search", search_number, "share", "png", 2, "social"])
         except:
             pass
 

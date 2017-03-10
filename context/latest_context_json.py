@@ -8,8 +8,8 @@ class ContextLatestApiJson(object):
     # icon id what will be in request
 
     amount = random_list_value(["5", "10", "20"])
-    platform = random_list_value(["win8", "ios7", "android", "gradient",
-                                         "color", "win10", "office", "p1em"])
+    #platform = random_list_value(["win8", "ios7", "android", "gradient", "color", "win10", "office", "p1em"])
+    platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office"])
     offset = random_list_value(["5", "10", "15", "20"])
     impresser_preview = True
     language = 'en-US'

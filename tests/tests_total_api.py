@@ -96,19 +96,38 @@ class TestTotalApi(ContextTotalApi):
     # Test platform 8 (1em) tag
     def test_platform_1em_tag(self, param_test):
         (root) = param_test
-        tag_attribs = all_tag_attrib(root, 'platform', '8')
-        value_of_attrib = attrib_value(tag_attribs, 'name')
-        assert value_of_attrib == "1em"
+        try:
+            tag_attribs = all_tag_attrib(root, 'platform', '8')
+            value_of_attrib = attrib_value(tag_attribs, 'name')
+            assert value_of_attrib == "1em"
 
-        value_of_tag = tag_value(root, 'platform', '8')
-        assert word_count(value_of_tag) >= 1
+            value_of_tag = tag_value(root, 'platform', '8')
+            assert word_count(value_of_tag) >= 1
+        except AttributeError:
+            pass
 
     # Test platform 9 (Gradient) tag
     def test_platform_Gradient_tag(self, param_test):
         (root) = param_test
-        tag_attribs = all_tag_attrib(root, 'platform', '9')
-        value_of_attrib = attrib_value(tag_attribs, 'name')
-        assert value_of_attrib == "Gradient"
+        try:
+            tag_attribs = all_tag_attrib(root, 'platform', '9')
+            value_of_attrib = attrib_value(tag_attribs, 'name')
+            assert value_of_attrib == "Gradient" or value_of_attrib == "Ultraviolet"
 
-        value_of_tag = tag_value(root, 'platform', '9')
-        assert word_count(value_of_tag) >= 1
+            value_of_tag = tag_value(root, 'platform', '9')
+            assert word_count(value_of_tag) >= 1
+        except AttributeError:
+            pass
+
+    # Test platform 10 (Ultraviolet) tag
+    def test_platform_Ultraviolet_tag(self, param_test):
+        (root) = param_test
+        try:
+            tag_attribs = all_tag_attrib(root, 'platform', '10')
+            value_of_attrib = attrib_value(tag_attribs, 'name')
+            assert value_of_attrib == "Ultraviolet" or value_of_attrib == "Gradient"
+
+            value_of_tag = tag_value(root, 'platform', '10')
+            assert word_count(value_of_tag) >= 1
+        except AttributeError:
+            pass

@@ -99,14 +99,14 @@ class TestIconApi(ContextIconApi):
         (root) = param_test
         tag_attribs = all_tag_attrib(root, 'share', '1')
         value_of_attrib = attrib_value(tag_attribs, 'url')
-        assert value_of_attrib[:16] == "http://demo.ic8.", '>>> "url" not start from "http://demo.ic8." <<<'
+        assert ".ic8." in value_of_attrib, '>>> "url" not start from "http://demo.ic8." <<<'
 
     # Test 'share/png' 1 tag
     def test_share_png_tag(self, param_test):
         (root) = param_test
         tag_attribs = all_tag_attrib(root, 'share/png', '1')
         value_of_attrib = attrib_value(tag_attribs, 'link')
-        assert value_of_attrib[-4:] == '.png', '>>> "link" not start from ".png" <<<'
+        assert '.png' in value_of_attrib, '>>> "link" not start from ".png" <<<'
 
 
 
