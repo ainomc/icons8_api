@@ -1,6 +1,6 @@
 # Icon 8 API tests
 
-python init.py -request_url demoapi -auth_id 07cb0f621e742888b888d7630c1f0b37bdae536b - команда для запуска
+python init.py -request_url demoapi -auth_id f5901f402ac93fb372b19542f73cd3103a794b83 - команда для запуска
 
 init.py - файл запуска
 param.json - параметры запуска

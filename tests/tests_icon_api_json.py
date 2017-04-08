@@ -125,6 +125,7 @@ class TestIconApiJson(ContextIconApiJson):
 
         @pytest.mark.parametrize("variant", list_variants)
         @pytest.mark.parametrize("json", [ContextIconApiJson.response_root, ContextIconApiJson.response_root_auth])
+
         # Test result/icon object
         def test_variants_icon(self, variant, json):
 

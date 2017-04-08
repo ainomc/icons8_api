@@ -23,6 +23,7 @@ if auth_id == '':
     auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
 
 print ('>>> PARAM URL: %s ' % request_url)
+
 # Do request, check response and return root of response. apiType - type of api, payload - values for url to request
 def request(api_type, payload, verison, type):
     try:
