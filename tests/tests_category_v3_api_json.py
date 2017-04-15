@@ -82,7 +82,7 @@ class TestCategoryApiJson(ContextCategoryv3ApiJson):
         assert json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'url'])[:9] == '/web-app/'
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'common_icon_id'])) > 1
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'svg'])) > 20
-
+"""
     @pytest.mark.parametrize("icon_number", icon_numbers)
     @pytest.mark.parametrize("json", [ContextCategoryv3ApiJson.response_root, ContextCategoryv3ApiJson.response_root_auth])
     # Test isons features object
@@ -90,6 +90,7 @@ class TestCategoryApiJson(ContextCategoryv3ApiJson):
         for features in ["bitmap", "vector", "nolink"]:
             assert json_parse(json, ["result", "category", "subcategory", 0,
                                      'icons', icon_number, 'features', 'bitmap']) == 0 or 1
+"""
 
 
 

@@ -14,7 +14,7 @@ class ContextLatestApiJson(object):
     impresser_preview = True
     language = 'en-US'
 
-    print ('''Latest v2 Json tests: latform - %s, platform - %s, offset - %s, impresser_preview - %s, language - %s'''
+    print ('''Latest v3 Json tests: latform - %s, platform - %s, offset - %s, impresser_preview - %s, language - %s'''
            % (amount, platform, offset, impresser_preview, language))
 
     payload = {'amount': amount, 'platform': platform, 'offset': offset,
@@ -27,10 +27,11 @@ class ContextLatestApiJson(object):
     response_root_auth = request('latest', payload_auth, "v3", "json")
 
     platform_list = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
-                     "Color", "Windows 10/Threshold", "Office", "Material", "Gradient"]
-
-    platform_code_list = ["win8", "ios7", "android", "gradient",
-                                         "color", "win10", "office", ""]
+                     "Color", "Windows 10/Threshold", "Office", "Material", "Gradient",
+                     "Ultraviolet", "Nolan", "DottyDots", "Red Short Lines"]
+    platform_code_list = ["win8", "ios7", "android", "androidL", "color",
+                          "win10", "office", "p1em", "gradient", "ultraviolet",
+                          "red_lines", "nolan", "dotty"]
 
     # Action before class
     def setup_class(cls):

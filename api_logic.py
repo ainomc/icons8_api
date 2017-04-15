@@ -83,8 +83,10 @@ def word_count(word):
 
 
 def check_all_categories(test_categories):
-    all_categories = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
-                     "Color", "Windows 10/Threshold", "Office", "Material", "1em", "Gradient"]
+    all_categories =     ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
+                          "Color", "Windows 10/Threshold", "Office", "Material", "Gradient",
+                          "Ultraviolet", "Nolan", "DottyDots", "Red Short Lines", "1em"]
+
     all_categories_count = len(all_categories)
     current_categories = 0
     for categories in all_categories:

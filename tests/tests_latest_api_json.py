@@ -53,7 +53,7 @@ class TestLatestpiJson(ContextLatestApiJson):
         assert json_parse(json, ["result", "latest", latest_numbers, "url"])[:9] == '/web-app/'
         assert len(json_parse(json, ["result", "latest", latest_numbers, "common_icon_id"])) > 0
         assert len(json_parse(json, ["result", "latest", latest_numbers, "svg"])) > 20
-
+    """
     @pytest.mark.parametrize("latest_numbers", latest_numbers)
     @pytest.mark.parametrize("json", [ContextLatestApiJson.response_root, ContextLatestApiJson.response_root_auth])
     # Test latest features object
@@ -64,12 +64,13 @@ class TestLatestpiJson(ContextLatestApiJson):
     @pytest.mark.parametrize("latest_numbers", latest_numbers)
     @pytest.mark.parametrize("json", [ContextLatestApiJson.response_root, ContextLatestApiJson.response_root_auth])
     # Test latest features object
-    def test_latest_features(self, latest_numbers, json):
+    def test_latest_features_share(self, latest_numbers, json):
         assert 'ic8.link' in json_parse(json, ["result", "latest", latest_numbers, "share", 'url'])
         for png in range(len(json_parse(json, ["result", "latest", latest_numbers, "share", 'png']))):
             assert ".icons8.com" in json_parse(json, ["result", "latest", latest_numbers, "share", 'png', png, 'link'])
             if png > 1:
                 json_parse(json, ["result", "latest", latest_numbers, "share", 'png', png, 'type']) == 'twitter' or 'social'
+    """
 
 
 

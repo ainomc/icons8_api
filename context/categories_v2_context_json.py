@@ -22,10 +22,11 @@ class ContextCategoriesApiJson(object):
     response_root_auth = request('categories', payload_auth, "v2", "json")
 
     platform_list = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
-                     "Color", "Windows 10/Threshold", "Office", "Material", "1em", "Gradient"]
-
-    platform_code_list = ["win8", "ios7", "android",
-                          "androidL","color", "win10", "office"]
+                     "Color", "Windows 10/Threshold", "Office", "Material", "Gradient",
+                     "Ultraviolet", "Nolan", "DottyDots", "Red Short Lines"]
+    platform_code_list = ["win8", "ios7", "android", "androidL", "color",
+                          "win10", "office", "p1em", "gradient", "ultraviolet",
+                          "red_lines", "nolan", "dotty"]
 
     # Action before class
     def setup_class(cls):

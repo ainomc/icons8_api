@@ -28,6 +28,7 @@ for file_num in range(len(list_test_fies)):
 str_list = " ".join(str(x) for x in list_test_fies) # convert list to string
 
 if "win" in platform:
+    #os.system(r'python -m pytest -v tests/tests_total_api_json.py -s --showlocals')
     os.system(r'python -m pytest -v %s -s --showlocals' % str_list)
 elif "linux" in platform:
     os.system(r'python -m pytest -v %s -s --showlocals --junitxml=/var/lib/jenkins/workspace/icons8api_tests/xml/junitxml' % str_list)
