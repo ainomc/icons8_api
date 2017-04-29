@@ -5,14 +5,13 @@ import glob
 import argparse
 from sys import platform
 
-#runner demo - python init.py -request_url demoapi -auth_id 07cb0f621e742888b888d7630c1f0b37bdae536b
-
+# Parse parameters from command line
 parser = argparse.ArgumentParser()
 parser.add_argument('-request_url', '--request_url', nargs='+', type=str)
 parser.add_argument('-auth_id', '--auth_id', nargs='+', type=str)
 args = parser.parse_args()
 
-
+# Write parameters to the params.json
 with open('param.json', 'r+') as outfile:
     json_data = json.load(outfile)
     json_data['request_url'] = args.request_url[0]
@@ -21,14 +20,18 @@ with open('param.json', 'r+') as outfile:
     outfile.write(json.dumps(json_data))
     outfile.truncate()
 
-list_test_fies = glob.glob(os.path.join(os.getcwd(), 'tests', 'tests_*')) # find all tests files
+# Find all path to tests_* files and create list
+list_test_fies = glob.glob(os.path.join(os.getcwd(), 'tests', 'tests_*'))
+
+# Convert path to universal path what can be used in linux
 for file_num in range(len(list_test_fies)):
     list_test_fies[file_num] = os.path.join(os.getcwd(), 'tests', list_test_fies[file_num])
 
+# Convert list to one string with spaces (' ') between each path
 str_list = " ".join(str(x) for x in list_test_fies) # convert list to string
 
+# Run tests with all tests files
 if "win" in platform:
-    #os.system(r'python -m pytest -v tests/tests_total_api_json.py -s --showlocals')
     os.system(r'python -m pytest -v %s -s --showlocals' % str_list)
 elif "linux" in platform:
     os.system(r'python -m pytest -v %s -s --showlocals --junitxml=/var/lib/jenkins/workspace/icons8api_tests/xml/junitxml' % str_list)
