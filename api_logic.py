@@ -106,37 +106,14 @@ def check_all_categories(test_categories):
     assert all_categories_count != 0
     return True
 
-def json_parse(json_text, values):
+def json_parse(json_text, keys):
     """parse tickets jsons
      example: json_parse("json file", 1, ["colors", "red"])
      """
-
-    count_values = len(values)
-    if count_values == 1:
-        resuilt = json_text[values[0]]
-    elif count_values == 2:
-        resuilt = json_text[values[0]][values[1]]
-    elif count_values == 3:
-        resuilt = json_text[values[0]][values[1]][values[2]]
-    elif count_values == 4:
-        resuilt = json_text[values[0]][values[1]][values[2]][values[3]]
-    elif count_values == 5:
-        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]
-    elif count_values == 6:
-        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]\
-            [values[5]]
-    elif count_values == 7:
-        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]\
-            [values[5]][values[6]]
-    elif count_values == 8:
-        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]\
-            [values[5]][values[6]][values[7]]
-    elif count_values == 9:
-        resuilt = json_text[values[0]][values[1]][values[2]][values[3]][values[4]]\
-            [values[5]][values[6]][values[7]][values[8]]
-    else:
-        assert count_values == 9 or count_values > 9
-    return resuilt
+    value = json_text
+    for key in keys:
+        value = value[key]
+    return value
 
 
 
