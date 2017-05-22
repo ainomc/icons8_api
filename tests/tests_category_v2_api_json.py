@@ -66,10 +66,10 @@ class TestCategoryApiJson(ContextCategoryApiJson):
         assert 'ic8.link/%s' % ContextCategoryApiJson.category.lower() in response_url
 
         response_share_preview = json_parse(json, ["result", "category", "share", "share_preview"])
-        assert'.icons8.com/Share/category/%s.png' % ContextCategoryApiJson.category in response_share_preview
+        assert'.icons8.com/Share/category/%s.png'.lower() % ContextCategoryApiJson.category.lower() in response_share_preview.lower()
 
         response_icons_preview = json_parse(json, ["result", "category", "share", "icons_preview"])
-        assert response_icons_preview.find(ContextCategoryApiJson.category.lower()), \
+        assert response_icons_preview.find(ContextCategoryApiJson.category), \
             '>>> %s - in response, %s - in request <<<' % (response_icons_preview, ContextCategoryApiJson.category)
 
     icon_numbers = []
@@ -94,10 +94,10 @@ class TestCategoryApiJson(ContextCategoryApiJson):
         assert "icons8.com/web-app/" in json_parse(json, ["result", "category", "icons", icon_number, "disqus_url"])
         assert len(json_parse(json, ["result", "category", "icons", icon_number, "common_icon_id"])) > 0
         assert len(json_parse(json, ["result", "category", "icons", icon_number, "categories", 0])) >= 2
-        assert json_parse(json, ["result", "category", "icons", icon_number, "category"]) \
+        assert json_parse(json, ["result", "category", "icons", icon_number, "category"])\
                == ContextCategoryApiJson.category
-        assert json_parse(json, ["result", "category", "icons", icon_number, "category_api_code"]) \
-               == ContextCategoryApiJson.category
+        assert json_parse(json, ["result", "category", "icons", icon_number, "category_api_code"]).lower() \
+               == ContextCategoryApiJson.category.lower()
         assert len(json_parse(json, ["result", "category", "icons", icon_number, "svg"])) > 40
 
     @pytest.mark.parametrize("icon_number", icon_numbers)
@@ -144,4 +144,3 @@ class TestCategoryApiJson(ContextCategoryApiJson):
 
         for link in range(link_count):
             assert "icons8.com" in json_parse(json, ["result", "category", "icons", icon_number, "share", "png", link, "link"])
-

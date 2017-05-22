@@ -50,7 +50,7 @@ class TestLatestpiJson(ContextLatestApiJson):
             '>>> %s "platform_code" in response, %s - in request <<<' % (platform_code, ContextLatestApiJson.platform)
         assert json_parse(json, ["result", "latest", latest_numbers, "created"])[:2] == '20'
         assert len(json_parse(json, ["result", "latest", latest_numbers, "created"])) >= 25
-        assert json_parse(json, ["result", "latest", latest_numbers, "url"])[:9] == '/web-app/'
+        assert '/icon/' in json_parse(json, ["result", "latest", latest_numbers, "url"])
         assert len(json_parse(json, ["result", "latest", latest_numbers, "common_icon_id"])) > 0
         assert len(json_parse(json, ["result", "latest", latest_numbers, "svg"])) > 20
     """

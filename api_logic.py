@@ -18,7 +18,7 @@ if request_url == '':
 if auth_id == '':
     auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
 
-# Do request, check response and return root of response. apiType - type of api, payload - values for url to request
+
 def request(api_type, payload, verison, type):
     """ Do request, check response and return root of response.
      apiType - type of api, payload - values for url to request
@@ -29,8 +29,9 @@ def request(api_type, payload, verison, type):
             response = requests.get('https://%s.icons8.com/api/iconsets/%s' %
                                     (request_url, api_type), params=payload)
         elif verison == "v2" or verison == "v3":
-            response = requests.get('https://%s.icons8.com/api/iconsets/%s/%s' %
-                                    (request_url, verison, api_type), params=payload)
+            response = \
+                requests.get('https://%s.icons8.com/api/iconsets/%s/%s' %
+                             (request_url, verison, api_type), params=payload)
     except ConnectionError:
         time.sleep(5)
 
@@ -43,39 +44,45 @@ def request(api_type, payload, verison, type):
     elif type == "json":
         return response.json()
 
+
 def tag_value(root, tag, tag_xpath_number):
     """Find xml key by xpath and return key value."""
     return root.find('.//%s[%s]' % (tag, tag_xpath_number)).text
 
+
 def all_tag_attrib(root, tag, tag_xpath_number):
     """Return all attributes from tag"""
     return root.find('.//%s[%s]' % (tag, tag_xpath_number)).attrib
+
 
 def tag_value_with_icon_number(root, icon, tag, tag_xpath_number):
     """Find xml key by xpath and return key value."""
     if icon == 0:
         pass
     else:
-        return root.find('.//icon[%s]/%s[%s]' % (icon, tag, tag_xpath_number)).text
+        return root.find('.//icon[%s]/%s[%s]' %
+                         (icon, tag, tag_xpath_number)).text
+
 
 def all_tag_attrib_with_icon_number(root, icon, tag, tag_xpath_number):
     """Return all attributes from tag"""
     if icon == 0:
         pass
     else:
-        return root.find('.//icon[%s]/%s[%s]' % (icon, tag, tag_xpath_number)).attrib
+        return root.find('.//icon[%s]/%s[%s]' %
+                         (icon, tag, tag_xpath_number)).attrib
 
-def attrib_value(tag_all_attrib, Attrib):
+
+def attrib_value(tag_all_attrib, attrib):
     """Return attribute value"""
-    return tag_all_attrib.get(Attrib)
+    return tag_all_attrib.get(attrib)
 
 
-# Возвращает случайное значение из списка
 def random_between_values(first_value, last_value):
     """Return random value between from first_value to last_value"""
     return random.randint(first_value, last_value)
 
-# Возвращает случайное значение из списка
+
 def random_list_value(list):
     """Return random value from list"""
     return random.choice(list)
@@ -88,9 +95,11 @@ def word_count(word):
 
 def check_all_categories(test_categories):
     """Check categories in list categories"""
-    all_categories =     ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
-                          "Color", "Windows 10/Threshold", "Office", "Material", "Gradient",
-                          "Ultraviolet", "Nolan", "DottyDots", "Red Short Lines", "1em"]
+    all_categories = ["Windows 8/Metro", "iPhone/iOS 10",
+                      "Android 4", "Android L", "Color",
+                      "Windows 10/Threshold", "Office",
+                      "Material", "Gradient", "Ultraviolet",
+                      "Nolan", "DottyDots", "Red Short Lines", "1em"]
 
     all_categories_count = len(all_categories)
     current_categories = 0
@@ -106,6 +115,7 @@ def check_all_categories(test_categories):
     assert all_categories_count != 0
     return True
 
+
 def json_parse(json_text, keys):
     """parse tickets jsons
      example: json_parse("json file", 1, ["colors", "red"])
@@ -114,6 +124,3 @@ def json_parse(json_text, keys):
     for key in keys:
         value = value[key]
     return value
-
-
-

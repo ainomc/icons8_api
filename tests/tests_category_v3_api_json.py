@@ -13,6 +13,7 @@ from context.category_v3_context_json import ContextCategoryv3ApiJson
 def param_test(request):
     return request.param
 
+
 # Test icon API https://demoapi.icons8.com/api/iconsets/v2/icon
 class TestCategoryApiJson(ContextCategoryv3ApiJson):
 
@@ -41,7 +42,7 @@ class TestCategoryApiJson(ContextCategoryv3ApiJson):
         (json) = param_test
 
         category_code = json_parse(json, ["result", "category", "category_code"])
-        assert category_code == ContextCategoryv3ApiJson.category, \
+        assert category_code.lower() == ContextCategoryv3ApiJson.category.lower(), \
             '>>> %s - "category_code" in response, %s - in request <<<' \
             % (category_code, ContextCategoryv3ApiJson.category)
         category_name = json_parse(json, ["result", "category", "category_name"])
@@ -79,7 +80,7 @@ class TestCategoryApiJson(ContextCategoryv3ApiJson):
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'name'])) > 0
         assert ContextCategoryv3ApiJson.platform_code_list.count(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'platform_code'])) == 1
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'created'])) > 20
-        assert json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'url'])[:9] == '/web-app/'
+        assert '/icon/' in json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'url'])
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'common_icon_id'])) > 1
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'svg'])) > 20
 """

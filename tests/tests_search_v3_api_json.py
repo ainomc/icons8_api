@@ -60,7 +60,7 @@ class TestSearchv3ApiJson(ContextCategoryv3ApiJson):
         assert ContextCategoryv3ApiJson.platform_code_list.index\
                    (json_parse(json, ["result", "search", search_number, "platform_code"])) >= 0
         assert len(json_parse(json, ["result", "search", search_number, "created"])) > 23
-        assert json_parse(json, ["result", "search", search_number, "url"])[:9] == '/web-app/'
+        assert '/icon/' in json_parse(json, ["result", "search", search_number, "url"])[:9]
         assert json_parse(json, ["result", "search", search_number, "common_icon_id"]) > 1
         #assert len(json_parse(json, ["result", "search", search_number, "category"])) > 1
         try:

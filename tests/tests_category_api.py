@@ -40,7 +40,7 @@ class TestCategoryApi(ContextCategoryApi):
         assert word_count(value_of_attrib) >= 0
 
         value_of_attrib = attrib_value(tag_attribs, 'url')
-        assert value_of_attrib[:9] == "/web-app/"
+        assert "/icon/" in value_of_attrib
 
     # Test 'svg' tag
     def test_svg_tag(self, param_test):

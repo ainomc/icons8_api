@@ -43,7 +43,7 @@ class TestIconApi(ContextIconApi):
         assert word_count(value_of_attrib) >= 0
 
         value_of_attrib = attrib_value(tag_attribs, 'url')
-        assert value_of_attrib[:9] == "/web-app/", '>>> "url" not start from "/web-app/" <<<'
+        assert "/icon/" in value_of_attrib, '>>> "url" not start from "/icon/" <<<'
 
     # Test 'svg' tag
     def test_svg_tag(self, param_test):

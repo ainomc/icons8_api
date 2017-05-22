@@ -8,7 +8,7 @@ class ContextCategoryApiJson(object):
     category = random_list_value(["Animals", "Sports", "Food", "Cinema"])
     attributes = 'filled'
     amount = 10
-    platform = random_list_value(["win8", "ios7", "android", "androidL","color", "win10", "office"])
+    platform = random_list_value(["win8", "ios7", "android", "androidL", "color", "win10", "office"])
 
     print ('''Category v2 Json tests: category - %s, attributes - %s, amount - %s, platform - %s'''
            % (category, attributes, amount, platform))

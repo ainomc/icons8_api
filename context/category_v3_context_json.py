@@ -7,7 +7,8 @@ class ContextCategoryv3ApiJson(object):
     # icon id what will be in request
     category = random_list_value(["Animals", "Sports", "Food", "Cinema"])
     amount = 10
-    platform = random_list_value(["win8", "ios7", "android", "androidL","color", "win10", "office"])
+    platform = random_list_value(["win8", "ios7", "android", "androidL",
+                                  "color", "win10", "office"])
 
     print ('''Category v3 Json tests: category - %s, amount - %s, platform - %s'''
            % (category, amount, platform))
@@ -27,6 +28,7 @@ class ContextCategoryv3ApiJson(object):
     platform_code_list = ["win8", "ios7", "android", "androidL", "color",
                           "win10", "office", "p1em", "gradient", "ultraviolet",
                           "red_lines", "nolan", "dotty"]
+
     # Action before class
     def setup_class(cls):
         print("\n>>> Class Setup")
