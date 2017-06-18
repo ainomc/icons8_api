@@ -99,7 +99,8 @@ def check_all_categories(test_categories):
                       "Android 4", "Android L", "Color",
                       "Windows 10/Threshold", "Office",
                       "Material", "Gradient", "Ultraviolet",
-                      "Nolan", "DottyDots", "Red Short Lines", "1em"]
+                      "Nolan", "DottyDots", "Red Short Lines", "1em",
+                      "iPhone/iOS 11"]
 
     all_categories_count = len(all_categories)
     current_categories = 0

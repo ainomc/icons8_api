@@ -24,7 +24,7 @@ class ContextCategoryv3ApiJson(object):
 
     platform_list = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
                      "Color", "Windows 10/Threshold", "Office", "Material", "Gradient",
-                     "Ultraviolet", "Nolan", "DottyDots", "Red Short Lines"]
+                     "Ultraviolet", "Nolan", "DottyDots", "Red Short Lines", "iPhone/iOS 11"]
     platform_code_list = ["win8", "ios7", "android", "androidL", "color",
                           "win10", "office", "p1em", "gradient", "ultraviolet",
                           "red_lines", "nolan", "dotty"]

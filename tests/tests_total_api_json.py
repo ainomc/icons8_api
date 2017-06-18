@@ -31,6 +31,7 @@ class TestTotaltpiJson(ContextTotalApiJson):
     # Test total object
     def test_total(self, total_numbers, json):
         name = json_parse(json, ["result", "total", total_numbers, "name"])
+
         assert ContextTotalApiJson.platform_list.count(name) == 1, name
         assert ContextTotalApiJson.platform_code_list.count(
             json_parse(json, ["result", "total", total_numbers, "api_code"])) == 1

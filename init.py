@@ -25,14 +25,19 @@ list_test_fies = glob.glob(os.path.join(os.getcwd(), 'tests', 'tests_*'))
 
 # Convert path to universal path what can be used in linux
 for file_num in range(len(list_test_fies)):
-    list_test_fies[file_num] = os.path.join(os.getcwd(), 'tests', list_test_fies[file_num])
+    list_test_fies[file_num] = os.path.join(os.getcwd(), 'tests',
+                                            list_test_fies[file_num])
 
 # Convert list to one string with spaces (' ') between each path
-str_list = " ".join(str(x) for x in list_test_fies) # convert list to string
+str_list = " ".join(str(x) for x in list_test_fies)  # convert list to string
 
 # Run tests with all tests files
 if "win" in platform:  # tests_category_v2_api_json
-    os.system(r'python -m pytest -v %s -s --showlocals --html=report/html/report.html' % str_list)
-    #os.system(r'python -m pytest -v tests\tests_category_v3_api_json.py -s --showlocals --html=xml/report.html')
+    os.system(r'python -m pytest -v %s -s --showlocals '
+              r'--html=report/html/report.html' % str_list)
+    #os.system(r'python -m pytest -v tests\tests_icon_api.py '
+    #          r'-s --showlocals --html=xml/report.html')
 elif "linux" in platform:
-    os.system(r'python -m pytest -v %s -s --showlocals --junitxml=/var/lib/jenkins/workspace/icons8api_tests/report/junitxml --html=report/html/report.html' % str_list)
+    os.system(r'python -m pytest -v %s -s --showlocals --junitxml=/var/lib'
+              r'/jenkins/workspace/icons8api_tests/report/junitxml '
+              r'--html=report/html/report.html' % str_list)
