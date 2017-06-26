@@ -34,9 +34,8 @@ str_list = " ".join(str(x) for x in list_test_fies)  # convert list to string
 # Run tests with all tests files
 
 if "win" in platform:  # tests_category_v2_api_json
-    os.system('python -m pytest -v %s -s --showlocals --html=report/html/report.html' % str_list)
+    os.system(r'python -m pytest -v %s -s --showlocals --html=report/html/report.html --junitxml=/var/lib/jenkins/workspace/icons8api_tests/report/junitxml.xml' % str_list)
     #os.system(r'python -m pytest -v tests\tests_icon_api.py '
     # r'-s --showlocals --html=xml/report.html')
 elif "linux" in platform:
-    os.system('python -m pytest -v %s -s --showlocals' % str_list)
-    #os.system('python -m pytest -v %s -s --showlocals --junitxml=/var/lib/jenkins/workspace/icons8api_tests/report/junitxml.xml --html=report/html/report.html' % str_list)
+    os.system(r'python -m pytest -v %s -s --showlocals --junitxml=/var/lib/jenkins/workspace/icons8api_tests/report/junitxml.xml --html=report/html/report.html' % str_list)
