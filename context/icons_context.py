@@ -13,8 +13,10 @@ class ContextIconsApi(object):
 
     offset = random_list_value(["", "5", "10", "15", "20"])
 
-    #search_platform = random_list_value(["win8", "ios7", "android", "gradient", "color", "win10", "office", "p1em", ""])
-    search_platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office", ""])
+    # search_platform = random_list_value(["win8", "ios7",
+    # "android", "gradient", "color", "win10", "office", "p1em", ""])
+    search_platform = random_list_value(["win8", "ios7", "android", "color",
+                                         "win10", "office", ""])
 
     print ('''Icons v1 Json tests: amount - %s, offset - %s, search_platform - %s''' % (amount, offset, search_platform))
 

@@ -18,14 +18,17 @@ class ContextTotalApiJson(object):
     # Do Request and return response root
     response_root = request('total', payload, "v3", "json")
     response_root_auth = request('total', payload_auth, "v3", "json")
-    platform_list = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
-                     "Color", "Windows 10/Threshold", "Office", "Material", "Gradient",
-                     "Ultraviolet", "Nolan", "DottyDots", "Red Short Lines",
-                     "iPhone/iOS 11", "cotton", "1em", "Dusk", "Wired"]
+    platform_list = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4",
+                     "Android L", "Color", "Windows 10/Threshold",
+                     "Office", "Material", "Gradient", "Ultraviolet",
+                     "Nolan", "DottyDots", "Red Short Lines", "iPhone/iOS 11",
+                     "1em", "Dusk", "Wired", "Dusk_Wired", "cotton"]
     platform_code_list = ["win8", "ios7", "android", "androidL", "color",
                           "win10", "office", "p1em", "gradient", "ultraviolet",
-                          "red_lines", "nolan", "dotty", "cotton", "dusk", "Dusk_Wired"]
+                          "red_lines", "nolan", "dotty", "1em", "dusk",
+                          "wired", "Dusk_Wired", "cotton"]
     # Action before class
+
     def setup_class(cls):
         print("\n>>> Class Setup")
 
