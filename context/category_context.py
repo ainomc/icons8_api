@@ -9,8 +9,8 @@ class ContextCategoryApi(object):
     # settings
     api_type = 'category'
 
-    category = random_list_value(["Arrows", "City", "Data", "Food", "Travel",
-                                  "Transport", "Objects", "Weather"])
+    category = random_list_value(["City", "Food", "Travel",
+                                  "Transport", "Weather"])
     amount = random_list_value(["", "5", "10", "15", "20"])
     offset = random_list_value(["", "5", "10", "15", "20"])
     platform = random_list_value(["win8", "ios7", "android", "androidL",

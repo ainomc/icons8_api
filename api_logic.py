@@ -100,7 +100,7 @@ def check_all_categories(test_categories):
                       "Windows 10/Threshold", "Office",
                       "Material", "Gradient", "Ultraviolet",
                       "Nolan", "DottyDots", "Red Short Lines", "1em",
-                      "iPhone/iOS 11"]
+                      "iPhone/iOS 11", "1em", "Dusk", "Wired"]
 
     all_categories_count = len(all_categories)
     current_categories = 0

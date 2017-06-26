@@ -30,7 +30,7 @@ class ContextTotalApi(object):
                      "iPhone/iOS 11", "cotton"]
     platform_code_list = ["win8", "ios7", "android", "androidL", "color",
                           "win10", "office", "p1em", "gradient", "ultraviolet",
-                          "red_lines", "nolan", "dotty", "cotton"]
+                          "red_lines", "nolan", "dotty", "cotton", "dusk", "Dusk_Wired"]
 
     # Action before class
     def setup_class(cls):

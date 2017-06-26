@@ -26,11 +26,12 @@ class ContextCategoryv3ApiJson(object):
 
     platform_list = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4", "Android L",
                      "Color", "Windows 10/Threshold", "Office", "Material", "Gradient",
-                     "Ultraviolet", "Nolan", "DottyDots", "Red Short Lines", "iPhone/iOS 11"]
+                     "Ultraviolet", "Nolan", "DottyDots", "Red Short Lines",
+                     "iPhone/iOS 11", "1em", "Dusk", "Wired", "Dusk_Wired"]
 
     platform_code_list = ["win8", "ios7", "android", "androidL", "color",
                           "win10", "office", "p1em", "gradient", "ultraviolet",
-                          "red_lines", "nolan", "dotty"]
+                          "red_lines", "nolan", "dotty", "1em", "Dusk", "Wired", "dusk", "wired"]
 
     # Action before class
     def setup_class(cls):
