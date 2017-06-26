@@ -34,7 +34,8 @@ class ContextIconApiJson(object):
                      "iPhone/iOS 11", "1em", "Dusk", "Wired", "Dusk_Wired"]
     platform_code_list = ["win8", "ios7", "android", "androidL", "color",
                           "win10", "office", "p1em", "gradient", "ultraviolet",
-                          "red_lines", "nolan", "dotty", "1em", "dusk", "wired", "wired"]
+                          "red_lines", "nolan", "dotty", "1em", "dusk", "wired",
+                          "wired"]
 
     # Action before class
     def setup_class(cls):
