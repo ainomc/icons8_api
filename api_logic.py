@@ -95,10 +95,9 @@ def word_count(word):
 
 def check_all_categories(test_categories):
     """Check categories in list categories"""
-    all_categories = ["Windows 8/Metro", "iPhone/iOS 10",
-                      "Android 4", "Android L", "Color",
-                      "Windows 10/Threshold", "Office",
-                      "Material", "Gradient", "Ultraviolet",
+    all_categories = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4",
+                      "Android L", "Color", "Windows 10/Threshold",
+                      "Office", "Material", "Gradient", "Ultraviolet",
                       "Nolan", "DottyDots", "Red Short Lines", "1em",
                       "iPhone/iOS 11", "1em", "Dusk", "Wired"]
 
