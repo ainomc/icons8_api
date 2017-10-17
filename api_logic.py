@@ -26,11 +26,11 @@ def request(api_type, payload, verison, type):
     # Change request url depending on api versions (1v, 2v, 3v)
     if verison == "v1":
         response = requests.get('https://%s.icons8.com/api/iconsets/%s' %
-                                (request_url, api_type), params=payload)
+                                (request_url, api_type), params=payload, verify=False)
     elif verison == "v2" or verison == "v3":
         response = \
             requests.get('https://%s.icons8.com/api/iconsets/%s/%s' %
-                         (request_url, verison, api_type), params=payload)
+                         (request_url, verison, api_type), params=payload, verify=False)
 
     # Check status of api
     response.raise_for_status()
