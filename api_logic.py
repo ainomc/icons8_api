@@ -24,16 +24,13 @@ def request(api_type, payload, verison, type):
      apiType - type of api, payload - values for url to request
      """
     # Change request url depending on api versions (1v, 2v, 3v)
-    try:
-        if verison == "v1":
-            response = requests.get('https://%s.icons8.com/api/iconsets/%s' %
-                                    (request_url, api_type), params=payload)
-        elif verison == "v2" or verison == "v3":
-            response = \
-                requests.get('https://%s.icons8.com/api/iconsets/%s/%s' %
-                             (request_url, verison, api_type), params=payload)
-    except ConnectionError:
-        time.sleep(5)
+    if verison == "v1":
+        response = requests.get('https://%s.icons8.com/api/iconsets/%s' %
+                                (request_url, api_type), params=payload)
+    elif verison == "v2" or verison == "v3":
+        response = \
+            requests.get('https://%s.icons8.com/api/iconsets/%s/%s' %
+                         (request_url, verison, api_type), params=payload)
 
     # Check status of api
     response.raise_for_status()
