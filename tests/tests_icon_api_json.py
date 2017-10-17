@@ -143,7 +143,7 @@ class TestIconApiJson(ContextIconApiJson):
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "created"])) > 15
             assert json_parse(json, ["result", "icons", 0, "variants", variant, "copyright"]) == False
             assert json_parse(json, ["result", "icons", 0, "variants", variant, "filled"]) == False or True
-            assert ".icons8.com/web-app/" in json_parse(json, ["result", "icons", 0, "variants", variant, "disqus_url"])
+            assert "icons8.com/web-app/" in json_parse(json, ["result", "icons", 0, "variants", variant, "disqus_url"])
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "category"])) > 2
             assert len(json_parse(json, ["result", "icons", 0, "variants", variant, "svg"])) > 40
 
