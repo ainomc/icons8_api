@@ -11,6 +11,9 @@ import xml.etree.ElementTree as ET
 my_data = json.loads(open("param.json").read())
 request_url = my_data['request_url']
 auth_id = my_data['auth_id']
+platform_list = my_data['platform_list']
+platform_code_list = my_data['platform_code_list']
+all_categories = my_data['all_categories']
 
 # default request_url and auth_id if no any request_url or auth_id
 if request_url == '':
@@ -92,12 +95,6 @@ def word_count(word):
 
 def check_all_categories(test_categories):
     """Check categories in list categories"""
-    all_categories = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4",
-                      "Android L", "Color", "Windows 10/Threshold",
-                      "Office", "Material", "Gradient", "Ultraviolet",
-                      "Nolan", "DottyDots", "Red Short Lines", "1em",
-                      "iPhone/iOS 11", "1em", "Dusk", "Wired", "iPhone/iOS",
-                      "Metro", "Dotty Dots", "Ice Cream"]
 
     all_categories_count = len(all_categories)
     current_categories = 0

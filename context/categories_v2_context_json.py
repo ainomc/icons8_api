@@ -21,16 +21,6 @@ class ContextCategoriesApiJson(object):
     response_root = request('categories', payload, "v2", "json")
     response_root_auth = request('categories', payload_auth, "v2", "json")
 
-    platform_list = ["Windows 8/Metro", "iPhone/iOS 10", "Android 4",
-                     "Android L", "Color", "Windows 10/Threshold", "Office",
-                     "Material", "Gradient", "Ultraviolet", "Nolan",
-                     "DottyDots", "Red Short Lines", "iPhone/iOS 11",
-                     "iPhone/iOS", "Metro", "1em", "Dusk_Wired", "ios11"]
-    platform_code_list = ["win8", "ios7", "android", "androidL", "color",
-                          "win10", "office", "p1em", "gradient", "ultraviolet",
-                          "red_lines", "nolan", "dotty", "1em", "dusk",
-                          "wired", "Dusk_Wired", "cotton", "ios11"]
-
     # Action before class
     def setup_class(cls):
         print("\n>>> Class Setup")

@@ -2,7 +2,7 @@
 
 import pytest
 
-from api_logic import json_parse
+from api_logic import json_parse, platform_list, platform_code_list
 from context.search_v3_context_json import ContextCategoryv3ApiJson
 
 
@@ -57,7 +57,7 @@ class TestSearchv3ApiJson(ContextCategoryv3ApiJson):
     def test_icons(self, search_number, json):
         assert json_parse(json, ["result", "search", search_number, "id"]) > 1
         assert len(json_parse(json, ["result", "search", search_number, "name"])) > 1
-        assert ContextCategoryv3ApiJson.platform_code_list.index\
+        assert platform_code_list.index\
                    (json_parse(json, ["result", "search", search_number, "platform_code"])) >= 0
         assert len(json_parse(json, ["result", "search", search_number, "created"])) > 23
         assert '/icon/' in json_parse(json, ["result", "search", search_number, "url"])[:9]
