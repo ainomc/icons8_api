@@ -1,1 +1,11 @@
 # Created by .ignore support plugin (hsz.mobi)
+Будет удалено .cache/
+Будет удалено .gitignore
+Будет удалено *.idea/
+Будет удалено .pyc
+Будет удалено __init__.pyc
+Будет удалено api_logic.pyc
+Будет удалено init.pyc
+Будет удалено report/html/
+Будет удалено tests/__init__.pyc
+Будет удалено tests/__pycache__/

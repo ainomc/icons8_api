@@ -83,6 +83,9 @@ class TestCategoryApiJson(ContextCategoryApiJson):
     def test_icons(self, icon_number, json):
         assert len(json_parse(json, ["result", "category", "icons", icon_number, "id"])) > 0
         assert len(json_parse(json, ["result", "category", "icons", icon_number, "name"])) > 2
+        print (json_parse(json, ["result", "category", "icons", icon_number, "platform"]))
+        print(json_parse(json, ["result", "category", "icons", icon_number,
+                                "platform"]))
         assert ContextCategoryApiJson.platform_list.count \
                    (json_parse(json, ["result", "category", "icons", icon_number, "platform"])) == 1
         assert ContextCategoryApiJson.platform_code_list.count \

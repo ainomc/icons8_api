@@ -38,4 +38,6 @@ if "win" in platform:  # tests_category_v2_api_json
     #os.system(r'python -m pytest -v tests\tests_icon_api.py '
     # r'-s --showlocals --html=xml/report.html')
 elif "linux" in platform:
-    os.system(r'python -m pytest -v %s -s --showlocals --junitxml=/var/lib/jenkins/workspace/icons8api_tests/report/junitxml.xml --html=report/html/report.html' % str_list)
+    os.system(
+        r'python2 -m pytest -v %s -s --showlocals' % str_list)
+    #os.system(r'python -m pytest -v %s -s --showlocals --junitxml=/var/lib/jenkins/workspace/icons8api_tests/report/junitxml.xml --html=report/html/report.html' % str_list)
