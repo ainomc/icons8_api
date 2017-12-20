@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import json
+gitimport json
 import random
 import time
 import requests
@@ -14,7 +14,7 @@ auth_id = my_data['auth_id']
 
 # default request_url and auth_id if no any request_url or auth_id
 if request_url == '':
-    request_url = 'demoapi'
+    request_url = 'devapi'
 if auth_id == '':
     auth_id = '07cb0f621e742888b888d7630c1f0b37bdae536b'
 
