@@ -2,7 +2,7 @@
 
 import pytest
 
-from api_logic import json_parse
+from api_logic import json_parse, platform_list, platform_code_list
 from context.category_v3_context_json import ContextCategoryv3ApiJson
 
 
@@ -78,7 +78,7 @@ class TestCategoryApiJson(ContextCategoryv3ApiJson):
     def test_icons(self, icon_number, json):
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'id'])) > 0
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'name'])) > 0
-        assert ContextCategoryv3ApiJson.platform_code_list.count(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'platform_code'])) == 1
+        assert platform_code_list.count(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'platform_code'])) == 1
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'created'])) > 20
         assert '/icon/' in json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'url'])
         assert len(json_parse(json, ["result", "category", "subcategory", 0, 'icons', icon_number, 'common_icon_id'])) > 1
