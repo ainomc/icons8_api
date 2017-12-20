@@ -6,7 +6,7 @@
     
 
 ### Команда для запуска
-    python init.py -request_url demoapi -auth_id f5901f402ac93fb372b19542f73cd3103a794b83
+    python init.py -request_url devapi -auth_id f5901f402ac93fb372b19542f73cd3103a794b83
     
     
 ### Структура

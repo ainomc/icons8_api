@@ -100,7 +100,7 @@ def check_all_categories(test_categories):
                       "Office", "Material", "Gradient", "Ultraviolet",
                       "Nolan", "DottyDots", "Red Short Lines", "1em",
                       "iPhone/iOS 11", "1em", "Dusk", "Wired", "Metro",
-                      "iPhone/iOS"]
+                      "iPhone/iOS", "Ice Cream", "Dotty Dots"]
     all_categories_count = len(all_categories)
     current_categories = 0
     for categories in all_categories:
