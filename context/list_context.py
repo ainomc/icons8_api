@@ -9,8 +9,8 @@ class ContextListApi(object):
     # settings
     api_type = 'list'
 
-    search_platform = random_list_value(["win8", "ios7", "android", "gradient",
-                                         "color", "win10", "office", "p1em", "", "ultraviolet"])
+    search_platform = random_list_value(["android", "gradient",
+                                         "color", "win10", ""])
 
     print ('''List v1 tests: search_platform - %s'''
            % search_platform)

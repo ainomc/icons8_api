@@ -58,7 +58,7 @@ class ContextSearchMaxApi(object):
     search_text = random_list_value(['google', 'facebook', 'space', 'car'])
     search_amount = '20'
     search_offset = '20'
-    search_platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office"])
+    search_platform = random_list_value([""])
     search_language = ''
 
     payload = {
@@ -118,7 +118,7 @@ class ContextSearchMinApi(object):
                                      'ball', 'car', 'word'])
     search_amount = '5'
     search_offset = '5'
-    search_platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office"])
+    search_platform = random_list_value([""])
     search_language = ''
     payload = {
         'term': search_text, 'amount': search_amount,

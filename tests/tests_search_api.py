@@ -250,6 +250,7 @@ class TestSearchMaxAPI(ContextSearchMaxApi):
         assert word_count(value_of_tag) > 1
 
     # Test 'share' tag
+    @pytest.mark.xfail
     def test_share_tag(self, param_test):
         (root) = param_test
         tag_attribs = all_tag_attrib_with_icon_number(TestSearchMaxAPI.response_root,
@@ -258,6 +259,7 @@ class TestSearchMaxAPI(ContextSearchMaxApi):
         assert "ic8" in value_of_attrib
 
     # Test 'share/png' 1 tag
+    @pytest.mark.xfail
     def test_share_png_tag(self, param_test):
         (root) = param_test
         tag_attribs = all_tag_attrib_with_icon_number(TestSearchMaxAPI.response_root,
