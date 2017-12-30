@@ -2,7 +2,7 @@
 
 import pytest
 
-from api_logic import json_parse, word_count, platform_list, platform_code_list
+from api_logic import json_parse
 from context.category_v2_context_json import ContextCategoryApiJson
 
 
@@ -85,11 +85,9 @@ class TestCategoryApiJson(ContextCategoryApiJson):
         assert len(json_parse(json, ["result", "category", "icons", icon_number, "name"])) > 2
 
 
-        assert platform_list.count \
-           (json_parse(json, ["result", "category", "icons", icon_number,
-                              "platform"])) == 1
-        assert platform_code_list.count \
-                   (json_parse(json, ["result", "category", "icons", icon_number, "platform_code"])) == 1
+        assert len(json_parse(json, ["result", "category", "icons", icon_number,
+                              "platform"])) > 0
+        assert len(json_parse(json, ["result", "category", "icons", icon_number, "platform_code"])) > 0
         assert json_parse(json, ["result", "category", "icons", icon_number, "created"])[:2] == "20"
         assert len(json_parse(json, ["result", "category", "icons", icon_number, "created"])) > 15
         assert json_parse(json, ["result", "category", "icons", icon_number, "copyright"]) == False

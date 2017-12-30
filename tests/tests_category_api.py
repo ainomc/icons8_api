@@ -4,7 +4,7 @@ import pytest
 import sys
 
 from api_logic import attrib_value, all_tag_attrib, all_tag_attrib_with_icon_number, \
-    tag_value_with_icon_number, word_count, check_all_categories
+    tag_value_with_icon_number, word_count
 from context.category_context import ContextCategoryApi
 
 
@@ -31,7 +31,7 @@ class TestCategoryApi(ContextCategoryApi):
         assert word_count(value_of_attrib) > 1
 
         value_of_attrib = attrib_value(tag_attribs, 'platform')
-        assert check_all_categories(value_of_attrib) == True
+        assert len(value_of_attrib) > 0
 
         value_of_attrib = attrib_value(tag_attribs, 'created')
         assert value_of_attrib[:2] == '20'

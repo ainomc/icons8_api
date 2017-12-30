@@ -2,7 +2,7 @@
 
 import pytest
 
-from api_logic import json_parse, platform_list, platform_code_list
+from api_logic import json_parse
 from context.search_v3_context_json import ContextCategoryv3ApiJson
 
 
@@ -57,8 +57,7 @@ class TestSearchv3ApiJson(ContextCategoryv3ApiJson):
     def test_icons(self, search_number, json):
         assert json_parse(json, ["result", "search", search_number, "id"]) > 1
         assert len(json_parse(json, ["result", "search", search_number, "name"])) > 1
-        assert platform_code_list.index\
-                   (json_parse(json, ["result", "search", search_number, "platform_code"])) >= 0
+        assert len(json_parse(json, ["result", "search", search_number, "platform_code"])) > 0
         assert len(json_parse(json, ["result", "search", search_number, "created"])) > 23
         assert '/icon/' in json_parse(json, ["result", "search", search_number, "url"])[:9]
         assert json_parse(json, ["result", "search", search_number, "common_icon_id"]) > 1
@@ -74,31 +73,6 @@ class TestSearchv3ApiJson(ContextCategoryv3ApiJson):
             assert len(json_parse(json, ["result", "search", search_number, "subcategory", "api_code"])) > 1
         except KeyError:
             pass
-
-"""
-    @pytest.mark.parametrize("search_number", search_number)
-    @pytest.mark.parametrize("json", [ContextCategoryv3ApiJson.response_root,
-                                      ContextCategoryv3ApiJson.response_root_auth])
-    # Test features object
-    def test_features(self, search_number, json):
-        for features in ["bitmap", "vector", "nolink"]:
-            assert json_parse(json, ["result", "search", search_number, "features", features]) == 0 or 1
-
-    @pytest.mark.parametrize("search_number", search_number)
-    @pytest.mark.parametrize("json", [ContextCategoryv3ApiJson.response_root,
-                                      ContextCategoryv3ApiJson.response_root_auth])
-    # Test share object
-    def test_share(self, search_number, json):
-        assert ".ic8.link" in json_parse(json, ["result", "search", search_number, "share", "url"])
-        assert ".icons8.com" in json_parse(json, ["result", "search", search_number, "share", "png", 0, "link"])
-        try:
-            assert ".icons8.com" in json_parse(json, ["result", "search", search_number, "share", "png", 1, "link"])
-            assert ".icons8.com" in json_parse(json, ["result", "search", search_number, "share", "png", 2, "link"])
-            assert 'twitter' in json_parse(json, ["result", "search", search_number, "share", "png", 1, "type"])
-            assert 'social' in json_parse(json, ["result", "search", search_number, "share", "png", 2, "social"])
-        except:
-            pass
-"""
 
 
 

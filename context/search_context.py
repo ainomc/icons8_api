@@ -8,11 +8,10 @@ class ContextSearchDefaultApi(object):
 
     #settings
     api_type = 'search'
-    term = random_list_value(['google', 'facebook', 'space',
-                              'ball', 'car', 'word'])
+    term = random_list_value(['google', 'facebook','car'])
     payload = {'term': term, 'amount': '', 'offset': '', 'platform': ''}
     payload_auth = {'term': term, 'amount': '', 'offset': '', 'platform': '', 'auth-id': auth_id}
-    search_platform = random_list_value(["win8", "ios7", "android", "color", "win10", "office"])
+    search_platform = random_list_value(["win8", "android", "color", "win10", "office"])
 
     print ('''Search v1 default tests: term - %s, amount - %s , offset - %s, platform - %s'''
            % (term, '', '', ''))

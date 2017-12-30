@@ -2,7 +2,7 @@
 
 import pytest
 
-from api_logic import tag_value, attrib_value, all_tag_attrib, word_count, check_all_categories
+from api_logic import tag_value, attrib_value, all_tag_attrib, word_count
 from context.icon_context import ContextIconApi
 
 
@@ -34,7 +34,7 @@ class TestIconApi(ContextIconApi):
         assert word_count(value_of_attrib) > 0, '>>> word count of name = 0 <<<'
 
         value_of_attrib = attrib_value(tag_attribs, 'platform')
-        assert check_all_categories(value_of_attrib) is True, '>>> platform not in the list <<<'
+        assert len(value_of_attrib) > 0
 
         value_of_attrib = attrib_value(tag_attribs, 'created')
         assert value_of_attrib[:2] == '20', '>>> "created" not start from "20" <<<'

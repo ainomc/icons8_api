@@ -11,9 +11,6 @@ import xml.etree.ElementTree as ET
 my_data = json.loads(open("param.json").read())
 request_url = my_data['request_url']
 auth_id = my_data['auth_id']
-platform_list = my_data['platform_list']
-platform_code_list = my_data['platform_code_list']
-all_categories = my_data['all_categories']
 
 # default request_url and auth_id if no any request_url or auth_id
 if request_url == '':
@@ -100,7 +97,7 @@ def check_all_categories(test_categories):
                       "Office", "Material", "Gradient", "Ultraviolet",
                       "Nolan", "DottyDots", "Red Short Lines", "1em",
                       "iPhone/iOS 11", "1em", "Dusk", "Wired", "Metro",
-                      "iPhone/iOS", "Ice Cream", "Dotty Dots"]
+                      "iPhone/iOS", "Ice Cream", "Dotty Dots", "link"]
     all_categories_count = len(all_categories)
     current_categories = 0
     for categories in all_categories:
